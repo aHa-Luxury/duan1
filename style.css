@@ -1,0 +1,268 @@
+* {
+    background-color: black;
+    width: 100%;
+    font-family: "Segoe UI", 'Roboto', sans-serif, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background-color: #000000;
+
+}
+
+body,
+td,
+th {
+    color: #FFFFFF;
+}
+
+body,
+td,
+th {
+    color: #FFFFFF;
+}
+
+ul {
+    padding: 0px;
+}
+
+li {
+    list-style: none
+}
+
+a {
+    text-decoration: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+select,
+ul {
+    margin: 0
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic
+}
+
+p {
+    margin: 0
+}
+
+.menu ul {
+    text-align: center;
+}
+
+.menu ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+.menu ul li a {
+    color: #c1c1c1;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 30px 30px;
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+.menu ul li a:hover {
+    color: #eeb332;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 30px 30px;
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+
+
+.menu ul img {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    width: 160px;
+    max-width: 100%;
+}
+
+.banner img {
+    border: 2px solid #606060;
+}
+
+.brand h3 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 600;
+    color: #fff;
+    float: left;
+    width: 100%;
+    font-family: 'Vollkorn', serif;
+    text-align: center;
+}
+
+.brand .imgbrand1 img,
+.imgbrand2 img,
+.imgbrand3 img,
+.imgbrand4 img {
+    margin: 15px 40px;
+    float: left;
+    width: 175px;
+    padding: 8px 23px;
+    margin-bottom: 20px;
+    background: #cacaca;
+    border: 1px solid #3d3d3d;
+    transition: all 0.3s;
+}
+
+.brand .imgbrand1 img {
+    margin-left: 720px;
+}
+
+.brand .imgbrand1 img:hover {
+    transform: scale(1.2);
+    border: none;
+    transition: all 0.3s;
+}
+
+.brand .imgbrand2 img:hover {
+    transform: scale(1.2);
+    border: none;
+    transition: all 0.3s;
+}
+
+.brand .imgbrand3 img:hover {
+    transform: scale(1.2);
+    border: none;
+    transition: all 0.3s;
+}
+
+.brand .imgbrand4 img:hover {
+    transform: scale(1.2);
+    border: none;
+
+}
+
+.brand1 h1 {
+    float: left;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 26px;
+    line-height: 50px;
+    color: white;
+    font-family: 'Vollkorn', serif;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.brand1 .listrolex {
+    text-align: center;
+    margin: 0 215px;
+}
+.brand1 .product1,
+.brand1 .product2,
+.brand1 .product3,
+.brand1 .product4 {
+    margin: 10px 10px;
+    border: 0.7px solid #303030;
+    float: left;
+    width: 20%;
+}
+
+.brand1 .product1 img,
+.product2 img,
+.product3 img,
+.product4 img {
+    width: auto;
+    transition: all .3s;
+    height: 350px;
+    padding: 50px 0px;
+    margin: 30px 0px;
+}
+.brand1 .product1 img:hover,
+.product2 img:hover,
+.product3 img:hover,
+.product4 img:hover {
+    transform: scale(1.1);
+
+}
+.brand1 .product1 h3, .product2 h3, .product3 h3, .product4 h3{
+    color: rgb(255,255,255);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    width: 90%;
+    line-height: 25px;
+    height: 50px;
+    overflow: hidden;
+    margin-left: 5%;
+    float: left;
+    margin-bottom: 11px;
+}
+.brand1 .product1 p,.product2 p,.product3 p,.product4 p{
+    font-size: 18px;
+    font-weight: 500;
+    color: #fdb866;
+    font-family: 'Roboto Condensed',sans-serif;
+}
+
+.btn-view-all-product {
+    margin-top: 1000px;
+text-align: center;
+margin-bottom: 40px;
+}
+.btn-view-all-product a {
+    background: #000000;
+    color: #fdb866;
+    border: 1px solid #fdb866;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.btn-view-all-product a:hover {
+    background: #F9AF4B;
+    color: black;
+    border: 1px solid #fdb866;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.btn-view-all-product2 {
+    margin-top: 800px;
+text-align: center;
+margin-bottom: 40px;
+}
+.btn-view-all-product2 a {
+    background: #000000;
+    color: #fdb866;
+    border: 1px solid #fdb866;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.btn-view-all-product2 a:hover {
+    background: #F9AF4B;
+    color: black;
+    border: 1px solid #fdb866;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+
