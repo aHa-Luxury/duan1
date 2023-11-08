@@ -1,7 +1,7 @@
 * {
-    background-color: black;
     width: 100%;
     font-family: "Segoe UI", 'Roboto', sans-serif, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    box-sizing: border-box;
 }
 
 body {
@@ -9,7 +9,6 @@ body {
     padding: 0;
     font-size: 12px;
     background-color: #000000;
-
 }
 
 body,
@@ -57,41 +56,44 @@ p {
     margin: 0
 }
 
-.menu ul {
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu ul {    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     text-align: center;
 }
 
 .menu ul li {
-    margin-top: 30px;
+    margin-right: 10px;
+    width: 140px;
+    margin-top: 50px;
     list-style-type: none;
     display: inline;
 }
 
 .menu ul li a {
+    text-align: center;
     color: #c1c1c1;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: 30px 30px;
     text-decoration: none;
 }
 
 .menu ul li a:hover {
-    color: #eeb332;
-    font-size: 20px;
-    font-weight: 400;
+    color: #eeb332;   
     text-transform: uppercase;
-    margin: 30px 30px;
-    margin-bottom: 50px;
     text-decoration: none;
 }
-
-
-.menu ul img {
-    margin-top: 20px;
-    width: 160px;
-    max-width: 100%;
+.logo{
+    width: 500px;
 }
+
 .hr{
     color: #fdb866;
 }
@@ -99,8 +101,14 @@ p {
 .banner img {
     border: 2px solid #606060;
 }
+.listbrand{
+    padding: 0 80px 0 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-.listbrand h3 {
+}
+h3 {
     margin-top: 40px;
     margin-bottom: 30px;
     text-transform: uppercase;
@@ -127,7 +135,6 @@ p {
     transition: all 0.3s;
 }
 
-
 .brand h1 {
     float: left;
     width: 100%;
@@ -141,24 +148,28 @@ p {
     margin-bottom: 0px;
 }
 
-/* .brand .list {
-    text-align: center;
-    margin: 0 215px;
-} */
+.brand .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0  150px 0 150px;
+    
+}
 
 .brand .product {
     margin: 10px 10px;
     border: 0.7px solid #303030;
     float: left;
-    width: 23.5%;
+    width: 25%;
 }
 
 .brand .product img {
     width: auto;
     transition: all .3s;
     height: 270px;
-    padding: 10px 0px;
-    margin: 50px 50px;
+    text-align: center;
+    margin: 20px 20px 10px 20px;
 }
 
 .brand .product img:hover {
@@ -187,12 +198,13 @@ p {
     font-weight: 500;
     color: #fdb866;
     font-family: 'Roboto Condensed', sans-serif;
+    margin-bottom: 10px;
 }
 .brand .product a h3:hover{
     color: #f9af4b;
 }
 .btn-view-all-product {
-    margin-top: 630px;
+    margin-top: 60px;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -218,7 +230,7 @@ p {
 }
 
 .btn-view-all-product2 {
-    margin-top: 670px;
+    margin-top: 60px;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -244,7 +256,7 @@ p {
 }
 
 .btn-view-all-product3 {
-    margin-top: 670px;
+    margin-top: 60px;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -267,4 +279,182 @@ p {
     font-size: 16px;
     border-radius: 10px;
     text-transform: uppercase;
+}
+.hr{
+    height: 2px;
+    width: 100%;
+    background-color: #fdb866;
+}
+
+
+
+footer{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 400px;
+}
+.footer_2 h1, 
+.footer_3 h1,
+.footer_4 h1{
+    color: #f9af4b;
+    font-size: 20px;
+}
+.footer_1{
+    text-align: center;
+    width: 350px;
+}
+.footer_1 img{
+    width: 200px;
+}
+.footer_2{
+    background-color: #262626;
+    width: 350px ;
+    padding:10px 10px;
+    margin-right: 40px;
+    height: 370px;
+}
+
+.footer_2 p{
+    font-size: 15px;
+}
+.footer_2 .icon{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.footer_2 .facebook_icon{
+    text-align: center;
+    width: 100px;
+    background-color: #3B5998;
+    border-radius: 30px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.footer_2 .youtobe_icon{
+    text-align: center;
+    width: 100px;
+    background-color: red;
+    border-radius: 30px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.footer_2 .bo_cong_thuong{
+    width: 120px;
+}
+.footer_2 .bo_cong_thuong img{
+    width: 90%;
+    margin-top: -5px;
+}
+.footer_3{
+    width: 350px ;
+}
+.footer_3 p ,
+.footer_4 p{
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 100;
+}
+.footer_4{
+    width: 350px ;
+}
+.footer_4 .phone_number{
+    background-color: #f9af4b;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+}
+.footer_4 .phone_number p{
+    line-height: 20px;
+    font-size: 18px;
+    color: black;
+    font-weight: 400;
+}
+.footer_4 .phone_number span{
+    font-size: 20px;
+    color: black;
+    font-weight: 400;
+}
+
+
+/* Trang chi tiết sản phẩm */
+.thongtin_sanpham{
+    width: 100%;    
+    min-height: 500px;
+}
+.head_desc{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.head_left{
+    text-align: center;
+    padding: 50px 0 0 60px;
+
+}
+.head_left img{
+    width: 70%;
+}
+
+
+.head_center {
+    padding: 10px 20px 10px 20px;
+}
+.head_center span{
+    color: orange;
+}
+.head_center .button{
+    padding: 0 10px 0 10px;
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.head_center .button .buy{
+    background-color: #fdb866;
+    color: white;
+    width: 47%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 3px solid  #ec860a;
+}
+.head_center .button .buy p{
+    color: black;
+    font-size: 20px ;
+    line-height: 50px;
+}
+.head_center .button .add{
+    background-color: rgb(246, 37, 37);
+    color: white;
+    width: 47%;
+    height: 50px;
+    text-align: center;
+    border-bottom: 3px solid rgb(253, 126, 126);
+}
+.head_center .button .add p{
+    color : black;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+
+.head_right{
+   padding: 100px
+    
+}
+.head_right .box1, .box2, .box3{
+    margin-bottom: 10px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
 }
