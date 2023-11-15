@@ -943,3 +943,230 @@ input {
 .main-register .dacotk a:hover {
   text-decoration: underline;
 }
+/* Trang giỏ hàng */
+.cart-content {
+  padding-top: 30px;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cart-left {
+  margin-right: 1%;
+  width: 65%;
+}
+
+.cart-right {
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 30%;
+}
+
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.cart-column {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-row {
+  display: flex;
+}
+
+.cart-item {
+  width: 40%;
+}
+
+.cart-price {
+  width: 20%;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-quantity {
+  width: 20%;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: 3em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.btn-danger {
+  color: white;
+  background-color: #EB5757;
+  border: none;
+  border-radius: .3em;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  background-color: #CC4C4C;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+
+.cart-row:last-child {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+  border: none;
+}
+
+.total-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cart-total {
+  color: #333;
+  font-size: 1.3em;
+}
+
+.cart-total-price {
+  color: #333;
+  font-size: 1.3em;
+}
+
+.btn-thanhtoan {
+  margin-top: 20px;
+  background-color: #E2BA48;
+  border: none;
+  width: 100%;
+  height: 30px;
+}
+
+.btn-thanhtoan a {
+  color: white;
+  font-family: 'Roboto';
+  font-size: 15px;
+  font-weight: 37.2px;
+}
+
+.btn-viewmore {
+  margin-top: 12px;
+  background-color: white;
+  border: 1px solid black;
+  width: 100%;
+  height: 30px;
+}
+
+.btn-viewmore a {
+  color: black;
+  font-family: 'Roboto';
+  font-size: 15px;
+  font-weight: 37.2px;
+}
+
+/* Thanh toán */
+.total-pay{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pay-left{
+  width: 60%;
+}
+.pay-right{
+  width: 40%;
+}
+.cart-left h2 {
+  font-size: 1.1em;
+  overflow: hidden;
+  padding-top: 10px;
+  font-weight: bolder;
+  text-transform: uppercase
+}
+
+.paycart {
+  font-weight: bold;
+  display: block;
+  font-size: .9em;
+  margin-bottom: 0.4em;
+}
+
+.input-pay {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  padding: 0 0.75em;
+  height: 2.507em;
+  font-size: .97em;
+  border-radius: 0;
+  max-width: 100%;
+  width: 100%;
+  vertical-align: middle;
+  background-color: #fff;
+  color: #333;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: color .3s, border .3s, background .3s, opacity .3s;
+}
+
+.title-product{
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+}
+.sum-product{
+
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+}
+.total-product{
+  font-size: 14px;
+  font-weight: 18.7px;
+  color: #666666;
+}
+.total-price{
+color: #333;
+  font-size: 1.3em;
+}
+
+.hr1{
+  border: 2px solid #ECECEC;
+}
+.hr2{
+  margin-top: 12px;
+  border: 0.3px solid black;
+  width: 166.5%;
+}
+.hr3{
+    border: 2px solid #ECECEC;
+    width: 166.5%;
+    margin-bottom: 10px;
+}
+.sum-all{
+  font-size: 13px;
+  font-weight: 500;
+  color: black;
+}
