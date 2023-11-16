@@ -53,10 +53,10 @@
 .admin main .main_right .head {
   display: flex;
   flex-direction: row;
-  padding: 0px 20px 0px 20px;
+  padding: 0px 0px 0px 20px;
 }
 .admin main .main_right .head .form {
-  width: 70%;
+  width: 60%;
   padding: 20px 20px 10px 20px;
   display: flex;
   flex-direction: row;
@@ -66,28 +66,30 @@
   outline: none;
   border-radius: 5px;
   border: none;
+  height:30px;
+  padding:10px;
+  background-color:rgb(234, 229, 229);
 }
-.admin main .main_right .head .form input[type="submit"]{
+.admin main .main_right .head .form button{
     border-radius: 5px;
    background-color: #4e73df;
 }
 .admin main .main_right .head .option {
-  height: 50px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 30%;
-  float: right;
+  width: 40%;
   padding: 0 40px;
 }
 .admin main .main_right .head .option i {
-  line-height: 50px;
+  line-height: 60px;
 }
 .admin main .main_right .head .option i:hover {
   color: orangered;
 }
 .admin main .main_right .head .option h6 {
-  line-height: 50px;
+  line-height: 60px;
 }
 .admin main .main_right .head .option .user {
   display: flex;
@@ -118,7 +120,7 @@
   } */
 
 .main_right .content {
-  width: 100%;
+  padding: 0 30px 0 30px;
   min-height: 800px;
 }
 .main_right .content .row table thead th {
@@ -183,162 +185,4 @@
   color: orangered;
   font-size: 20px;
   margin-top: 20px;
-}
-/* TRANG DANH SÁCH KHÁCH HÀNG */
-.table-container {
-  display: flex;
-  color: #5a5c69;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.main-trai {
-  width: 19.5%;
-  background-color: #000;
-}
-
-.main-phai {
-  width: 80.5%;
-  background-color: #f8f9fc;
-}
-
-.admin-seach {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  /* Căn giữa theo chiều dọc */
-  padding: 10px;
-  /* Thêm padding để tạo khoảng cách xung quanh */
-  background-color: #ffffff;
-}
-
-.seach {
-  display: flex;
-  align-items: center;
-  float: left;
-  margin-right: 700px;
-}
-
-.seach .icon i {
-  background-color: #4e73df;
-  color: white;
-  width: 40px;
-  height: 41.4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-
-.input input {
-  background-color: #eceff5;
-  border: none;
-  height: 40px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  width: 320px;
-  outline: none;
-}
-
-.notices-and-letters {
-  padding-right: 20px;
-  /* Tạo khoảng cách giữa border và nội dung bên trong */
-  margin: 20px;
-}
-
-.avata {
-  border-left: 1px solid;
-  /* Tạo border-right */
-  padding-left: 40px;
-  display: flex;
-  align-items: center;
-  margin-right: 25px;
-}
-
-.avata img {
-  border-radius: 50%;
-  width: 25px;
-  margin-left: 10px;
-  /* Khoảng cách bên trái là 30px */
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  
-}
-.table-main{
-  width: 97%;
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
-.table-main h3{
-  color: #385ece;
-  background-color:#efeff1;
-  height: 50px;
-  padding-left: 20px;
-  padding-top: 25px;
-}
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.table-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 50px;
-}
-
-.table-header-left {
-  display: flex;
-  align-items: center;
-}
-
-.table-header-right {
-  display: flex;
-  align-items: center;
-}
-
-.pagination-select,
-.search-input {
-  margin-left: 10px;
-  padding: 5px;
-}
-.table-header,
-table{
-  width: 97%;
-  margin: 0 auto;
-}
-
-.main-trai .menu_admin ul {
-  padding: 20px 0 10px 10px;
-  list-style: none;
-}
-.main-trai ul li {
-  padding-left: 20px;
-  margin-bottom: 20px;
-  list-style: none;
-}
-.main-trai ul li a {
-  text-decoration: none;
-  padding: 0px 10px 30px 10px;
-  font-size: 15px;
-  color: #ffffffcc;
-}
-.main-trai ul li a i {
-  font-size: 20px;
-  width: 40px;
-}
-.main-trai ul li a:hover {
-  color: rgb(233, 156, 14);
 }

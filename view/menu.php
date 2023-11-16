@@ -1,3 +1,5 @@
+<?php 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +19,7 @@
     
 <body>
     <div class="tong">
-        <div class="menu">
+        <!-- <div class="menu">
             <ul>
                 <li><a href="?act=trangchu">TRANG CHỦ</a></li>
                 <li><a href="">ROLEX</a></li>
@@ -34,6 +36,26 @@
                 <li><a href="?act=tintuc">TIN TỨC</a></li>
                 <li><a href="?act=login">Đăng nhập</a></li>
                 
+            </ul>
+           
+        </div> -->
+        <div class="menu">
+            <ul>
+                <li><a href="?act=trangchu">TRANG CHỦ</a></li>
+                <?php foreach($all_danhmuc as $danhmuc) :?>
+                <li><a href="?act=category_products&id_dm=<?= $danhmuc['id_danhmuc'] ?>"><?= $danhmuc['ten_danhmuc']?></a></li>
+                <?php endforeach ?>
+                
+            </ul>
+            <div class="logo">
+                <a href="?act=trangchu" ><img style="width: 160px;" src="images/LOGOSUTU500K.png" alt=""></a>
+            </div>
+            <ul>
+                <li><a href="">Richard Mille</a></li>
+                <li><a href="?act=tintuc">TIN TỨC</a></li>
+                <li ><a href="?act=search"><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
+                <li ><a href="?act=cart"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+                <li ><a href="?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
             </ul>
            
         </div>

@@ -1,15 +1,17 @@
+<div class="banner">
+            <video src="images/Rolex....mp4" autoplay="autoplay" muted loop></video>
+        </div>
 <main>
         <div class="bc_home">
             <div class="nav_detail breadcrumbs">
-                <div class="h2"><a href="/">Trang chủ</a></div><span
+                <div class="h2"><a href="?act=trangchu">Trang chủ</a></div><span
                     style="float: left;margin-top: 2px;margin-right: 10px;width: 10px;">—</span>
-                <div class="h3"><a title="Đồng hồ" itemprop="url" href="##">Đồng hồ</a></div><span
-                    style="float: left;margin-top: 2px;margin-right: 10px;;width: 10px;">—</span>
-                <div class="h3"><a title="Rolex" itemprop="url" href="##">Rolex</a></div>
+                
+                <div class="h3"><a title="" itemprop="url" href="##"><?= $one_danhmuc[0]['ten_danhmuc'] ?></a></div>
             </div>
         </div>
         <div class="name_category">
-            <h2>Rolex</h2>
+            <h2><?= $one_danhmuc[0]['ten_danhmuc'] ?></h2>
             <div class="child_cat">
                 <ul>
 
@@ -24,163 +26,30 @@
                 </ul>
             </div>
         </div>
+           <!-- <div class="regtangle">
+               <div class="box1">
+                <a href=""><?= $one_danhmuc[0]['ten_danhmuc'] ?></a>
+            </div>
+           </div> -->
         <div class="brand">
            
           
             <div class="list">
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
+                <?php foreach($all_sanpham as $all_sp): ?>
+                    <div class="product">
+                        <a href="">
+                        <img src="<?= $all_sp['img_sanpham']?>" alt="">
+                            <h3><?= $all_sp['ten_sanpham']?></h3>
+                            <p><?=number_format( $all_sp['price'] )?>đ</p>
+                        </a>
+    
+                    </div>
+                    <?php endforeach; ?>
+               
             </div>
-            <div class="list">
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-            <div class="list">
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-            <div class="list">
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-            <div class="list">
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <img src="../images/Rolex1.png" alt="">
-                    <a href="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
+         
+        
+         
+         
         </div>
        </main>

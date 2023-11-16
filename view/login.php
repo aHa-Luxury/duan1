@@ -5,14 +5,15 @@
     
         <div class="login">
           <h2>ĐĂNG NHẬP</h2>
-          <form action="">
+          <form action="" method="post">
             Email<br>
-            <input type="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
             <hr>
             Mật khẩu<br>
-            <input type="text" placeholder="Mật khẩu" required>
+            <input type="text" name="password" placeholder="Mật khẩu" required>
+            <span style="color:red"><?= $message ?? "" ?></span>
             <hr>
-            <button type="submit">Đăng nhập</button>
+            <button type="submit" name="dangnhap">Đăng nhập</button>
           </form>
           <p>hoặc đăng nhập bằng</p>
           <div class="icons" style="width: 70%;">

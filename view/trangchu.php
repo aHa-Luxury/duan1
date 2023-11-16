@@ -1,195 +1,57 @@
+<div class="hr"></div>
+        <div class="banner">
+            <!-- <div class="slideshow-container">
+                    <div class="mySlides fade">
+                      <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" style="width:100%">
+                    </div>
+                    <div class="mySlides fade">
+                      <img src="images/BANNER2.jpg" style="width:100%">
+                    </div>
+                </div> -->
+
+            <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+        </div>
 <main>
-        <h3>XEM SẢN PHẨM THEO THƯƠNG HIỆU</h3>
-        <div class="listbrand">
-            <a href="index.php?act=category_products"><img src="images/ROLEX.png" alt=""></a>
-            <a href="index.php?act=category_products"><img src="images/HUBLOT.png" alt="br2"></a>
-            <a href="index.php?act=category_products"> <img src="images/MULLER.png" alt="br3"></a>
-            <a href="index.php?act=category_products"> <img src="images/MILLE.png" alt="br4"></a>
-           
+    <h3>XEM SẢN PHẨM THEO THƯƠNG HIỆU</h3>
+    <div class="listbrand">
+        <?php foreach ($all_danhmuc as $all_dm) : ?>
+            <a href="index.php?act=category_products&id_dm=<?= $all_dm['id_danhmuc'] ?>"><img src="<?= $all_dm["img_danhmuc"] ?>" alt=""></a>
+        <?php endforeach ?>
 
-        </div>
-        <div class="brand">
-            <h1>ROLEX</h1>
-            <div class="list">
-                <div class="product">
-                    <a href="">
-                    <img src="images/Rolex1.png" alt="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
+    </div>
 
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Rolex1.png" alt="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Rolex1.png" alt="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Rolex1.png" alt="">
-                        <h3>Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm</h3>
-                        <p>950.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="btn-view-all-product">
-            <a href="###">XEM TẤT CẢ ĐồNG Hồ ROLEX</a>
-        </div>
-        <div class="brand">
-            <h1>HUBLOT</h1>
-            <div class="list">
-                <div class="product">
-                    <a href="index.php?act=chitietsanpham">
-                    <img src="images/HublotClock.png" alt="">
-                        <h3>Đồng Hồ Hublot Classic Fusion Chronograph Titanium Blue 45MM</h3>
-                        <p>195.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/HublotClock.png" alt="">
-                        <h3>Đồng Hồ Hublot Classic Fusion Chronograph Titanium Blue 45MM</h3>
-                        <p>195.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/HublotClock.png    " alt="">
-                        <h3>Đồng Hồ Hublot Classic Fusion Chronograph Titanium Blue 45MM</h3>
-                        <p>195.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/HublotClock.png    " alt="">
-                        <h3>Đồng Hồ Hublot Classic Fusion Chronograph Titanium Blue 45MM</h3>
-                        <p>195.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="btn-view-all-product">
-            <a href="###">XEM TẤT CẢ ĐồNG Hồ HUBLOT</a>
-        </div>
-        <div class="brand">
-            <h1>FRANCK MULLER</h1>
-            <div class="list">
-                <div class="product">
-                    <a href="">
-                    <img src="images/Franck_Muller_V41_Gold_Option_Diamond.png" alt="">
-                        <h3>Đồng hồ Franck Muller V41 Gold Option Diamond</h3>
-                        <p>315.000.000 đ</p>
-                    </a>
 
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Franck_Muller_V41_Gold_Option_Diamond.png" alt="">
-                        <h3>Đồng hồ Franck Muller V41 Gold Option Diamond</h3>
-                        <p>315.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Franck_Muller_V41_Gold_Option_Diamond.png    " alt="">
-                        <h3>Đồng hồ Franck Muller V41 Gold Option Diamond</h3>
-                        <p>315.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Franck_Muller_V41_Gold_Option_Diamond.png    " alt="">
-                        <h3>Đồng hồ Franck Muller V41 Gold Option Diamond</h3>
-                        <p>315.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="btn-view-all-product">
-            <a href="###">XEM TẤT CẢ ĐồNG Hồ FRANCK MULLER</a>
-        </div>
-        <div class="brand">
-            <h1>RICHARD MILLE</h1>
-            <div class="list">
-                <div class="product">
-                    <a href="">
-                    <img src="images/Richard_Mille_RM_023.png" alt="">
-                        <h3>Richard Mille RM 023 vàng hồng đính kim cương</h3>
-                        <p>5.680.000.000 đ</p>
-                    </a>
 
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Richard_Mille_RM_023.png" alt="">
-                        <h3>Richard Mille RM 023 vàng hồng đính kim cương</h3>
-                        <p>5.680.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Richard_Mille_RM_023.png    " alt="">
-                        <h3>Richard Mille RM 023 vàng hồng đính kim cương</h3>
-                        <p>5.680.000.000 đ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/Richard_Mille_RM_023.png    " alt="">
-                        <h3>Richard Mille RM 023 vàng hồng đính kim cương</h3>
-                        <p>5.680.000.000 đ</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="btn-view-all-product">
-            <a href="###">XEM TẤT CẢ ĐồNG Hồ Richard Mille</a>
-        </div>
-        <div class="brand">
-            <h1>Phụ kiện</h1>
-            <div class="list">
-                <div class="product">
-                    <a href="">
-                    <img src="images/pk1.jpg" alt="">
-                        <h3>Dây Đồng hồ Patek Philippe</h3>
-                        <p>Liên hệ</p>
-                    </a>
+    <div class="brand">
+    <?php foreach ($all_danhmuc as $all_dm) : ?>
+            <h1><?= $all_dm['ten_danhmuc'] ?></h1>
 
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/pk1.jpg" alt="">
-                        <h3>Dây Đồng hồ Patek Philippe</h3>
-                        <p>Liên hệ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/pk1.jpg" alt="">
-                        <h3>Dây Đồng hồ Patek Philippe</h3>
-                        <p>Liên hệ</p>
-                    </a>
-                </div>
-                <div class="product">
-                    <a href="">
-                    <img src="images/pk1.jpg    " alt="">
-                        <h3>Dây Đồng hồ Patek Philippe</h3>
-                        <p>Liên hệ</p>
-                    </a>
-                </div>
+
+            <!-- Danh sách 4 sản phẩm mới nhất -->
+            <?php $four_sanpham = load_four_sanpham($all_dm['id_danhmuc']);?>
+            <div class="list">
+            <?php foreach($four_sanpham as $four_sp) : ?>
+                    <div class="product">
+                <a href="?act=chitietsanpham&id_sp=<?= $four_sp['id_sanpham'] ?>">
+                    <img src="<?= $four_sp['img_sanpham'] ?>" alt="">
+                    <h3><?= $four_sp['ten_sanpham'] ?></h3>
+                    <p><?= number_format( $four_sp['price'])  ?>đ</p>
+                </a>
             </div>
+            <?php endforeach ?>
         </div>
-        <div class="btn-view-all-product">
-            <a href="###">XEM TẤT CẢ Phụ Kiện</a>
-        </div>
-    </main>
+
+            <!-- Button xem tất cả sản phẩm  -->
+            <div class="btn-view-all-product">
+                <a href="###">XEM TẤT CẢ ĐồNG Hồ <?= $all_dm['ten_danhmuc'] ?></a>
+            </div>
+        <?php endforeach ?>
+       
+
+
+    </div>
+
+
+    </div>
+   
+</main>

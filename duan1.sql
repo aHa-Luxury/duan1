@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: duan1
+-- Host: 127.0.0.1    Database: duan1
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -101,6 +101,8 @@ DROP TABLE IF EXISTS `danhmuc`;
 CREATE TABLE `danhmuc` (
   `id_danhmuc` int NOT NULL AUTO_INCREMENT,
   `ten_danhmuc` varchar(255) DEFAULT NULL,
+  `img_danhmuc` varchar(255) DEFAULT NULL,
+  `video_danhmuc` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_danhmuc`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -111,7 +113,7 @@ CREATE TABLE `danhmuc` (
 
 LOCK TABLES `danhmuc` WRITE;
 /*!40000 ALTER TABLE `danhmuc` DISABLE KEYS */;
-INSERT INTO `danhmuc` VALUES (1,'rolex'),(2,'hublot'),(3,'richardmille'),(4,'franckmuller');
+INSERT INTO `danhmuc` VALUES (1,'rolex','images/ROLEX.png','images/Rolex....mp4'),(2,'hublot','images/HUBLOT.png',NULL),(3,'richard mille','images/MILLE.png',NULL),(4,'franck muller','images/MULLER.png',NULL);
 /*!40000 ALTER TABLE `danhmuc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,12 +126,13 @@ DROP TABLE IF EXISTS `khachhang`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `khachhang` (
   `id_user` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
+  `ho` varchar(45) NOT NULL,
+  `ten` varchar(45) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `tel` varchar(45) DEFAULT NULL,
   `role` int DEFAULT '0',
+  `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,6 +141,7 @@ CREATE TABLE `khachhang` (
 
 LOCK TABLES `khachhang` WRITE;
 /*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
+INSERT INTO `khachhang` VALUES (1,'Đào','Hải','hdao4959@gmail.com',1,'123'),(2,'Trần ','Lộc','tranloc1234@gmail.com',0,'123');
 /*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +155,7 @@ DROP TABLE IF EXISTS `sanpham`;
 CREATE TABLE `sanpham` (
   `id_sanpham` int NOT NULL AUTO_INCREMENT,
   `ten_sanpham` varchar(255) DEFAULT NULL,
-  `image_sanpham` varchar(255) DEFAULT NULL,
+  `img_sanpham` varchar(255) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `price` int DEFAULT NULL,
   `size` float DEFAULT NULL,
@@ -161,7 +165,7 @@ CREATE TABLE `sanpham` (
   PRIMARY KEY (`id_sanpham`),
   KEY `fk_danhmuc_idx` (`id_danhmuc`),
   CONSTRAINT `fk_danhmuc` FOREIGN KEY (`id_danhmuc`) REFERENCES `danhmuc` (`id_danhmuc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +174,7 @@ CREATE TABLE `sanpham` (
 
 LOCK TABLES `sanpham` WRITE;
 /*!40000 ALTER TABLE `sanpham` DISABLE KEYS */;
-INSERT INTO `sanpham` VALUES (1,'Đồng hồ Rolex 228345RBR Day Date 40mm Chocolate','images/Rolex1.png','Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. Nó có thể dự trữ năng lượng lên tới 42 giờ.',195000000,42,1333,'MỚI 100% FULLBOX SÁCH HỘP',1);
+INSERT INTO `sanpham` VALUES (1,'Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm','images/Rolex1.png','Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. Nó có thể dự trữ năng lượng lên tới 42 giờ.',1010000000,42,1333,'MỚI 100% FULLBOX SÁCH HỘP',1),(2,'Đồng Hồ Hublot Classic Fusion Chronograph Titanium Blue 45MM','images/HublotClock.png','Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. Nó có thể dự trữ năng lượng lên tới 42 giờ.',195000000,42,41242,'MỚI 100% FULLBOX SÁCH HỘP',2),(3,'Đồng hồ Franck Muller V41 Gold Option Diamond','images/FranckMuller1.png','Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. Nó có thể dự trữ năng lượng lên tới 42 giờ.',195000000,42,35235,'MỚI 100% FULLBOX SÁCH HỘP',4),(4,'Richard Mille RM 023 vàng hồng đính kim cương','images/Richard_Mille_RM_023.png','Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. Nó có thể dự trữ năng lượng lên tới 42 giờ.',195000000,43,414,'MỚI 100% FULLBOX SÁCH HỘP',3),(5,'Đồng Hồ Hublot Classic Fusion Chronograph Titanium Automatic Black Dial Men\'s Watch','images/Hublot2.png','',195000000,42,5333,'TÌNH TRẠNG : MỚI 100% FULLBOX SÁCH HỘP',2),(6,'Đồng Hồ Hublot Classic Fusion Automatic King Gold 42 mm','images/Hublot3.png',NULL,338000000,42,5757,'TÌNH TRẠNG : MỚI 100% FULLBOX SÁCH HỘP',2),(7,'Đồng Hồ Hublot Classic Fusion Titanium Diamonds 42mm','images/Hublot4.png',NULL,170000000,42,2423,'TÌNH TRẠNG : MỚI 100% FULLBOX SÁCH HỘP',2),(8,'Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm 128235-0029 dây đeo President','images/Rolex2.png','Thép không gỉ kết hợp vàng hồng 18k',459000000,43,533,'TÌNH TRẠNG : MỚI 100% FULL SET',1),(9,'Đồng Hồ Rolex Datejust 126234 Mặt Vi tính Xanh Navy','images/Rolex3.png','Rolesor trắng - hỗn hợp thép Oystersteel và vàng trắng 18 ct',285000000,43,243,'TÌNH TRẠNG : FULLSET MỚI 100%',1),(10,'Đồng Hồ Rolex Datejust 126234 Mặt Xanh Navy','images/Rolex4.png',NULL,265000000,42,244,'TÌNH TRẠNG : MỚI 100 % FULL SET',1),(11,'Đồng Hồ Franck Muller V41 Yachting','images/FranckMuller2.png',NULL,179000000,43,24234,'TÌNH TRẠNG : FULLSET MỚI 100%',4),(12,'Đồng hồ Franck Muller V41 mới 100% Full Diamond','images/FranckMuller3.png',NULL,165000000,42,234,'TÌNH TRẠNG : FULLSET MỚI 100%',4),(13,'Đồng Hồ Franck Muller Vanguard Lady V32','images/FranckMuller4.png','Thép không gỉ tone màu bạc đính kim cương',135000000,43,656,'TÌNH TRẠNG : MỚI 100% FULLBOX SÁCH HỘP',4),(14,'Richard Mille RM 011 Felipe Massa Flyback Chronograph Titanium','images/RichardMille2.png',NULL,135000000,42,435,NULL,3),(15,'Richard Mille RM35-02 Automatic Winding Rafael Nadal','images/RichardMille3.png',NULL,135000000,43,535,NULL,3),(16,'Richard Mille RM 011 Automatic Flyback Chronograph Felipe Massa Vàng Hồng Titanium','images/RichardMille4.png',NULL,135000000,43,453,NULL,3);
 /*!40000 ALTER TABLE `sanpham` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-13  8:11:18
+-- Dump completed on 2023-11-17  1:08:36
