@@ -1,5 +1,5 @@
 <div class="banner">
-            <video src="images/Rolex....mp4" autoplay="autoplay" muted loop></video>
+            <video src="<?= $one_danhmuc[0]['video_danhmuc']?>" autoplay="autoplay" muted loop></video>
         </div>
 <main>
         <div class="bc_home">
