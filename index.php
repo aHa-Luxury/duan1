@@ -16,9 +16,12 @@ if (isset($_GET['act'])) {
     $act = $_GET['act'];
 
     switch ($act) {
+        // Trang chủ
         case "trangchu":
             include "view/trangchu.php";
             break;
+
+            // Trang chi tiết sản phẩm
         case "chitietsanpham":
             if (isset($_GET["id_sp"]) && $_GET['id_sp'] != 0) {
                 $id_sanpham = $_GET['id_sp'];
@@ -29,6 +32,8 @@ if (isset($_GET['act'])) {
                 echo "Không có thông tin sản phẩm";
             }
             break;
+
+            // Trang danh mục
         case "category_products":
             if (isset($_GET["id_dm"]) && $_GET['id_dm'] != 0) {
                 $id_danhmuc = $_GET['id_dm'];
@@ -39,20 +44,27 @@ if (isset($_GET['act'])) {
                 echo "Không có thông tin danh mục";
             }
             break;
+
+            // Trang giỏ hàng
         case "cart":
             include "view/cart.php";
             break;
+
+            // Trang thanh toán
         case "thanhtoan":
             include "view/thanhtoan.php";
             break;
+
+            // Trang tin tức
         case "tintuc":
             include "view/tintuc.php";
             break;
 
+            // Trang đăng ký
       case "register":
         include "view/register.php";
         break;
-
+            // Trang đăng nhập 
       case "login":
         if(isset($_POST['dangnhap'])){
             $email = $_POST['email'] ;
@@ -60,10 +72,7 @@ if (isset($_GET['act'])) {
             $info = load_one_khachhang($email, $password);
 
             if ($info !== false) {
-
-                var_dump($info);
-                echo $info[0]['role'] ;
-                if($info[0]['role'] == '1') {
+                if($info['role'] == '1') {
                     $_SESSION['admin'] = $info;
                     header('location:admin');
             }else{
@@ -72,9 +81,10 @@ if (isset($_GET['act'])) {
             }
         }
     }
-
         include "view/login.php";
         break;
+
+        // trang user 
         case "user":
             if(!isset($_SESSION['user'])){
                 header("location:index.php?act=login");

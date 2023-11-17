@@ -21,7 +21,7 @@ function sanphamlienquan(){
 }
 function load_one_sanpham($id_sanpham){
     $sql  = "select * from sanpham sp inner join danhmuc dm on dm.id_danhmuc = sp.id_danhmuc  where sp.id_sanpham = '$id_sanpham'";
-    $result = pdo_query($sql);
+    $result = pdo_query_one($sql);
     return $result;
 
 }

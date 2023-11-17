@@ -1,5 +1,5 @@
 <div class="banner">
-            <video src="<?= $one_danhmuc[0]['video_danhmuc']?>" autoplay="autoplay" muted loop></video>
+            <video src="<?=  $one_danhmuc["video_danhmuc"]?>" autoplay="autoplay" muted loop></video>
         </div>
 <main>
         <div class="bc_home">
@@ -7,11 +7,11 @@
                 <div class="h2"><a href="?act=trangchu">Trang chủ</a></div><span
                     style="float: left;margin-top: 2px;margin-right: 10px;width: 10px;">—</span>
                 
-                <div class="h3"><a title="" itemprop="url" href="##"><?= $one_danhmuc[0]['ten_danhmuc'] ?></a></div>
+                <div class="h3"><a title="" itemprop="url" href="##"><?= $one_danhmuc['ten_danhmuc'] ?></a></div>
             </div>
         </div>
         <div class="name_category">
-            <h2><?= $one_danhmuc[0]['ten_danhmuc'] ?></h2>
+            <h2><?= $one_danhmuc['ten_danhmuc'] ?></h2>
             <div class="child_cat">
                 <ul>
 
@@ -28,7 +28,7 @@
         </div>
            <!-- <div class="regtangle">
                <div class="box1">
-                <a href=""><?= $one_danhmuc[0]['ten_danhmuc'] ?></a>
+                <a href=""><?= $one_danhmuc['ten_danhmuc'] ?></a>
             </div>
            </div> -->
         <div class="brand">

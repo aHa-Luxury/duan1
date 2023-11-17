@@ -2,17 +2,17 @@
         <div class="thongtin_sanpham">
           <div class="head_desc">
             <div class="head_left">
-              <img src="<?=$one_sanpham[0]['img_sanpham'] ?>" alt="" />
+              <img src="<?=$one_sanpham['img_sanpham'] ?>" alt="" />
             </div>
             <div class="head_center">
-              <h1><?= $one_sanpham[0]['ten_sanpham'] ?></h1>
+              <h1><?= $one_sanpham['ten_sanpham'] ?></h1>
               <hr>
               <p>Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. 
                   Nó có thể dự trữ năng lượng lên tới 42 giờ.</p><br>
-              <p>Mã SP : <?= $one_sanpham[0]['id_sanpham'] ?></p><br>
-              <h2>Giá : <span><?= number_format( $one_sanpham[0]['price'] )?>đ</span></h2>
+              <p>Mã SP : <?= $one_sanpham['id_sanpham'] ?></p><br>
+              <h2>Giá : <span><?= number_format( $one_sanpham['price'] )?>đ</span></h2>
               <br>
-              <p><?= $one_sanpham[0]['tinhtrang'] ?></p>
+              <p><?= $one_sanpham['tinhtrang'] ?></p>
               <br>
               <h2>Thông tin thêm:</h2>
               <hr>
@@ -53,34 +53,34 @@
           <div class="end_desc">
             <div class="end_left">
               <h2>Thông tin sản phẩm</h2>
-              <h3>Đồng hồ <?= $one_sanpham[0]['ten_sanpham']?></h3>
+              <h3>Đồng hồ <?= $one_sanpham['ten_sanpham']?></h3>
               
-              <h2>Thiết kế của  <?= $one_sanpham[0]['ten_sanpham']?></h2>
+              <h2>Thiết kế của  <?= $one_sanpham['ten_sanpham']?></h2>
               <hr>
-              <p>Đồng hồ  <?= $one_sanpham[0]['ten_sanpham']?> có vẻ bề ngoài 
+              <p>Đồng hồ  <?= $one_sanpham['ten_sanpham']?> có vẻ bề ngoài 
                 khỏe khoắn, nam tính, thời thượng. Với vành đồng hồ làm từ chất liệu titanium 
                 siêu nhẹ và siêu bền bỉ, chiếc đồng hồ có kích thước mặt 45mm này là người bạn 
                 đồng hành hoàn hảo của các quý ông. Vành đồng hồ được chải xước dọc công phu và 
                 đánh bóng với Satin làm nổi bật 6 đinh ốc cách điệu theo chữ H trứ danh của <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span>. 
                 Chi tiết này tạo ra độ tương đồng hoàn hảo giữa mặt đồng hồ và càng nối dây.</p>
                 <img src="images/hublot1.jpg" alt="">
-                <p>Ngôn ngữ thiết kế đơn giản nhưng tinh tế của <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span> cho thấy độ tỉ mỉ của quá trình 
+                <p>Ngôn ngữ thiết kế đơn giản nhưng tinh tế của <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span> cho thấy độ tỉ mỉ của quá trình 
                   chế tác chiếc đồng hồ. Mặt kính sapphire sang trọng không những làm nổi bật vẻ đẹp thượng 
-                  lưu của <?= $one_sanpham[0]['ten_sanpham']?>, còn đảm bảo một khả năng chống phản 
+                  lưu của <?= $one_sanpham['ten_sanpham']?>, còn đảm bảo một khả năng chống phản 
                   chiếu hoàn hảo. Bên dưới lớp kính sapphire có thể thấy rõ độ chi tiết với mặt số chính xanh bắt 
                   cặp ăn ý với màu dây. Đặt cân đối giữa 2 bên là 2 mặt số phụ chronograph, ngoài ra còn có thêm một 
                   cửa sổ chỉ ngày tạo điểm nhấn, đem đến một tổng thể sang trọng đầy kì công. Các bộ kim được điều chỉnh 
-                  dễ dàng qua 3 núm chỉnh kim nằm bên cạnh phải chiếc đồng hồ, núm chính được khắc nổi logo <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span>.</p>
+                  dễ dàng qua 3 núm chỉnh kim nằm bên cạnh phải chiếc đồng hồ, núm chính được khắc nổi logo <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span>.</p>
                   <img src="images/hublot2.jpg" alt="">
-                <p>Không thể không kể đến phần dây đeo đặc trưng của nhà <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span>. Dây đeo với phần lõi bằng cao su bọc da 
+                <p>Không thể không kể đến phần dây đeo đặc trưng của nhà <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span>. Dây đeo với phần lõi bằng cao su bọc da 
                   cá sấu cao cấp bên ngoài, vừa đảm bảo được đồ bền cực lớn, vừa cho thấy tính cao cấp và thời thượng vốn 
                   cố của chiếc đồng hồ. Dây đeo màu xanh thể hiện mức độ toàn vẹn lớn trong khả năng phối hợp các gam màu ổn 
                   định từ nhà thiết kế.</p>
-                  <h2>Bên trong đồng hồ <?= $one_sanpham[0]['ten_sanpham'] ?></h2>
+                  <h2>Bên trong đồng hồ <?= $one_sanpham['ten_sanpham'] ?></h2>
                   <hr>
-                  <p><?= $one_sanpham[0]['ten_ten_sanpham'] ?> hoạt động chính xác nhờ bộ máy tự động HUB1143. Chế tác 
+                  <p><?= $one_sanpham['ten_ten_sanpham'] ?> hoạt động chính xác nhờ bộ máy tự động HUB1143. Chế tác 
                     thủ công bằng tay hoàn hảo cho một khả năng chống nước tuyệt vời, đạt mức 50m chiều sâu. Thời lượng cót 42 
-                    giờ đồng hồ minh chứng cho độ chỉnh chu từ công nghệ làm đồng hồ cơ tiên tiến bật nhất của <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span>.</p>
+                    giờ đồng hồ minh chứng cho độ chỉnh chu từ công nghệ làm đồng hồ cơ tiên tiến bật nhất của <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span>.</p>
                     <img src="images/hublot3.jpg" alt="">
   
                     <div class="binhluan">

@@ -1,6 +1,6 @@
 <div class="content">
     <h1 style="color: rgb(90, 92, 105);">Danh sách sản phẩm</h1>
-    <button class="btn btn-success" style="margin-bottom: 10px;">Thêm mới</button>
+    <a href="" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
     <div class="row">
         <table class="table table-striped">
             <thead>
