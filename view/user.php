@@ -5,7 +5,7 @@
               <img src="images/ROLEX.png" alt="">
           </div>
           <div class="text_thongtin">
-              <h1></h1>
+              <h1>Đào Xuân Hải</h1>
               <p>Tuổi: 19</p>
               <p>Email: hdao4959@gmail.com</p>
               <p>Sđt: 0369.037.600</p>
@@ -32,9 +32,9 @@
           <div class="box">
               <p>Đơn hàng đã hoàn thành</p>
           </div>
-          <div class="box">
-              <a href="?act=dangxuat" style="color:black"><p>Đăng xuất</p></a>
-          </div>
+         <form class="box" action="" method="post">
+            <button class="box" type="submit" name="dangxuat">Đăng xuất</button>
+         </form>
         
       </div>
   </div>

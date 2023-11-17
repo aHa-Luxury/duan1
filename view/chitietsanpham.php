@@ -8,11 +8,11 @@
               <h1><?= $one_sanpham[0]['ten_sanpham'] ?></h1>
               <hr>
               <p>Vỏ bằng Titanium được hoàn thiện và đánh bóng bằng Satin dây đeo da, Chiếc đồng hồ là một thiết kế độc đáo của đồng hồ bấm giờ tự động Unico. 
-                  Nó có thể dự trữ năng lượng lên tới 42 giờ.</p>
-              <p>Mã SP : 521.NX.7170.LR</p><br>
+                  Nó có thể dự trữ năng lượng lên tới 42 giờ.</p><br>
+              <p>Mã SP : <?= $one_sanpham[0]['id_sanpham'] ?></p><br>
               <h2>Giá : <span><?= number_format( $one_sanpham[0]['price'] )?>đ</span></h2>
               <br>
-              <p>TÌNH TRẠNG : MỚI 100% FULLBOX SÁCH HỘP</p>
+              <p><?= $one_sanpham[0]['tinhtrang'] ?></p>
               <br>
               <h2>Thông tin thêm:</h2>
               <hr>
@@ -141,8 +141,8 @@
        <?php  foreach($four_sanphamlienquan as $four_splq):?>
 
         <div class="product">
+          <a href="?act=chitietsanpham&id_sp=<?= $four_splq['id_sanpham'] ?>">
             <img src="<?= $four_splq['img_sanpham'] ?>" alt="">
-            <a href="">
                 <h3><?= $four_splq['ten_sanpham'] ?></h3>
                 <p><?= $four_splq['price'] ?> đ</p>
             </a>

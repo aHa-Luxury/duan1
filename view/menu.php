@@ -53,7 +53,7 @@
             <ul>
                 <li><a href="">Richard Mille</a></li>
                 <li><a href="?act=tintuc">TIN TỨC</a></li>
-                <li ><a href="?act=search"><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
+                <li ><a href=""><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
                 <li ><a href="?act=cart"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
                 <li ><a href="?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
             </ul>

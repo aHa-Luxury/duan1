@@ -42,6 +42,9 @@ if (isset($_GET['act'])) {
         case "cart":
             include "view/cart.php";
             break;
+        case "thanhtoan":
+            include "view/thanhtoan.php";
+            break;
         case "tintuc":
             include "view/tintuc.php";
             break;
@@ -69,6 +72,7 @@ if (isset($_GET['act'])) {
             }
         }
     }
+
         include "view/login.php";
         break;
         case "user":
@@ -77,8 +81,11 @@ if (isset($_GET['act'])) {
             }else{
                 include "view/user.php";
             }
-            break;
+            if(isset($_POST["dangxuat"])){
+                unset($_SESSION["user"]);
+            }
 
+            break;
         }
 } else {
     include "view/trangchu.php";

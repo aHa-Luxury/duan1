@@ -43,7 +43,7 @@
 
             <!-- Button xem tất cả sản phẩm  -->
             <div class="btn-view-all-product">
-                <a href="###">XEM TẤT CẢ ĐồNG Hồ <?= $all_dm['ten_danhmuc'] ?></a>
+                <a href="?act=category_products&id_dm=<?= $all_dm['id_danhmuc'] ?>">XEM TẤT CẢ ĐồNG Hồ <?= $all_dm['ten_danhmuc'] ?></a>
             </div>
         <?php endforeach ?>
        

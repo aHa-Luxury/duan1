@@ -57,12 +57,12 @@
 }
 .admin main .main_right .head .form {
   width: 60%;
-  padding: 20px 20px 10px 20px;
+  padding: 20px 20px 20px 20px;
   display: flex;
   flex-direction: row;
 }
 .admin main .main_right .head .form input[type="text"]{
-  width: 200px;
+  width: 400px;
   outline: none;
   border-radius: 5px;
   border: none;
@@ -75,7 +75,7 @@
    background-color: #4e73df;
 }
 .admin main .main_right .head .option {
-  height: 40px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -83,19 +83,19 @@
   padding: 0 40px;
 }
 .admin main .main_right .head .option i {
-  line-height: 60px;
+  line-height: 70px;
 }
 .admin main .main_right .head .option i:hover {
   color: orangered;
 }
 .admin main .main_right .head .option h6 {
-  line-height: 60px;
+  line-height: 70px;
 }
 .admin main .main_right .head .option .user {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  line-height: 50px;
+  line-height: 70px;
 }
 .admin main .main_right .head .option .user .hinh {
   width: 40px;

@@ -11,7 +11,7 @@
                         <div class="cart-items">
                             <div class="cart-row">
                                 <div class="cart-item cart-column">
-                                    <img class="cart-item-image" src="images/hublot1.jpg" width="100" height="100">
+                                    <img class="cart-item-image" src="images/HublotClock.png" width="100" height="100">
                                     <span class="cart-item-title">Đồng Hồ Hublot Classic Fusion Chronograph Titanium
                                         Blue
                                         45MM</span>
@@ -44,7 +44,7 @@
                                 <span class="cart-total">Tổng cộng: </span>
                                 <br>
                                 <hr>
-                                <span class="cart-total">Phí giao hàng: </span>
+                                <span class="cart-total">Giảm giá: </span>
                                 <hr>
                                 <span class="cart-total">Thành tiền: </span>
                                 <hr>
@@ -53,7 +53,7 @@
                                 <span class="cart-total-price"><b>1,205,000,000đ</b></span>
                                 <br>
                                 <hr>
-                                <span class="cart-total-price">Giao hàng miễn phí</span>
+                                <span class="cart-total-price"><b>5,000,000</b></span>
                                 <hr>
                                 <span class="cart-total-price"><b>1,205,000,000đ</b></span>
                                 <br>
@@ -61,8 +61,8 @@
                             </div>
 
                         </div>
-                        <button class="btn-thanhtoan"><a href="thanhtoan.html">TIẾN HÀNH THANH TOÁN</a></button>
-                        <button class="btn-viewmore"><a href="category_products.html">TIẾP TỤC XEM THÊM SẢN PHẨM</a></button>
+                        <button class="btn-thanhtoan"><a href="?act=thanhtoan">TIẾN HÀNH THANH TOÁN</a></button>
+                        <button class="btn-viewmore"><a href="?act=trangchu">TIẾP TỤC XEM THÊM SẢN PHẨM</a></button>
 
 
                     </div>
