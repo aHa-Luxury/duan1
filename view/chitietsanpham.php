@@ -1,8 +1,13 @@
+<div class="hr"></div>
+        <div class="banner">
+          <?php $one_danhmuc =  load_one_danhmuc($one_sanpham['id_danhmuc'])  ?>
+          <video src="images/<?= $one_danhmuc['video_danhmuc'] ?>" autoplay="autoplay" muted loop></video>
+        </div>
 <main>
         <div class="thongtin_sanpham">
           <div class="head_desc">
             <div class="head_left">
-              <img src="<?=$one_sanpham['img_sanpham'] ?>" alt="" />
+              <img src="images/<?=$one_sanpham['img_sanpham'] ?>" alt="" />
             </div>
             <div class="head_center">
               <h1><?= $one_sanpham['ten_sanpham'] ?></h1>
@@ -12,16 +17,11 @@
               <p>Mã SP : <?= $one_sanpham['id_sanpham'] ?></p><br>
               <h2>Giá : <span><?= number_format( $one_sanpham['price'] )?>đ</span></h2>
               <br>
-              <p><?= $one_sanpham['tinhtrang'] ?></p>
-              <br>
+              <p><?= $one_sanpham['tinhtrang'] ?></p><br>
               <h2>Thông tin thêm:</h2>
               <hr>
-              <p>Cam kết tất cả các sản phẩm bán ra là Chính hãng 100%</p>
-              <p>Bảo hành từ 2 đến 5 năm theo đúng tiêu chuẩn của hãng</p>
-              <p>Tặng gói Spa miễn phí 2 năm trị giá 3.000.000 đồng</p>
-              <p>Giao hàng toàn quốc,hỗ trợ 24/7 về chất lượng sản phẩm</p>
-              <p>Giá trên website chỉ mang tính tham khảo,có thể thay đổi theo
-                   thời điểm để có giá tốt nhất quý khách vui lòng LH qua Hotline</p>
+              <p><?= $thongtinwebsite['camket']  ?></p>
+              
                    <div class="button">
                       <div class="buy">
                           <p>Mua hàng</p>
@@ -33,20 +33,16 @@
             </div>
             <div class="head_right">
               <div class="box">
-                  <h1>MUA HÀNG TẠI HÀ NỘI</h1>
+                  <h1 style="text-transform:uppercase">Địa chỉ mua hàng</h1>
                   <hr>
-                  <p><i class="fa-sharp fa-light fa-house"></i>Địa chỉ mua hàng: Số 3A Phố Trần Quang Diệu - Q.Đống Đa - Tp.Hà Nội</p>
-                  <p> Hotline : 093.66.88888</p>
+                  <p><?=$thongtinwebsite['diachi']?></i></p>
+                  <p> Hotline : <?=$thongtinwebsite['hotline']?></p>
                   
               </div>
               <div class="box">
-                  <p>Bảo hành: Chính hãng toàn quốc </p>
-                  <p>Miễn phí vận chuyển toàn quốc, giao nhanh trong nội thành Hà Nội & Tp.HCM</p>
+                  <p><?=$thongtinwebsite['vanchuyen']?></p>
               </div>
-              <div class="box">
-                  <p>1 đổi 1 trong 10 ngày nếu có lỗi nhà sản xuất
-                  </p>
-              </div>
+             
             </div>
             .
           </div>
@@ -61,7 +57,7 @@
                 khỏe khoắn, nam tính, thời thượng. Với vành đồng hồ làm từ chất liệu titanium 
                 siêu nhẹ và siêu bền bỉ, chiếc đồng hồ có kích thước mặt 45mm này là người bạn 
                 đồng hành hoàn hảo của các quý ông. Vành đồng hồ được chải xước dọc công phu và 
-                đánh bóng với Satin làm nổi bật 6 đinh ốc cách điệu theo chữ H trứ danh của <span style="text-transform:uppercase"><?= $one_sanpham[0]['ten_danhmuc'] ?></span>. 
+                đánh bóng với Satin làm nổi bật 6 đinh ốc cách điệu theo chữ H trứ danh của <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span>. 
                 Chi tiết này tạo ra độ tương đồng hoàn hảo giữa mặt đồng hồ và càng nối dây.</p>
                 <img src="images/hublot1.jpg" alt="">
                 <p>Ngôn ngữ thiết kế đơn giản nhưng tinh tế của <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span> cho thấy độ tỉ mỉ của quá trình 
@@ -78,7 +74,7 @@
                   định từ nhà thiết kế.</p>
                   <h2>Bên trong đồng hồ <?= $one_sanpham['ten_sanpham'] ?></h2>
                   <hr>
-                  <p><?= $one_sanpham['ten_ten_sanpham'] ?> hoạt động chính xác nhờ bộ máy tự động HUB1143. Chế tác 
+                  <p><?= $one_sanpham['ten_sanpham'] ?> hoạt động chính xác nhờ bộ máy tự động HUB1143. Chế tác 
                     thủ công bằng tay hoàn hảo cho một khả năng chống nước tuyệt vời, đạt mức 50m chiều sâu. Thời lượng cót 42 
                     giờ đồng hồ minh chứng cho độ chỉnh chu từ công nghệ làm đồng hồ cơ tiên tiến bật nhất của <span style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] ?></span>.</p>
                     <img src="images/hublot3.jpg" alt="">
@@ -142,9 +138,9 @@
 
         <div class="product">
           <a href="?act=chitietsanpham&id_sp=<?= $four_splq['id_sanpham'] ?>">
-            <img src="<?= $four_splq['img_sanpham'] ?>" alt="">
+            <img src="images/<?= $four_splq['img_sanpham'] ?>" alt="">
                 <h3><?= $four_splq['ten_sanpham'] ?></h3>
-                <p><?= $four_splq['price'] ?> đ</p>
+                <p><?= number_format($four_splq['price'])  ?> đ</p>
             </a>
         </div>
         <?php endforeach ;?>

@@ -5,21 +5,24 @@
     
         <div class="login">
           <h2>ĐĂNG KÝ</h2>
-          <form action="">
+          <form action="" method="post">
             Họ<br>
-            <input type="text" placeholder="Họ" required>
+            <input type="text" placeholder="Họ" name="ho">
             <hr>
             Tên<br>
-            <input type="text" placeholder="Tên" required>
+            <input type="text" placeholder="Tên" name="ten" >
             <hr>
             Email<br>
-            <input type="email" placeholder="Email" required>
+            <input type="email" placeholder="Email" name="email" >
             <hr>
            
             Mật khẩu<br>
-            <input type="text" placeholder="Mật khẩu" required>
-            <hr>    
-            <button type="submit">Đăng ký</button>
+            <input type="text" placeholder="Mật khẩu" name="password" >
+            <hr>  
+           
+              <?= $_COOKIE['message'] ?? "" ?>
+        
+            <button type="submit" name="submit">Đăng ký</button>
           </form>
           <div class="dacotk" style="margin-top: 20px;">
             Bạn đã có tài khoản? <a href="?act=login">Đăng nhập</a>

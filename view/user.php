@@ -2,18 +2,35 @@
     <div class="thongtin_user">
       <div class="head">
           <div class="hinh">
-              <img src="images/ROLEX.png" alt="">
+              <img src="" alt="">
           </div>
-          <div class="text_thongtin">
-              <h1>Đào Xuân Hải</h1>
+          <!-- <div class="text_thongtin">
+              <h1><?= $one_khachhang['ho'].''.$one_khachhang['ten'] ?></h1>
               <p>Tuổi: 19</p>
-              <p>Email: hdao4959@gmail.com</p>
+              <p>Email: <?= $one_khachhang['email'] ?></p>
+              <p>Sđt: 0369.037.600</p>
+              <p>Địa chỉ: 213 Phương Canh, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
+          </div> -->
+          <div id="avatar-container">
+    <img id="avatar-image" src="default-avatar.jpg" >
+    <div id="upload-btn-wrapper">
+        <input type="file" name="avatar" id="avatar-input" accept="image/*">
+        <label for="avatar-input">Chọn ảnh</label>
+    </div>
+    
+</div>
+<div class="text_thongtin">
+              <h1><?= $one_khachhang['ho'].''.$one_khachhang['ten'] ?></h1>
+              <p>Tuổi: 19</p>
+              <p>Email: <?= $one_khachhang['email'] ?></p>
               <p>Sđt: 0369.037.600</p>
               <p>Địa chỉ: 213 Phương Canh, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
           </div>
       </div>
+
+
       <div class="end">
-          <div class="box">
+          <!-- <div class="box">
               <p>Cập nhật thông tin</p>
           </div>
           <div class="box">
@@ -31,11 +48,78 @@
         </div>
           <div class="box">
               <p>Đơn hàng đã hoàn thành</p>
-          </div>
-         <form class="box" action="" method="post">
+          </div> -->
+         <form  action="" method="post" style="display:flex;flex-direction:row">
+            <button class="box" type="submit" name="">Cập nhật thông tin</button>
+            <button class="box" type="submit" name="">Đổi mật khẩu</button>
+            <button class="box" type="submit" name="">Địa chỉ nhận hàng</button>
+            <button class="box" type="submit" name="">Quản lý bình luận</button>
+            <button class="box" type="submit" name="">Đơn hàng của tôi</button>
             <button class="box" type="submit" name="dangxuat">Đăng xuất</button>
          </form>
+         
         
       </div>
   </div>
   </main>
+
+  <style>
+     #avatar-container {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        #avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #upload-btn-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        #upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        #upload-btn-wrapper label {
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+        }
+  </style>
+
+  <script>
+    document.getElementById('avatar-input').addEventListener('change', function () {
+    const fileInput = this;
+    const file = fileInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('avatar-image').src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+  </script>

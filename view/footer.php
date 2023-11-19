@@ -4,26 +4,29 @@
               <img src="images/LOGOSUTU500K.png" alt="" />
             </div>
             <div class="footer_2">
-              <h1>aHa LUXURY OFFICER</h1>
+              <h1><?= $thongtinwebsite['ten_website'] ?></h1>
               <hr />
-              <p>Số 3A Trần Quang Diệu - Đống Đa - TP. Hà Nội (Việt Nam)</p>
+              <p><?= $thongtinwebsite['diachi'] ?></p>
               <br />
-              <h4>☏Hotline : 093.66.88888 - Di động : 083.22.99999</h4>
+              <h4>☏Hotline : <?= $thongtinwebsite['hotline'] ?></h4>
               <hr />
               <p>
-                aHa LUXURY OFFICERSố 3A Trần Quang Diệu - Đống Đa - TP. Hà Nội (Việt
+              <?= $thongtinwebsite['ten_website'] ?>.
+              <?= $thongtinwebsite['diachi'] ?><br>
+              <?= $thongtinwebsite['description'] ?>
+                <!-- aHa LUXURY OFFICERSố 3A Trần Quang Diệu - Đống Đa - TP. Hà Nội (Việt
                 Nam)☏Hotline : 093.66.88888 - Di động : 083.22.99999EU LUXURY CHUYÊN
                 CUNG CẤP – PHÂN PHỐI CÁC DÒNG ĐIỆN THOẠI VERTU, TRANG SỨC & ĐỒNG HỒ
-                CHÍNH HÃNG NHẬP KHẨU TỪ CHÂU ÂU
+                CHÍNH HÃNG NHẬP KHẨU TỪ CHÂU ÂU -->
               </p>
               <br />
-              <p>Email: hdao4959@gmail.com</p>
+              <p>Email: <?= $thongtinwebsite['email'] ?></p>
               <br />
               <div class="icon">
                 <div class="facebook_icon"><p>Facebook</p></div>
                 <div class="youtobe_icon">Youtube</div>
                 <div class="bo_cong_thuong">
-                  <img src="../images/datbao.png" alt="">
+                  <img src="images/datbao.png" alt="">
                 </div>
               </div>
             </div>
@@ -47,7 +50,7 @@
               <p>- Đổi mới trong vòng 15 ngày nếu sản phẩm bị lỗi do nhà sản xuất</p>
               <p>- Thanh toán trực tiếp hoặc qua Atm Visa Master Card</p>
               <div class="phone_number">
-                <p>HOTLINE: <span>0369.037.600</span></p>
+                <p>HOTLINE: <span><?= $thongtinwebsite['hotline'] ?></span></p>
               </div>
 
           </footer>

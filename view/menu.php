@@ -42,9 +42,9 @@
         <div class="menu">
             <ul>
                 <li><a href="?act=trangchu">TRANG CHỦ</a></li>
-                <?php foreach($all_danhmuc as $danhmuc) :?>
+                <!-- <?php foreach($all_danhmuc as $danhmuc) :?>
                 <li><a href="?act=category_products&id_dm=<?= $danhmuc['id_danhmuc'] ?>"><?= $danhmuc['ten_danhmuc']?></a></li>
-                <?php endforeach ?>
+                <?php endforeach ?> -->
                 
             </ul>
             <div class="logo">

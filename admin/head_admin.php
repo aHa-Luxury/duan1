@@ -15,11 +15,12 @@
                  <div class="logo"> <a href="?act=trangchu"><img  style="width: 150px;" src="../images/LOGOSUTU500K.png" alt=""></a></div>
                     <ul>
                         
-                        <li><a href="?act=trangchu"><i class="fa-solid fa-house"></i>Thống kê</a></li>
+                        <li><a href="index.php"><i class="fa-solid fa-house"></i>Thống kê</a></li>
                         <li><a href="?act=sanpham"><i class="fa-brands fa-shopify"></i>Sản phẩm</a></li>
                         <li><a href="?act=danhmuc"><i class="fa-solid fa-list"></i>Danh mục</a></li>
                         <li><a href="?act=khachhang"><i class="fa-solid fa-user"></i>Khách hàng</a></li>
                         <li><a href=""><i class="fa-solid fa-comment"></i>Bình luận</a></li>
+                        <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li>
                         <li></i><a href=""><i style="font-size: 20px;width: 40px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
                     </ul>
                 </div>
@@ -40,6 +41,6 @@
                                 <img  src="../images/ROLEX.png" alt="">
                                </div>
                             </div>
-                            <a href="../index.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            <a href="?act=dangxuat"><i class="fa-solid fa-right-from-bracket"></i></a>
                         </div>
                     </div>

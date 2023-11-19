@@ -1,5 +1,5 @@
 <div class="banner">
-            <video src="<?=  $one_danhmuc["video_danhmuc"]?>" autoplay="autoplay" muted loop></video>
+            <video src="images/<?=$one_danhmuc["video_danhmuc"]?>" autoplay="autoplay" muted loop></video>
         </div>
 <main>
         <div class="bc_home">
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="name_category">
-            <h2><?= $one_danhmuc['ten_danhmuc'] ?></h2>
+            <h2><?=$one_danhmuc['ten_danhmuc'] ?></h2>
             <div class="child_cat">
                 <ul>
 
@@ -38,7 +38,7 @@
                 <?php foreach($all_sanpham as $all_sp): ?>
                     <div class="product">
                         <a href="?act=chitietsanpham&id_sp=<?= $all_sp['id_sanpham'] ?>">
-                        <img src="<?= $all_sp['img_sanpham']?>" alt="">
+                        <img src="images/<?= $all_sp['img_sanpham']?>" alt="">
                             <h3><?= $all_sp['ten_sanpham']?></h3>
                             <p><?=number_format( $all_sp['price'] )?>đ</p>
                         </a>

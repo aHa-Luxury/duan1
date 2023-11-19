@@ -15,8 +15,8 @@
             <hr>
             <button type="submit" name="dangnhap">Đăng nhập</button>
           </form>
-          <p>hoặc đăng nhập bằng</p>
-          <div class="icons" style="width: 70%;">
+          <p style="text-align:center">hoặc đăng nhập bằng</p>
+          <div class="icons" >
             <div class="facebook" >
               <i class="fa-brands fa-facebook" style="width: 3%;"></i>
               <a href="">
