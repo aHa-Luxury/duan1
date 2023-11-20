@@ -12,7 +12,7 @@
         <div class="admin">
             <main>
                 <div class="main_left">
-                 <div class="logo"> <a href="?act=trangchu"><img  style="width: 150px;" src="../images/LOGOSUTU500K.png" alt=""></a></div>
+                 <div class="logo"> <a href="../index.php?act=trangchu"><img  style="width: 150px;" src="../images/LOGOSUTU500K.png" alt=""></a></div>
                     <ul>
                         
                         <li><a href="index.php"><i class="fa-solid fa-house"></i>Thống kê</a></li>

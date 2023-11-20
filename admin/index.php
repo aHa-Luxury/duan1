@@ -207,29 +207,44 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     add_taikhoan($ho,$ten,$email,$password);
                     setcookie("success","Thêm khách hàng thành công", time() +1);
                     header("location:index.php?act=khachhang");
+                }else{
+                    setcookie("message","Email đã tồn tại !", time() +1);
+                    header("location:index.php?act=add_tk");
                 }
             }
             include "add_tk.php";
             break;
-        case "edit_tk":
-
-            if(isset($_GET['id_tk']) && $_GET['id_tk'] >0){
-                $id_taikhoan = $_GET['id_tk'];
-                select_one_khachhang($id_taikhoan);
-            }
-            include "edit_tk.php";
-            break;
-        case "delete_taikhoan":
-        if(isset($_GET['id_tk']) && $_GET['id_tk'] > 0){
-            $id_taikhoan = $_GET['id_tk'];
-            delete_taikhoan($id_taikhoan);
-            setcookie("success","Xóa tài khoản thành công", time() + 1);
-            header("location:index.php?act=khachhang");
-
-        }
-        break;
-
-
+            case 'edittk':
+                if (isset($_GET['id_user'])) {
+                    $khachhang  = select_one_khachhang($_GET['id_user']);
+                }
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $id_user = $_POST['id_user'];
+                    $ho = $_POST['ho'];
+                    $ten = $_POST['ten'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    update_khachhang($id_user, $ho, $ten, $email, $password);
+                    setcookie("success", "Sửa thông tin thành công !", time() + 1);
+                    header('location:index.php?act=khachhang');
+                }
+                    
+                include 'taikhoan/update.php';
+                break;
+            case 'deletetk':
+                if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                    delete_tk($_GET['id_user']);
+                }
+                header("Location:?act=khachhang");
+                break;
+    
+    
+            case "thongtinwebsite":
+    
+                include "thongtinwebsite.php";
+                break;
+    
+    
         case "thongtinwebsite":
            
             include "thongtinwebsite.php";

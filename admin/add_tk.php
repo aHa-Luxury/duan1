@@ -2,7 +2,11 @@
 <h1 style="color: rgb(90, 92, 105);">Thêm mới tài khoản</h1>
                             
                                 <div class="row">
-                                <?= $_COOKIE['message'] ?? ""?>
+                                    <?php if (isset($_COOKIE['message'])):?>
+                                        <span style="color:red"><?=$_COOKIE['message']?></span>
+                                    
+                                    <?php endif ?>
+                                    
                                 <form style="max-width: 100%;
         margin: 20px auto;
         padding: 20px;

@@ -14,8 +14,14 @@ function select_one_khachhang($id_khachhang){
     $result = pdo_query_one($sql);
     return $result;
 }
-function delete_taikhoan($id_taikhoan){
-    $sql = "DELETE from khachhang where id_user  = '$id_taikhoan'";
+function delete_tk($id_user)
+{
+    $sql = "DELETE from khachhang where id_user=" . $id_user;
+    pdo_execute($sql);
+}
+function update_khachhang($id_user, $ho, $ten, $email, $password)
+{
+    $sql = "UPDATE khachhang set   password='" . $password . "',email='" . $email . "', ho='" . $ho . "',ten='" . $ten . "' where id_user=" . $id_user;
     pdo_execute($sql);
 }
 

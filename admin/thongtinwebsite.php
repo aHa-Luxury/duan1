@@ -1,9 +1,12 @@
 <div class="content" >
-<h1 style="color: rgb(90, 92, 105);">Danh mục sản phẩm</h1>
-                            <a href="?act=add_dm" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
+<h1 style="color: rgb(90, 92, 105);">Thông tin Website</h1>
+                            <a href="##" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
                             <div class="row">
                                
-                                    <?= $_COOKIE['success'] ?? ""?>
+                            <?php if (isset($_COOKIE['success'])):?>
+                                        <span style="color:green"><?=$_COOKIE['success']?></span>
+                                    
+                                    <?php endif ?>
                                <h1>Cam kết:</h1>
                                
                                 <?=$thongtinwebsite['id']?><br>

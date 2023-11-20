@@ -3,7 +3,10 @@
                             <a href="?act=add_dm" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
                             <div class="row">
                                
-                                    <?= $_COOKIE['success'] ?? ""?>
+                            <?php if (isset($_COOKIE['success'])):?>
+                                        <span style="color:green"><?=$_COOKIE['success']?></span>
+                                    
+                                    <?php endif ?>
                                 <table class="table table-striped" >
                                     <thead >
                                         <th>#</th>
