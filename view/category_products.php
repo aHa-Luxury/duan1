@@ -1,5 +1,11 @@
 <div class="banner">
-            <video src="images/<?=$one_danhmuc["video_danhmuc"]?>" autoplay="autoplay" muted loop></video>
+    <div class="hr"></div>
+            <?php if($one_danhmuc['video_danhmuc'] != "") : ?>
+    <video src="images/<?= $one_danhmuc['video_danhmuc'] ?>" autoplay="autoplay" muted loop></video>
+    <?php else :?>
+      <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+    <?php endif ?>
+    <div class="hr"></div>
         </div>
 <main>
         <div class="bc_home">

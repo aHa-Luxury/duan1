@@ -2,6 +2,7 @@
         <div class="banner">
             <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
         </div>
+        <div class="hr"></div>
 <main>
     <h3>XEM SẢN PHẨM THEO THƯƠNG HIỆU</h3>
     <div class="listbrand">

@@ -10,6 +10,7 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="id_danhmuc" value="<?= $one_danhmuc['id_danhmuc'] ?>">
+                                    <p style="color:purple"><span style="color:red">* </span>Tên danh mục</p>
                                     <input type="text" name="name_danhmuc" placeholder="Tên danh mục" value="<?= $one_danhmuc['ten_danhmuc'] ?>" required id=""><br><br>
                                     
 

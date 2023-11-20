@@ -19,7 +19,7 @@
                                         <?php foreach($all_danhmuc as $all_dm): ?>
                                         <option value="<?=$all_dm['id_danhmuc']?>"><?= $all_dm['ten_danhmuc'] ?></option>
                                         <?php endforeach ?>
-                                    </select>
+                                    </select><br><br>
                                     <input type="submit" value="Thêm" name="submit">
                                     <a href="?act=khachhang" style="background-color: #0d6efd;
     color: #fff;

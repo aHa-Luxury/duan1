@@ -102,6 +102,7 @@ p {
 }
 
 .hr {
+  margin-top: -2px;
   color: #fdb866;
 }
 
@@ -386,6 +387,7 @@ footer {
 
 /* Trang chi tiết sản phẩm */
 .thongtin_sanpham {
+  padding-top: 10px;
   width: 100%;
   min-height: 500px;
 }

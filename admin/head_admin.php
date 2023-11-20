@@ -36,7 +36,7 @@
                             <i class="fa-solid fa-bell"></i>
                             <i class="fa-solid fa-envelope"></i>
                             <div class="user">
-                                <h6>Đào Xuân Hải</h6>
+                                <h6><?= $_SESSION['admin']['email'] ?></h6>
                                <div class="hinh">
                                 <img  src="../images/ROLEX.png" alt="">
                                </div>

@@ -33,7 +33,7 @@
                                                                                             <?php endif ?>
                                             </td>
                                             <td  style="padding-top:60px">
-                                                <a href="?act=sua_dm&id_dm=<?=$all_dm['id_danhmuc']?>"  class="btn btn-outline-secondary">Sửa</a>
+                                                <a href="?act=edit_dm&id_dm=<?=$all_dm['id_danhmuc']?>"  class="btn btn-outline-secondary">Sửa</a>
                                                 <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="?act=delete_dm&id_dm=<?=$all_dm['id_danhmuc']?>" class="btn btn-outline-danger">Xóa</a>
                                     </td>
                                         </tr>
@@ -46,19 +46,7 @@
 
                             
                             </div>
-                            <div id="overlay" class="overlay">
-    <div id="popup" class="popup">
-        <!-- Nội dung form nhập liệu -->
-        <form>
-            <!-- Đặt các trường nhập liệu của bạn ở đây -->
-            <label for="fieldName">Tên:</label>
-            <input type="text" id="fieldName" name="fieldName"><br><br>
-            <input type="submit" value="Submit">
-        </form>
-        <!-- Đóng box khi nhấp vào nút đóng hoặc bên ngoài box -->
-        <a href="#" onclick="closePopup()">Đóng</a>
-    </div>
-</div>
+           
                         
                       </div>
 

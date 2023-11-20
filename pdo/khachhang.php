@@ -10,7 +10,7 @@ function dangnhap($email, $password){
     return $result;
 }
 function select_one_khachhang($id_khachhang){
-    $sql = "Select * from khachhang where id_khachhang = '$id_khachhang'";
+    $sql = "Select * from khachhang where id_user = '$id_khachhang'";
     $result = pdo_query_one($sql);
     return $result;
 }

@@ -24,7 +24,7 @@ if (isset($_GET['act'])) {
             // Trang chi tiết sản phẩm
         case "chitietsanpham":
             if (isset($_GET["id_sp"]) && $_GET['id_sp'] != 0) {
-               
+                
                 $id_sanpham = $_GET['id_sp'];
                 $one_sanpham = load_one_sanpham($id_sanpham);
                 $four_sanphamlienquan = sanphamlienquan();
