@@ -1,6 +1,6 @@
 <?php 
 function load_all_khachhang(){
-    $sql = "SELECT * from khachhang order by id_user desc";
+    $sql = "SELECT * from khachhang order by role";
     $result = pdo_query($sql);
     return $result;
 }
@@ -30,7 +30,7 @@ function add_taikhoan($ho,$ten,$email,$password){
     pdo_execute($sql);
 }
 function count_khachhang(){
-    $sql = "SELECT count(*) as tong_khachhang from khachhang ";
+    $sql = "SELECT count(*) as tong_khachhang from khachhang where role = 0 ";
     $result = pdo_query_one($sql);
     return $result;
 }

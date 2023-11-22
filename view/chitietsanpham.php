@@ -1,11 +1,11 @@
 <div class="hr"></div>
 <div class="banner">
   <?php $one_danhmuc =  load_one_danhmuc($one_sanpham['id_danhmuc'])  ?>
-  <?php if($one_danhmuc['video_danhmuc'] != "") : ?>
+  <?php if ($one_danhmuc['video_danhmuc'] != "") : ?>
     <video src="images/<?= $one_danhmuc['video_danhmuc'] ?>" autoplay="autoplay" muted loop></video>
-    <?php else :?>
-      <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
-    <?php endif ?>
+  <?php else : ?>
+    <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+  <?php endif ?>
 </div>
 <div class="hr"></div>
 <main>
@@ -46,6 +46,21 @@
         <div class="box">
           <p><?= $thongtinwebsite['vanchuyen'] ?></p>
         </div>
+        <div class="box">
+        <h1 style="text-transform:uppercase">ĐÁNH GIÁ CỦA KHÁCH HÀNG</h1>
+        <hr>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                    id_sanpham: <?= $id_sanpham ?>
+                });
+            });
+        </script>
+        <div class="row" id="binhluan">
+
+        </div>
+        </div>
 
       </div>
       .
@@ -55,45 +70,45 @@
         <h2>Thông tin sản phẩm</h2>
         <h3><?= $one_sanpham['ten_sanpham'] ?></h3>
         <!-- Tiêu đề 1 -->
-        <?php if($one_sanpham['tieude1'] != "") : ?>    
+        <?php if ($one_sanpham['tieude1'] != "") : ?>
           <h2><?= $one_sanpham['tieude1'] ?></h2>
           <hr>
-          <?php endif ?>
+        <?php endif ?>
 
-        <?php if($one_sanpham['noidung1'] != "") : ?>    
+        <?php if ($one_sanpham['noidung1'] != "") : ?>
           <p><?= $one_sanpham['noidung1'] ?></p>
-          <?php endif ?>
-        <?php if($one_sanpham['hinhanh1'] != "") : ?>
-          <img src="<?= $one_sanpham['hinhanh1]']?>" alt="">
-          <?php endif ?>
-       
+        <?php endif ?>
+        <?php if ($one_sanpham['hinhanh1'] != "") : ?>
+          <img src="<?= $one_sanpham['hinhanh1]'] ?>" alt="">
+        <?php endif ?>
+
         <br><br>
         <!-- Tiêu đề 2 -->
-        <?php if($one_sanpham['tieude2'] != "") : ?>    
+        <?php if ($one_sanpham['tieude2'] != "") : ?>
           <h2><?= $one_sanpham['tieude2'] ?></h2>
           <hr>
-          <?php endif ?>
+        <?php endif ?>
 
-        <?php if($one_sanpham['noidung2'] != "") : ?>    
+        <?php if ($one_sanpham['noidung2'] != "") : ?>
           <p><?= $one_sanpham['noidung2'] ?></p>
-          <?php endif ?>
+        <?php endif ?>
 
-        <?php if($one_sanpham['hinhanh2'] != "") : ?>
-          <img src="<?= $one_sanpham['hinhanh2]']?>" alt="">
-          <?php endif ?>
-<br><br>
-          <!-- Tiêu đề 3 -->
-          <?php if($one_sanpham['tieude3'] != "") : ?>    
+        <?php if ($one_sanpham['hinhanh2'] != "") : ?>
+          <img src="<?= $one_sanpham['hinhanh2]'] ?>" alt="">
+        <?php endif ?>
+        <br><br>
+        <!-- Tiêu đề 3 -->
+        <?php if ($one_sanpham['tieude3'] != "") : ?>
           <h2><?= $one_sanpham['tieude3'] ?></h2>
           <hr>
-          <?php endif ?>
+        <?php endif ?>
 
-        <?php if($one_sanpham['noidung3'] != "") : ?>    
+        <?php if ($one_sanpham['noidung3'] != "") : ?>
           <p><?= $one_sanpham['noidung3'] ?></p>
-          <?php endif ?>
-        <?php if($one_sanpham['hinhanh3'] != "") : ?>
-          <img src="<?= $one_sanpham['hinhanh3]']?>" alt="">
-          <?php endif ?>
+        <?php endif ?>
+        <?php if ($one_sanpham['hinhanh3'] != "") : ?>
+          <img src="<?= $one_sanpham['hinhanh3]'] ?>" alt="">
+        <?php endif ?>
 
         <div class="binhluan">
 
@@ -104,13 +119,13 @@
           <p class="name_table">THÔNG SỐ KĨ THUẬT</p>
           <li>
             <span>Dòng sản phẩm</span>
-            <p style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] != '' ? $one_sanpham['ten_danhmuc'] : "Chưa có thông tin"?></p>
+            <p style="text-transform:uppercase"><?= $one_sanpham['ten_danhmuc'] != '' ? $one_sanpham['ten_danhmuc'] : "Chưa có thông tin" ?></p>
           </li>
           <li>
             <span>Thấm nước</span>
             <p><?= $one_sanpham['thamnuoc'] != '' ? $one_sanpham['thamnuoc'] : "Chưa có thông tin" ?></p>
           </li>
-        
+
           <li>
             <span>Vành đồng hồ</span>
             <p><?= $one_sanpham['vanhdongho'] != '' ? $one_sanpham['vanhdongho'] : "Chưa có thông tin" ?></p>
@@ -129,7 +144,7 @@
           </li>
           <li>
             <span>Khóa</span>
-            <p><?= $one_sanpham['khoa'] != '' ? $one_sanpham['khoa'] : "Chưa có thông tin"?></p>
+            <p><?= $one_sanpham['khoa'] != '' ? $one_sanpham['khoa'] : "Chưa có thông tin" ?></p>
           </li>
           <li>
             <span>Mặt kính</span>
@@ -137,7 +152,7 @@
           </li>
           <li>
             <span>Sản xuất tại</span>
-            <p><?= $one_sanpham['sanxuattai'] != '' ? $one_sanpham['sanxuattai'] : "Chưa có thông tin"?></p>
+            <p><?= $one_sanpham['sanxuattai'] != '' ? $one_sanpham['sanxuattai'] : "Chưa có thông tin" ?></p>
           </li>
         </ul>
         <p></p>
@@ -145,7 +160,8 @@
     </div>
 
   </div>
-  <h2 class="title_sanphamlienquan">Sản phẩm liên quan</h2>
+  <h2 class="title_sanphamlienquan"> <img style="width:300px; text-align:center;" src="images/chan_logo.png" alt=""></h2>
+  <h2 class="title_sanphamlienquan">XEM THÊM CÁC SẢN PHẨM KHÁC</h2>
   <div class="sanphamlienquan">
     <?php foreach ($four_sanphamlienquan as $four_splq) : ?>
 

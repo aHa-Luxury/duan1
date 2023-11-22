@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AHA Luxury - Đồng hồ chính hãng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="images/LOGOSUTU500K.png">
+    <link rel="icon" href="images/xin500k.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
                 
             </ul>
             <div class="logo">
-                <a href="?act=trangchu" ><img style="width: 160px;" src="images/LOGOSUTU500K.png" alt=""></a>
+                <a href="?act=trangchu" ><img style="width: 160px;" src="images/xin500k.png" alt=""></a>
             </div>
             <ul>
                 <li><a href="?act=tintuc">TIN TỨC</a></li>

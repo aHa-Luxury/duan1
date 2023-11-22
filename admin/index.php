@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["admin"])) {
-    
+
     header("location:../index.php?act=trangchu");
 };
 include("../pdo/connection.php");
@@ -9,6 +9,7 @@ include "../pdo/khachhang.php";
 include("../pdo/sanpham.php");
 include("../pdo/danhmuc.php");
 include("../pdo/thongtinwebsite.php");
+include("../pdo/binhluan.php");
 $thongtinwebsite = load_all_thongtinwebsite(1);
 $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();
@@ -20,7 +21,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
     switch ($act) {
 
-       
+
         case 'sanpham':
             $all_danhmuc = load_all_danhmuc();
             $all_sanpham = select_all_sanpham_byAdmin();
@@ -29,43 +30,43 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "add_sp":
             $all_danhmuc = load_all_danhmuc();
             $all_sanpham = select_all_sanpham();
-            if(isset($_POST['submit'])){
+            if (isset($_POST['submit'])) {
                 $ten_sanpham = $_POST['ten_sanpham'];
                 $price = $_POST['price'];
                 $hinh = $_FILES['hinh']['name'];
                 $id_danhmuc = $_POST['id_danhmuc'];
                 $check = true;
-                move_uploaded_file($_FILES['hinh']['tmp_name'],"../images/".$hinh);
-                foreach($all_sanpham as $all_sp){
-                    if($ten_sanpham == $all_sp['ten_sanpham']){
+                move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
+                foreach ($all_sanpham as $all_sp) {
+                    if ($ten_sanpham == $all_sp['ten_sanpham']) {
                         $check = false;
                         break;
                     }
                 }
-                if($check == true){
-                    add_sanpham($ten_sanpham,$price,$hinh,$id_danhmuc);
-                    setcookie("success","Thêm sản phẩm thành công", time() + 1);
+                if ($check == true) {
+                    add_sanpham($ten_sanpham, $price, $hinh, $id_danhmuc);
+                    setcookie("success", "Thêm sản phẩm thành công", time() + 1);
                     header("location:index.php?act=sanpham");
-                }else{
-                    setcookie("message","Tên này đã tồn tại", time() + 1);
+                } else {
+                    setcookie("message", "Tên này đã tồn tại", time() + 1);
                     header("location:index.php?act=add_sp");
                 }
             }
             include "add_sp.php";
             break;
         case "edit_sp":
-            if(isset($_GET['id_sp']) && $_GET['id_sp'] > 0){
+            if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
                 $all_danhmuc = load_all_danhmuc();
                 $id_sanpham = $_GET['id_sp'];
                 $one_sanpham = load_one_sanpham($id_sanpham);
-                
 
-                if(isset($_POST['submit'])){
+
+                if (isset($_POST['submit'])) {
                     $id_sanpham = $_POST['id_sanpham'];
                     $ten_sanpham = $_POST['ten_sanpham'];
                     $price = $_POST['price'];
                     $hinh = $_FILES['hinh']['name'];
-                    move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/".$hinh);
+                    move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
                     $id_danhmuc = $_POST['id_danhmuc'];
                     $description = $_POST['description'];
                     $tinhtrang = $_POST['tinhtrang'];
@@ -89,19 +90,37 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     // move_uploaded_file($_FILES['hinhanh1']['tmp_name'],"../images/".$hinhanh1);
                     // move_uploaded_file($_FILES['hinhanh2']['tmp_name'],"../images/".$hinhanh2);
                     // move_uploaded_file($_FILES['hinhanh3']['tmp_name'],"../images/".$hinhanh3);
-                    edit_sanpham($ten_sanpham,$price,$hinh,$id_danhmuc,$description,
-                    $tinhtrang,$thamnuoc,$vanh,$nangluong,$chatlieuvo,$daydeo,
-                    $khoa,$matkinh,$noisanxuat,$title1, $title2, $title3,$noidung1,
-                    $noidung2,$noidung3,$id_sanpham);
-                    setcookie("success","Chỉnh sửa thành công", time() +1 );
+                    edit_sanpham(
+                        $ten_sanpham,
+                        $price,
+                        $hinh,
+                        $id_danhmuc,
+                        $description,
+                        $tinhtrang,
+                        $thamnuoc,
+                        $vanh,
+                        $nangluong,
+                        $chatlieuvo,
+                        $daydeo,
+                        $khoa,
+                        $matkinh,
+                        $noisanxuat,
+                        $title1,
+                        $title2,
+                        $title3,
+                        $noidung1,
+                        $noidung2,
+                        $noidung3,
+                        $id_sanpham
+                    );
+                    setcookie("success", "Chỉnh sửa thành công", time() + 1);
                     header("location:index.php?act=sanpham");
                 }
-
             }
             include "edit_sp.php";
-        break;
+            break;
         case "delete_sp":
-            if(isset($_GET['id_sp']) && $_GET['id_sp'] > 0 ){
+            if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
                 $id_sanpham = $_GET['id_sp'];
                 delete_sanpham($id_sanpham);
                 setcookie("success", "Xóa sản phẩm thành công", time() + 1);
@@ -111,7 +130,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             // Danh mục 
         case 'danhmuc':
             $all_danhmuc = load_all_danhmuc_byAdmin();
-            
+
             include "danhmuc.php";
             break;
         case "delete_dm":
@@ -123,60 +142,58 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             break;
         case "add_dm":
-            if(isset($_POST['submit'])){
+            if (isset($_POST['submit'])) {
                 $ten_danhmuc = $_POST['name_danhmuc'];
                 $file = $_FILES['hinh'];
                 $image = $file['name'];
                 $check = true;
 
                 $all_danhmuc = load_all_danhmuc();
-                foreach($all_danhmuc as $all_dm){
-                    if($ten_danhmuc == $all_dm['ten_danhmuc']){
+                foreach ($all_danhmuc as $all_dm) {
+                    if ($ten_danhmuc == $all_dm['ten_danhmuc']) {
                         $check = false;
                         break;
                     }
                 }
 
-               if($check == false){
-                   setcookie("message", "Tên này đã tồn tại", time() + 1);
-                   header("location:index.php?act=add_dm");
-                   exit;
-               }else{
+                if ($check == false) {
+                    setcookie("message", "Tên này đã tồn tại", time() + 1);
+                    header("location:index.php?act=add_dm");
+                    exit;
+                } else {
 
-                    if($image !=""){
-                        move_uploaded_file($file['tmp_name'], "../images/".$image);
+                    if ($image != "") {
+                        move_uploaded_file($file['tmp_name'], "../images/" . $image);
                         add_danhmuc($ten_danhmuc, $image);
-                    }else{
-                        add_danhmuc($ten_danhmuc,"");
+                    } else {
+                        add_danhmuc($ten_danhmuc, "");
                     }
-                    setcookie("success","Thêm danh mục thành công",time()+1);
+                    setcookie("success", "Thêm danh mục thành công", time() + 1);
                     header("location:index.php?act=danhmuc");
                     exit;
-               }
-
-            }else{
+                }
+            } else {
                 setcookie("message", "", time() - 3600);
             }
             include "add_dm.php";
             break;
         case "edit_dm":
-            if(isset($_GET['id_dm']) && $_GET['id_dm'] >0){
+            if (isset($_GET['id_dm']) && $_GET['id_dm'] > 0) {
                 $id_danhmuc = $_GET['id_dm'];
-                
+
                 $one_danhmuc = load_one_danhmuc($id_danhmuc);
 
-                if(isset($_POST['submit'])){
+                if (isset($_POST['submit'])) {
                     $ten_danhmuc = $_POST['name_danhmuc'];
                     $hinh = $_FILES['hinh']['name'];
                     $id_danhmuc = $_POST['id_danhmuc'];
-                    if($hinh != null || $hinh != ''){
-                        move_uploaded_file($_FILES['hinh']['tmp_name'],"../images/".$hinh);
+                    if ($hinh != null || $hinh != '') {
+                        move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
                     }
 
-                     update_danhmuc($ten_danhmuc, $hinh, $id_danhmuc);
-                     setcookie("success","Sửa danh mục thành công", time() +1);
-                     header("location:index.php?act=danhmuc");
-
+                    update_danhmuc($ten_danhmuc, $hinh, $id_danhmuc);
+                    setcookie("success", "Sửa danh mục thành công", time() + 1);
+                    header("location:index.php?act=danhmuc");
                 }
             }
             include "edit_dm.php";
@@ -189,80 +206,86 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             break;
         case "add_tk":
 
-            if(isset($_POST['submit'])){
+            if (isset($_POST['submit'])) {
                 $ho = $_POST['ho'];
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
                 $check = true;
                 $all_khachhang = load_all_khachhang();
-                foreach($all_khachhang as $all_kh){
-                    if($email == $all_kh['email']){
+                foreach ($all_khachhang as $all_kh) {
+                    if ($email == $all_kh['email']) {
                         $check = false;
                         break;
                     }
                 }
 
-                if($check == true){
-                    add_taikhoan($ho,$ten,$email,$password);
-                    setcookie("success","Thêm khách hàng thành công", time() +1);
+                if ($check == true) {
+                    add_taikhoan($ho, $ten, $email, $password);
+                    setcookie("success", "Thêm khách hàng thành công", time() + 1);
                     header("location:index.php?act=khachhang");
-                }else{
-                    setcookie("message","Email đã tồn tại !", time() +1);
+                } else {
+                    setcookie("message", "Email đã tồn tại !", time() + 1);
                     header("location:index.php?act=add_tk");
                 }
             }
             include "add_tk.php";
             break;
-            case 'edittk':
-                if (isset($_GET['id_user'])) {
-                    $khachhang  = select_one_khachhang($_GET['id_user']);
-                }
-                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $id_user = $_POST['id_user'];
-                    $ho = $_POST['ho'];
-                    $ten = $_POST['ten'];
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
-                    update_khachhang($id_user, $ho, $ten, $email, $password);
-                    setcookie("success", "Sửa thông tin thành công !", time() + 1);
-                    header('location:index.php?act=khachhang');
-                }
-                    
-                include 'taikhoan/update.php';
-                break;
-            case 'deletetk':
-                if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
-                    delete_tk($_GET['id_user']);
-                }
-                header("Location:?act=khachhang");
-                break;
-    
-    
-            case "thongtinwebsite":
-    
-                include "thongtinwebsite.php";
-                break;
-    
-    
+        case 'edittk':
+            if (isset($_GET['id_user'])) {
+                $khachhang  = select_one_khachhang($_GET['id_user']);
+            }
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id_user = $_POST['id_user'];
+                $ho = $_POST['ho'];
+                $ten = $_POST['ten'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                update_khachhang($id_user, $ho, $ten, $email, $password);
+                setcookie("success", "Sửa thông tin thành công !", time() + 1);
+                header('location:index.php?act=khachhang');
+            }
+
+            include 'taikhoan/update.php';
+            break;
+        case 'deletetk':
+            if (isset($_GET['id_user']) && ($_GET['id_user'] > 0)) {
+                delete_tk($_GET['id_user']);
+            }
+            header("Location:?act=khachhang");
+            break;
+
+        case 'binhluan':
+            $listbinhluan = loadbl();
+            include "binhluan/list.php";
+            break;
+
+        case 'deletebl':
+            if (isset($_GET['id_binhluan']) && ($_GET['id_binhluan'] > 0)) {
+                delete_bl($_GET['id_binhluan']);
+            }
+            $listbinhluan = loadbl();
+            include "binhluan/list.php";
+            break;
         case "thongtinwebsite":
-           
+
             include "thongtinwebsite.php";
             break;
 
 
-            case "dangxuat":
-                session_destroy();
-                header("location:../index.php?act=trangchu");
-                break;
+        case "thongtinwebsite":
+
+            include "thongtinwebsite.php";
+            break;
 
 
+        case "dangxuat":
+            session_destroy();
+            header("location:../index.php?act=trangchu");
+            break;
     }
-
-
 } else {
-   
+
     include "trangchu.php";
-    
 }
 include "footer.php";
