@@ -65,5 +65,38 @@ function count_price_sanpham(){
     $count_price_sanpham = pdo_query_one($sql);
     return $count_price_sanpham;
 }
+function loc_sp_theodm($id_danhmuc){
+    $sql = "SELECT * from sanpham where id_danhmuc = '$id_danhmuc'";
+    $result = pdo_query($sql);
+    return $result;
+}
+function locsp_theogia($price) {
+    $sql = "SELECT * FROM sanpham";
+
+    switch ($price) {
+        case 'low_to_high':
+            $sql .= " ORDER BY price ASC";
+            break;
+        case 'high_to_low':
+            $sql .= " ORDER BY price DESC";
+            break;
+        case '100_to_500':
+            $sql .= " WHERE price BETWEEN 100000000 AND 500000000 ORDER BY price ASC";
+            break;
+        case '500_to_700':
+            $sql .= " WHERE price BETWEEN 500000000 AND 700000000 ORDER BY price ASC";
+            break;
+        case 'above_700':
+            $sql .= " WHERE price > 700000000 ORDER BY price ASC";
+            break;
+        default:
+            // Trong trường hợp không có giá trị nào khớp, hiển thị tất cả sản phẩm
+            break;
+    }
+
+    $result = pdo_query($sql);
+    return $result;
+}
+
 
 ?>

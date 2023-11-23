@@ -24,7 +24,30 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
         case 'sanpham':
             $all_danhmuc = load_all_danhmuc();
-            $all_sanpham = select_all_sanpham_byAdmin();
+        
+            // Kiểm tra xem nút "Lọc" đã được nhấn hay chưa
+            if (isset($_POST['listok'])) {
+                // Lấy giá trị danh mục được chọn
+                $selectedDanhMuc = isset($_POST['id_danhmuc']) ? $_POST['id_danhmuc'] : '';
+                // Lấy giá trị khoảng giá được chọn
+                $selectedPriceRange = isset($_POST['price']) ? $_POST['price'] : '';
+        
+                // Thực hiện truy vấn lọc sản phẩm
+                if (!empty($selectedPriceRange)) {
+                    // Nếu có giá trị khoảng giá được chọn, thực hiện lọc theo giá
+                    $all_sanpham = locsp_theogia($selectedPriceRange);
+                } elseif (!empty($selectedDanhMuc)) {
+                    // Nếu chỉ có giá trị danh mục được chọn, thực hiện lọc theo danh mục
+                    $all_sanpham = loc_sp_theodm($selectedDanhMuc);
+                } else {
+                    // Nếu không có giá trị nào được chọn, hiển thị tất cả sản phẩm
+                    $all_sanpham = select_all_sanpham_byAdmin();
+                }
+            } else {
+                // Nếu nút "Lọc" chưa được nhấn, hiển thị tất cả sản phẩm
+                $all_sanpham = select_all_sanpham_byAdmin();
+            }
+        
             include "sanpham.php";
             break;
         case "add_sp":

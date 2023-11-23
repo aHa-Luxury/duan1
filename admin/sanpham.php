@@ -1,6 +1,25 @@
 <div class="content">
     <h1 style="color: rgb(90, 92, 105);">Danh sách sản phẩm</h1>
     <a href="?act=add_sp" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a><br>
+    <form action="" method="post">
+    <select name="id_danhmuc" id="">
+        <option value="">Tất cả</option>
+        <?php foreach ($all_danhmuc as $all_dm) : ?>
+            <option value="<?= $all_dm['id_danhmuc'] ?>"><?= $all_dm['ten_danhmuc'] ?></option>
+        <?php endforeach ?>
+    </select>
+
+    <select name="price" id="">
+        <option value="">Tất cả giá</option>
+        <option value="low_to_high">Thấp đến cao</option>
+        <option value="high_to_low">Cao đến thấp</option>
+        <option value="100_to_500">100tr đến 500tr</option>
+        <option value="500_to_700">500tr đến 700tr</option>
+        <option value="above_700">Trên 700tr</option>
+    </select>
+
+    <input type="submit" name="listok" value="Lọc">
+</form>
     <?php if(isset($_COOKIE['success'])):  ?>
         <span style="color:green"><?= $_COOKIE['success'] ?></span>
         <?php endif ?>
@@ -62,4 +81,32 @@
                             text-align: center;
                           
                         }
+                        form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+form select {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Submit Button */
+form input[type="submit"] {
+    width: 20%;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
                       </style>
