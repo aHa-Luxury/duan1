@@ -15,25 +15,37 @@
         <img src="images/<?= $one_sanpham['img_sanpham'] ?>" alt="" />
       </div>
       <div class="head_center">
+        <form  method="post">
         <h1><?= $one_sanpham['ten_sanpham'] ?></h1>
         <hr>
         <p><?= $one_sanpham['description'] ?></p><br>
         <p>Mã SP : <?= $one_sanpham['id_sanpham'] ?></p><br>
         <h2>Giá : <span><?= number_format($one_sanpham['price']) ?>đ</span></h2>
         <br>
+        <select name="size" id="" style="width:100px;margin-right:20px">
+          <option value="">--Chọn size--</option>
+          <?php foreach($all_sizesanpham as $all_size_sp):?>
+            <option value="<?=$all_size_sp['size']?>"><?=$all_size_sp['size']?></option>
+            <?php endforeach ?>
+        </select>
+        Số lượng
+        <input type="number" style="width:100px;" name="soluong" min="1" value="1" id=""><br><br>
         <p><?= $one_sanpham['tinhtrang'] ?></p><br>
         <h2>Thông tin thêm:</h2>
         <hr>
         <p><?= $thongtinwebsite['camket']  ?></p>
 
         <div class="button">
-          <div class="buy">
-            <p>Mua hàng</p>
-          </div>
-          <div class="add">
-            <p>Thêm vào giỏ hàng</p>
-          </div>
+          <input type="hidden" name="id_sanpham" value="<?= $one_sanpham['id_sanpham'] ?>">
+          <input type="hidden" name="ten_sanpham" value="<?= $one_sanpham['ten_sanpham'] ?>">
+          <input type="hidden" name="hinh" value="<?= $one_sanpham['img_sanpham'] ?>">
+          <input type="hidden" name="price" value="<?= $one_sanpham['price'] ?>">
+
+          <button class="buy" type="submit">Mua ngay </button>
+          <button class="add" type="submit" name="addtocard">Thêm vào giỏ hàng</button>
+         
         </div>
+        </form>
       </div>
       <div class="head_right">
         <div class="box">
@@ -46,21 +58,7 @@
         <div class="box">
           <p><?= $thongtinwebsite['vanchuyen'] ?></p>
         </div>
-        <div class="box">
-        <h1 style="text-transform:uppercase">ĐÁNH GIÁ CỦA KHÁCH HÀNG</h1>
-        <hr>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#binhluan").load("view/binhluan/binhluanform.php", {
-                    id_sanpham: <?= $id_sanpham ?>
-                });
-            });
-        </script>
-        <div class="row" id="binhluan">
-
-        </div>
-        </div>
+    
 
       </div>
       .
@@ -155,6 +153,22 @@
             <p><?= $one_sanpham['sanxuattai'] != '' ? $one_sanpham['sanxuattai'] : "Chưa có thông tin" ?></p>
           </li>
         </ul>
+        <br><br>
+        <div class="box">
+        <h1 style="text-transform:uppercase">ĐÁNH GIÁ CỦA KHÁCH HÀNG</h1>
+        <hr>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                    id_sanpham: <?= $id_sanpham ?>
+                });
+            });
+        </script>
+        <div class="row" id="binhluan">
+
+        </div>
+        </div>
         <p></p>
       </div>
     </div>

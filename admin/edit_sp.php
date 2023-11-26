@@ -33,7 +33,7 @@
                 <br><br>
 
                 <!-- Bảng size  -->
-                <a href="?act=add_size&id_sp=<?= $one_sanpham['id_sanpham'] ?>" class="btn btn-success" >Thêm size</a><br>
+                <a href="?act=add_size&id_sp=<?= $_GET['id_sp'] ?>" class="btn btn-success" >Thêm size</a><br>
                 <?php if(isset($_COOKIE['success'])):  ?>
                     <span style="color:green"><?= $_COOKIE['success'] ?></span>
                     <?php endif ?>
@@ -56,7 +56,7 @@
                                 <td><?= $all_sizesp['size'] ?></td>
                                 <td><?= $all_sizesp['so_luong'] ?></td>
                                 <td><a href="?act=edit_size&id_sp=<?=$all_sizesp['id_sanpham']?>&sz=<?=$all_sizesp['size']?>" class="btn btn-outline-secondary" style="margin-right:10px">Sửa</a>
-                                    <a href="?act=delete_size&id_sp=<?=$all_sizesp['id_sanpham']?>&sz=<?=$all_sizesp['size']?>" class="btn btn-outline-danger">Xóa</a></td>
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không') "href="?act=delete_size&id_sp=<?=$all_sizesp['id_sanpham']?>&sz=<?=$all_sizesp['size']?>" class="btn btn-outline-danger">Xóa</a></td>
                                 
                             </tr>
                         <?php $count++; endforeach ?>
@@ -120,7 +120,7 @@
                         <span style="color:red">Chưa có hình ảnh 1</span><br>
                     <?php endif ?>
                     <input type="file" name="hinhanh1" id="">
-                    <?= var_dump($one_sanpham['hinhanh1']) ?>
+                    
 
                 </div>
                 <br>

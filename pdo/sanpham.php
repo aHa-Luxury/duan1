@@ -1,7 +1,7 @@
 <?php
 function select_all_sanpham()
 {
-    $sql = "SELECT * from sanpham sp inner join danhmuc dm on sp.id_danhmuc = dm.id_danhmuc inner join sizesanpham szsp on sp.id_sanpham = szsp.id_sanpham";
+    $sql = "SELECT * from sanpham sp inner join danhmuc dm on sp.id_danhmuc = dm.id_danhmuc left join sizesanpham szsp on sp.id_sanpham = szsp.id_sanpham";
     $result = pdo_query($sql);
     return $result;
 }
@@ -50,7 +50,7 @@ function sanphamlienquan()
 }
 function load_one_sanpham($id_sanpham)
 {
-    $sql  = "SELECT * from sanpham sp  join danhmuc dm on dm.id_danhmuc = sp.id_danhmuc  where sp.id_sanpham = '$id_sanpham'";
+    $sql  = "SELECT * from sanpham sp left join danhmuc dm on dm.id_danhmuc = sp.id_danhmuc left join sizesanpham szsp on szsp.id_sanpham = sp.id_sanpham  where sp.id_sanpham = '$id_sanpham'";
     $result = pdo_query_one($sql);
     return $result;
 }
@@ -110,9 +110,9 @@ function edit_sanpham(
     }
 }
 
-function edit_size($id_sanpham, $size, $new_size, $soluong)
+function edit_size($id_sanpham, $size, $soluong)
 {
-    $sql = "UPDATE sizesanpham set size = '$new_size' ,so_luong  = '$soluong' where id_sanpham = '$id_sanpham' and size = '$size'";
+    $sql = "UPDATE sizesanpham set so_luong  = '$soluong' where id_sanpham = '$id_sanpham' and size = '$size'";
     pdo_execute($sql);
 }
 function delete_sanpham($id_sanpham, $size_sanpham)
@@ -152,35 +152,36 @@ function locsp_theogia($price)
 {
     $where = "";
     $order_by = "";
-    $sql = "SELECT sp.*, COUNT(szsp.size) as size, SUM(szsp.so_luong) as so_luong
-    FROM sanpham sp
-    LEFT JOIN sizesanpham szsp ON szsp.id_sanpham = sp.id_sanpham "."$where"."
-    GROUP BY sp.id_sanpham, sp.ten_sanpham"."$order_by";
-
+    
     switch ($price) {
         case 'low_to_high':
-            $sql .= " ORDER BY sp.price ASC";
+            $order_by = " ORDER BY sp.price ASC";
             break;
         case 'high_to_low':
-            $sql .= " ORDER BY sp.price DESC";
+            $order_by = " ORDER BY sp.price DESC";
             break;
         case '100_to_500':
-            $where = " WHERE price BETWEEN 100000000 AND 500000000 ";
-            $order_by = "ORDER BY price ASC";
+            $where = " WHERE sp.price BETWEEN 100000000 AND 500000000 ";
+            $order_by = " ORDER BY sp.price ASC";
             break;
         case '500_to_700':
-            $where = " WHERE price BETWEEN 500000000 AND 700000000 ";
-            $order_by = "ORDER BY price ASC";
+            $where = " WHERE sp.price BETWEEN 500000000 AND 700000000 ";
+            $order_by = " ORDER BY sp.price ASC";
             break;
         case 'above_700':
-            $where = " WHERE price > 700000000 ";
-            $order_by = "ORDER BY price ASC";
+            $where = " WHERE sp.price > 700000000 ";
+            $order_by = " ORDER BY sp.price ASC";
             break;
         default:
             // Trong trường hợp không có giá trị nào khớp, hiển thị tất cả sản phẩm
             break;
     }
-
+    
+    $sql = "SELECT sp.*, COUNT(szsp.size) as size, SUM(szsp.so_luong) as so_luong
+        FROM sanpham sp
+        left JOIN sizesanpham szsp ON szsp.id_sanpham = sp.id_sanpham " . $where . "
+        GROUP BY sp.id_sanpham, sp.ten_sanpham " . $order_by;
+    
     $result = pdo_query($sql);
     return $result;
 }

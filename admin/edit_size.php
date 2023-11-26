@@ -1,5 +1,5 @@
 <div class="content" >
-<h1 style="color: rgb(90, 92, 105);">Thêm mới size</h1>
+<h1 style="color: rgb(90, 92, 105);">Chỉnh sửa size</h1>
                             
                                 <div class="row">
                                 <form style="max-width: 100%;
@@ -9,7 +9,9 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="id_sanpham" value="<?= $_GET['id_sp'] ?>">
-                                    <input type="number" name="size" placeholder="Size" required id="" value="<?= $one_size['size']?>"><br><br>
+                                    <span>Size</span>
+                                    <input type="number" disabled  name="size" placeholder="Size" required id="" value="<?= $one_size['size']?>"><br><br>
+                                    <span>Số lượng</span>
                                     <input type="number" name="soluong" id="" placeholder="Số lượng" value="<?= $one_size['so_luong']?>"><br>
                                     <?php if(isset($_COOKIE['message'])) : ?>
                                         <span style="color:red"><?= $_COOKIE['message'] ?></span>

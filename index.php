@@ -1,10 +1,13 @@
 <?php
 session_start();
+if (!isset($_SESSION['giohang'])) {
+    $_SESSION['giohang'] = [];
+}
 
 if (isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
-} 
-if(isset($_SESSION['admin'])){
+}
+if (isset($_SESSION['admin'])) {
     $admin = $_SESSION['admin'];
 }
 include "pdo/connection.php";
@@ -27,11 +30,39 @@ if (isset($_GET['act'])) {
 
             // Trang chi tiết sản phẩm
         case "chitietsanpham":
-            if (isset($_GET["id_sp"]) && $_GET['id_sp'] != 0) {
-
+            if (isset($_GET['id_sp']) && $_GET['id_sp'] != 0) {
                 $id_sanpham = $_GET['id_sp'];
                 $one_sanpham = load_one_sanpham($id_sanpham);
+                $all_sizesanpham = select_all_size_sanpham($id_sanpham);
                 $four_sanphamlienquan = sanphamlienquan();
+                if (isset($_POST['addtocard'])) {
+                    $id_sanpham = $_POST['id_sanpham'];
+                    $ten_sanpham = $_POST['ten_sanpham'];
+                    $hinh = $_POST['hinh'];
+                    $price = $_POST['price'];
+                    $size = $_POST['size'];
+                    $soluong = $_POST['soluong'];
+                    $check = true;
+                    $i = 0;
+
+                    if ($size == '') {
+                        header("location:?act=chitietsanpham&id_sp=" . $_GET['id_sp']);
+                    } else {
+                        foreach ($_SESSION['giohang'] as $giohang) {
+                            if ($giohang['1'] == $ten_sanpham && $giohang['4'] == $size) {
+                                $check = false;
+                                $_SESSION['giohang'][$i][5] = $soluong + $giohang['5'];
+                                $i++;
+                                break;
+                            }
+                        }
+                        if ($check == true) {
+                            $item = array($id_sanpham, $ten_sanpham, $hinh, $price, $size, $soluong);
+                            $_SESSION['giohang'][] = $item;
+                        }
+                        header("location:?act=cart");
+                    }
+                }
                 include "view/chitietsanpham.php";
             } else {
                 echo "Không có thông tin sản phẩm";
@@ -44,6 +75,8 @@ if (isset($_GET['act'])) {
                 $id_danhmuc = $_GET['id_dm'];
                 $one_danhmuc = load_one_danhmuc($id_danhmuc);
                 $all_sanpham =  load_all_sanpham($id_danhmuc);
+
+               
                 include "view/category_products.php";
             } else {
                 echo "Không có thông tin danh mục";
@@ -54,7 +87,24 @@ if (isset($_GET['act'])) {
         case "cart":
             include "view/cart.php";
             break;
-
+        case "delete_cart":
+            if (isset($_GET['idsp']) && isset($_GET['sz'])) {
+                $id_sanpham = $_GET['idsp'];
+                $size = $_GET['sz'];
+                $indexToRemove = -1;
+                foreach ($_SESSION['giohang'] as $index => $item) {
+                    if ($item[0] == $id_sanpham && $item[4] == $size) {
+                        $indexToRemove = $index;
+                        break; // Dừng vòng lặp khi tìm thấy phần tử cần xóa
+                    }
+                }
+                if ($indexToRemove != -1) {
+                    unset($_SESSION['giohang'][$indexToRemove]);
+                    // Sau đó, bạn có thể cần chỉnh lại các chỉ số mảng nếu cần
+                    $_SESSION['giohang'] = array_values($_SESSION['giohang']);
+                }
+                header("location:?act=cart");
+            }
             // Trang thanh toán
         case "thanhtoan":
             include "view/thanhtoan.php";

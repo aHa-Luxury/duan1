@@ -28,10 +28,10 @@
             <thead>
                 <th>#</th>
                 <th>Tên sản phẩm</th>
-                <th>Hình ảnh</th>
+                <th>Hình</th>
                 <th>Giá</th>
-                <th>Size</th>
-                <th>Số lượng</th>
+                <th>Tổng Size</th>
+                <th>Số lượng</th>       
                 <th>Chức năng</th>
             </thead>
             <?php $count = 1;

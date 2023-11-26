@@ -970,6 +970,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  min-height: 300px;
 }
 
 .cart-left {
@@ -1072,6 +1073,14 @@ footer {
 }
 
 .cart-total-price {
+  color: #333;
+  font-size: 1.3em;
+}
+.cart-discount-price {
+  color: #333;
+  font-size: 1.3em;
+}
+.cart-grand-total-price {
   color: #333;
   font-size: 1.3em;
 }

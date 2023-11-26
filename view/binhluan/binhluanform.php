@@ -26,13 +26,13 @@ $dsbl = loadall_bl($id_sanpham);
     <div class="boxcontent2 binhluan">
         <table>
             <?php
-            echo '<tr><td><strong>Nội dung</strong></td>';
-            echo '<td><strong>Email</strong></td>';
+            echo '<tr><td><strong>Email</strong></td>';
+            echo '<td><strong>Nội dung</strong></td>';
             echo '</tr>';
             foreach ($dsbl as $bl) {
                 extract($bl);
-                echo '<tr><td>' . $noidung . '</td>';
-                echo '<td>' . $email . '</td>';
+                echo '<tr><td>' . $email . '</td>';
+                echo '<td>' . $noidung . '</td>';
             }
             ?>
         </table>
@@ -46,7 +46,7 @@ $dsbl = loadall_bl($id_sanpham);
         padding: 15px;
         background-color: #f4f4f4;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" type="text" name="noidung" id="">
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" type="text" name="noidung" placeholder="Bình luận" id="">
                 <input style="background-color:#fdb866;
     color: #fff;
     padding: 10px 15px;
