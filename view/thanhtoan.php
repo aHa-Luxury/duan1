@@ -53,7 +53,7 @@
                                 <span class="total-product">1,205,000,000đ</span>
                             </div>
                         </div>
-                        <button class="btn-thanhtoan"><a href="thanhtoan.html">ĐẶT HÀNG</a></button>
+                        <button class="btn-thanhtoan"><a href="index.php?act=dathang">ĐẶT HÀNG</a></button>
                     </div>
                 </div>
             </div>

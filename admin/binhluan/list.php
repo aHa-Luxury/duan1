@@ -5,9 +5,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nội dung bình luận</th>
-                    <th>Email</th>
                     <th>Tên sản phẩm</th>
+                    <th>Email</th>
+                    <th>Nội dung bình luận</th>
                     <th>Chức năng</th>
                 </tr>
 

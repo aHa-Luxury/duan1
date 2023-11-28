@@ -21,10 +21,10 @@
 </div>
 <div class="text_thongtin">
               <h1><?= $one_khachhang['ho'].''.$one_khachhang['ten'] ?></h1>
-              <p>Tuổi: 19</p>
               <p>Email: <?= $one_khachhang['email'] ?></p>
-              <p>Sđt: 0369.037.600</p>
-              <p>Địa chỉ: 213 Phương Canh, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
+              <p>Địa chỉ: <?= $one_khachhang['address'] ?></p>
+              <p>Số điện thoại: <?= $one_khachhang['tel'] ?></p>
+              <input type="hidden" name=" <?= $one_khachhang['id_user'] ?>">
           </div>
       </div>
 
@@ -50,10 +50,10 @@
               <p>Đơn hàng đã hoàn thành</p>
           </div> -->
          <form  action="" method="post" style="display:flex;flex-direction:row">
-            <button class="box" type="submit" name="">Cập nhật thông tin</button>
+            <button class="box" type="submit" name=""><a href="index.php?act=updateinfor">Cập nhật thông tin</a></button>
             <button class="box" type="submit" name="">Đổi mật khẩu</button>
             <button class="box" type="submit" name="">Địa chỉ nhận hàng</button>
-            <button class="box" type="submit" name="">Quản lý bình luận</button>
+            <button class="box" type="submit" name=""><a href="index.php?act=quanlybinhluan">Quản lý bình luận</a></button>
             <button class="box" type="submit" name="">Đơn hàng của tôi</button>
             <button class="box" type="submit" name="dangxuat">Đăng xuất</button>
          </form>

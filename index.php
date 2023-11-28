@@ -10,6 +10,7 @@ if (isset($_SESSION["user"])) {
 if (isset($_SESSION['admin'])) {
     $admin = $_SESSION['admin'];
 }
+include "pdo/binhluan.php";
 include "pdo/connection.php";
 include "pdo/danhmuc.php";
 include "pdo/sanpham.php";
@@ -76,7 +77,7 @@ if (isset($_GET['act'])) {
                 $one_danhmuc = load_one_danhmuc($id_danhmuc);
                 $all_sanpham =  load_all_sanpham($id_danhmuc);
 
-               
+
                 include "view/category_products.php";
             } else {
                 echo "Không có thông tin danh mục";
@@ -186,10 +187,25 @@ if (isset($_GET['act'])) {
                 header("location:?act=login");
                 exit;
             }
-
-
-
-
+            break;
+        case 'updateinfor':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $ho = $_POST['ho'];
+                $ten = $_POST['ten'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $id_user = $_POST['id_user'];
+                update_khachhang($ho, $ten, $email, $password, $address, $tel,$id_user);
+                header("Location:index.php?act=user");
+            }
+            include "view/taikhoan/update.php";
+            break;
+        case 'quanlybinhluan':
+                $listbinhluan_user = load_bl_id_user($_SESSION['user']['id_user']);
+         
+            include "view/binhluan/quanlybinhluan.php";
             break;
     }
 } else {

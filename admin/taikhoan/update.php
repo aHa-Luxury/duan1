@@ -1,6 +1,3 @@
-
-
-
 <div class="content">
     <h1 style="color: rgb(90, 92, 105);">Sửa tài khoản</h1>
 
@@ -15,8 +12,10 @@
             <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?>"><br><br>
             Email <input type="email" name="email" value="<?= $khachhang['email'] ?>"><br><br>
             Ho <input type="text" name="ho" value="<?= $khachhang['ho'] ?>"><br><br>
-            Ten <input type="text" name="ten" value="<?=$khachhang['ten'] ?>">
-            Password <input type="text" name="password" value="<?= $khachhang['password'] ?>">
+            Ten <input type="text" name="ten" value="<?= $khachhang['ten'] ?>"><br><br>
+            Password <input type="text" name="password" value="<?= $khachhang['password'] ?>"><br><br>
+            Địa chỉ <input type="text" name="address" value="<?= $khachhang['address'] ?>"><br><br>
+            Số điện thoại <input type="text" name="tel" value="<?= $khachhang['tel'] ?>"><br><br>
             <input type="submit" name="capnhat" value="Cập nhật">
             <input type="reset" style="background-color: #a97a3b;
     color: #fff;

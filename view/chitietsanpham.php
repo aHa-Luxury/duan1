@@ -76,9 +76,9 @@
         <?php if ($one_sanpham['noidung1'] != "") : ?>
           <p><?= $one_sanpham['noidung1'] ?></p>
         <?php endif ?>
-        <?php if ($one_sanpham[1]['hinhanh1'] != "") : ?>
+        <!-- <?php if ($one_sanpham[1]['hinhanh1'] != "") : ?>
           <img src="<?= $one_sanpham['hinhanh1]'] ?>" alt="">
-        <?php endif ?>
+        <?php endif ?> -->
 
         <br><br>
         <!-- Tiêu đề 2 -->

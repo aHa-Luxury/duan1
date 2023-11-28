@@ -323,7 +323,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                update_khachhang($id_user, $ho, $ten, $email, $password);
+                $addresss = $_POST['address'];
+                $tel = $_POST['tel'];
+                update_khachhang($id_user, $ho, $ten, $email, $password,$addresss,$tel);
                 setcookie("success", "Sửa thông tin thành công !", time() + 1);
                 header('location:index.php?act=khachhang');
             }
