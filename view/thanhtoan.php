@@ -5,21 +5,21 @@
                         <hr>
                         <h2 style="color: black;">THÔNG TIN THANH TOÁN</h2>
                         <span class="paycart" style="color: black;">Họ và Tên*</span>
-                        <input class="input-pay" type="text" name="" id="">
+                        <input class="input-pay" type="text" name="ten" id="">
                         <span class="paycart" style="color: black;">Địa chỉ*</span>
-                        <input class="input-pay" type="text" name="" id="">
+                        <input class="input-pay" type="text" name="address" id="">
                         <span class="paycart" style="color: black;">Số điện thoại*</span>
-                        <input class="input-pay" type="text" name="" id="">
+                        <input class="input-pay" type="text" name="tel" id="">
                         <span class="paycart" style="color: black;">Địa chỉ email*</span>
-                        <input class="input-pay" type="text" name="" id="">
+                        <input class="input-pay" type="text" name="email" id="">
                         <span class="paycart" style="color: black;">Hình thức thanh toán*</span>
                         <select class="input-pay" name="" id="">
                             <option value="" disabled selected>--Chọn hình thức thanh toán--</option>
-                            <option value="">Thanh toán khi nhận hàng</option>
-                            <option value="">Chuyển khoản</option>
+                            <option value="cash">Thanh toán khi nhận hàng</option>
+                            <option value="bank">Chuyển khoản</option>
                         </select>
                         <span class="paycart" style="color: black;">Ghi chú đơn hàng</span>
-                        <textarea style="margin-bottom: 20px;" class="input-pay" name="" id="" cols="5" rows="2"
+                        <textarea style="margin-bottom: 20px;" class="input-pay" name="note" id="" cols="5" rows="2"
                             placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."></textarea>
 
                     </div>

@@ -1,5 +1,5 @@
 <div class="banner">
-    <div class="hr"></div>
+    <!-- <div class="hr"></div> -->
             <?php if($one_danhmuc['video_danhmuc'] != "") : ?>
     <video src="images/<?= $one_danhmuc['video_danhmuc'] ?>" autoplay="autoplay" muted loop></video>
     <?php else :?>

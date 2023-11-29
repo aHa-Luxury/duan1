@@ -10,6 +10,7 @@ include("../pdo/sanpham.php");
 include("../pdo/danhmuc.php");
 include("../pdo/thongtinwebsite.php");
 include("../pdo/binhluan.php");
+include("../pdo/donhang.php");
 $thongtinwebsite = load_all_thongtinwebsite(1);
 $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();
@@ -193,7 +194,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 if (isset($_POST['submit'])) {
                     $id_sp = $_POST['id_sanpham'];
                     $new_soluong = $_POST['soluong'];
-                    edit_size($id_sanpham, $size,$new_soluong);
+                    edit_size($id_sanpham, $size, $new_soluong);
                     setcookie("success", "Cập nhật size thành công", time() + 1);
                     header("location:?act=edit_sp&id_sp=" . $id_sanpham);
                 }
@@ -325,7 +326,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $password = $_POST['password'];
                 $addresss = $_POST['address'];
                 $tel = $_POST['tel'];
-                update_khachhang($id_user, $ho, $ten, $email, $password,$addresss,$tel);
+                update_khachhang($id_user, $ho, $ten, $email, $password, $addresss, $tel);
                 setcookie("success", "Sửa thông tin thành công !", time() + 1);
                 header('location:index.php?act=khachhang');
             }
@@ -350,6 +351,26 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             $listbinhluan = loadbl();
             include "binhluan/list.php";
+            break;
+        case 'quanlydonhang':
+            $listdonhang = quanlydonhang();
+            include "donhang.php";
+            break;
+        case 'editdonhang':
+            if (isset($_GET['id_chitietbill']) && $_GET['id_chitietbill'] > 0) {
+                $id_chitietbill = $_GET['id_chitietbill'];
+
+                $one_chitietbill = load_one_chitietbill($id_chitietbill);
+                $trangthai = $one_chitietbill['order_status'];
+                if (isset($_POST['capnhat'])) {
+
+                    $order_status = $_POST['order_status'];
+                    $id_chitietbill = $_POST['id_chitietbill'];
+                    edit_trangthai($order_status, $id_chitietbill);
+                    header("location:index.php?act=quanlydonhang");
+                }
+            }
+            include "donhang/update.php";
             break;
         case "thongtinwebsite":
 

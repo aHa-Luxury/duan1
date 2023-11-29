@@ -105,6 +105,7 @@ list-style: none;
 background-color: black;
 }
 .menu ul li:hover .sub-menu {
+z-index: 100;
 display: block;
 
 }
