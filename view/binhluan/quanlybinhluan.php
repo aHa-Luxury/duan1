@@ -1,40 +1,48 @@
 <style>
-    /* Style for the content container */
+/* Style for the content container */
 .contentbl {
-    margin: 20px;
+        margin: 5px;
+    }
+
+    /* Style for the heading */
+    h1 {
+        color: rgb(90, 92, 105);
+    }
+
+    /* Style for the table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        color: black;
+    }
+
+    /* Style for table headers */
+    th {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Style for table cells */
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th, td {
+    width: 25%; /* Chia đều chiều rộng cho tất cả các cột */
 }
-
-/* Style for the heading */
-h1 {
-    color: rgb(90, 92, 105);
-}
-
-/* Style for the table */
-.table {
-    width: 1200px;
-    border-collapse: collapse;
-    margin-top: 20px;
-    color: black;
-}
-
-/* Style for table headers */
-/* Style for table cells */
-td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-}
-
-
-/* Style for row hover effect */
 </style>
+<main>
 <?php
                 if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
                     extract($_SESSION['user']);
                 }
                 ?>
 <div class="contentbl">
-    <h1 style="color: rgb(90, 92, 105);">Danh sách bình luận</h1>
-    <div class="row">
+    <h1 style="color: rgb(90, 92, 105);text-align:center;">Danh sách bình luận</h1>
+    <div class="listbl-user">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -63,3 +71,5 @@ td {
     </div>
 
 </div>
+</main>
+

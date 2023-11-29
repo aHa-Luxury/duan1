@@ -11,6 +11,16 @@ function dangnhap($email, $password)
     $result = pdo_query_one($sql);
     return $result;
 }
+function checkpass($password,$id_user)
+{
+    $sql = "Select * from khachhang where password = '$password' and id_user = '$id_user'" ;
+    $result = pdo_query_one($sql);
+    return $result;
+}
+function changepassword($newpassword,$id_user){
+    $sql = "Update khachhang set password ='".$newpassword."'where id_user=" .$id_user;
+    pdo_execute($sql);
+}
 function select_one_khachhang($id_khachhang)
 {
     $sql = "Select * from khachhang where id_user = '$id_khachhang'";
@@ -22,9 +32,9 @@ function delete_tk($id_user)
     $sql = "DELETE from khachhang where id_user=" . $id_user;
     pdo_execute($sql);
 }
-function update_khachhang($ho, $ten, $email, $password, $address, $tel,$id_user)
+function update_khachhang($ho, $ten, $email, $address, $tel,$id_user)
 {
-    $sql = "UPDATE khachhang set   password='" . $password . "',email='" . $email . "', ho='" . $ho . "',ten='" . $ten . "',address='" . $address . "',tel='" . $tel . "' where id_user=" . $id_user;
+    $sql = "UPDATE khachhang set  email='" . $email . "', ho='" . $ho . "',ten='" . $ten . "',address='" . $address . "',tel='" . $tel . "' where id_user=" . $id_user;
     pdo_execute($sql);
 }
 

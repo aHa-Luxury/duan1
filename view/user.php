@@ -51,8 +51,7 @@
           </div> -->
          <form  action="" method="post" style="display:flex;flex-direction:row">
             <button class="box" type="submit" name=""><a href="index.php?act=updateinfor">Cập nhật thông tin</a></button>
-            <button class="box" type="submit" name="">Đổi mật khẩu</button>
-            <button class="box" type="submit" name="">Địa chỉ nhận hàng</button>
+            <button class="box" type="submit" name=""><a href="index.php?act=changepassword">Đổi mật khẩu</a></button>
             <button class="box" type="submit" name=""><a href="index.php?act=quanlybinhluan">Quản lý bình luận</a></button>
             <button class="box" type="submit" name="">Đơn hàng của tôi</button>
             <button class="box" type="submit" name="dangxuat">Đăng xuất</button>

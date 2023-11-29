@@ -193,15 +193,35 @@ if (isset($_GET['act'])) {
                 $ho = $_POST['ho'];
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
-                $password = $_POST['password'];
                 $address = $_POST['address'];
                 $tel = $_POST['tel'];
                 $id_user = $_POST['id_user'];
-                update_khachhang($ho, $ten, $email, $password, $address, $tel,$id_user);
+                update_khachhang($ho, $ten, $email,$address, $tel,$id_user);
                 header("Location:index.php?act=user");
             }
             include "view/taikhoan/update.php";
             break;
+            case 'changepassword':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $password = $_POST['password'];
+                    $newpassword = $_POST['newpassword'];
+                    $renewpassword = $_POST['renewpassword'];
+                    $id_user = $_POST['id_user'];
+                    $testpass = checkpass($password,$id_user);
+                    if($password == "" || $newpassword == "" || $renewpassword == ""){
+                        $thongbao = "Vui lòng nhập đủ thông tin !";
+                    }else if(!$testpass){
+                        $thongbao = "Thông tin không chính xác !";
+
+                    }else if($newpassword != $renewpassword){
+                        $thongbao = "Mật khẩu mới không trùng khớp !";
+                    }else{
+                        changepassword($newpassword,$id_user);
+                        $thongbao = "Đổi mật khẩu thành công !";
+                    }
+                }
+                include "view/taikhoan/changepass.php";
+                break;
         case 'quanlybinhluan':
                 $listbinhluan_user = load_bl_id_user($_SESSION['user']['id_user']);
          
