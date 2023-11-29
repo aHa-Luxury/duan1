@@ -10,7 +10,6 @@ include("../pdo/sanpham.php");
 include("../pdo/danhmuc.php");
 include("../pdo/thongtinwebsite.php");
 include("../pdo/binhluan.php");
-include("../pdo/donhang.php");
 $thongtinwebsite = load_all_thongtinwebsite(1);
 $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();
@@ -21,8 +20,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
 
     switch ($act) {
-
-
         case 'sanpham':
             $all_danhmuc = load_all_danhmuc();
 
@@ -58,6 +55,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $ten_sanpham = $_POST['ten_sanpham'];
                 $price = $_POST['price'];
                 $hinh = $_FILES['hinh']['name'];
+                $soluong = $_POST['soluong'];
                 $id_danhmuc = $_POST['id_danhmuc'];
                 $check = true;
                 move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
@@ -68,7 +66,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     }
                 }
                 if ($check == true) {
-                    add_sanpham($ten_sanpham, $price, $hinh, $id_danhmuc);
+                    add_sanpham($ten_sanpham, $price, $hinh, $soluong, $id_danhmuc);
                     $last_sanpham = load_last_sanpham();
                     setcookie("success", "Thêm sản phẩm thành công", time() + 1);
                     header("location:index.php?act=sanpham");
@@ -83,7 +81,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
                 $all_danhmuc = load_all_danhmuc();
                 $id_sanpham = $_GET['id_sp'];
-                $all_sizesanpham = select_all_size_sanpham($id_sanpham);
+                // $all_sizesanpham = select_all_size_sanpham($id_sanpham);
                 $one_sanpham = load_one_sanpham($id_sanpham);
 
 
@@ -91,6 +89,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     $id_sanpham = $_POST['id_sanpham'];
                     $ten_sanpham = $_POST['ten_sanpham'];
                     $price = $_POST['price'];
+                    $soluong = $_POST['soluong'];
                     $hinh = $_FILES['hinh']['name'];
                     move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
                     $id_danhmuc = $_POST['id_danhmuc'];
@@ -122,6 +121,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     edit_sanpham(
                         $ten_sanpham,
                         $price,
+                        $soluong,
                         $hinh,
                         $id_danhmuc,
                         $description,
@@ -152,63 +152,64 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
                 $id_sanpham = $_GET['id_sp'];
                 $sanpham_delete = load_one_sanpham($id_sanpham);
-                $size_sanpham = $sanpham['size'];
-                delete_sanpham($id_sanpham, $size_sanpham);
+                // $size_sanpham = $sanpham['size'];
+                delete_sanpham($id_sanpham);
+                // delete_sanpham($id_sanpham, $size_sanpham);
                 setcookie("success", "Xóa sản phẩm thành công", time() + 1);
                 header("location:index.php?act=sanpham");
             }
             break;
 
-        case "add_size":
-            if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
-                if (isset($_POST["submit"])) {
-                    $id_sanpham = $_POST['id_sanpham'];
-                    $size = $_POST['size'];
-                    $soluong = $_POST['soluong'];
-                    $all_sizesanpham = select_all_size_sanpham($id_sanpham);
-                    $check = true;
-                    foreach ($all_sizesanpham as $all_size_sp) {
-                        if ($size == $all_size_sp['size']) {
-                            $check = false;
-                            break;
-                        }
-                    }
-                    if ($check == true) {
-                        add_size_sanpham($id_sanpham, $size, $soluong);
-                        setcookie("success", "Thêm size thành công", time() + 1);
-                        header("location:?act=edit_sp&id_sp=" . $id_sanpham);
-                    } else {
-                        setcookie("message", "Size này đã tồn tại", time() + 1);
-                        header("location:?act=add_size&id_sp=" . $id_sanpham);
-                    }
-                }
-            }
-            include "add_size.php";
-            break;
-        case "edit_size":
-            if (isset($_GET['id_sp']) && $_GET['sz']) {
-                $id_sanpham = $_GET['id_sp'];
-                $size = $_GET['sz'];
-                $one_size = select_one_size_sanpham($id_sanpham, $size);
+        // case "add_size":
+        //     if (isset($_GET['id_sp']) && $_GET['id_sp'] > 0) {
+        //         if (isset($_POST["submit"])) {
+        //             $id_sanpham = $_POST['id_sanpham'];
+        //             $size = $_POST['size'];
+        //             $soluong = $_POST['soluong'];
+        //             $all_sizesanpham = select_all_size_sanpham($id_sanpham);
+        //             $check = true;
+        //             foreach ($all_sizesanpham as $all_size_sp) {
+        //                 if ($size == $all_size_sp['size']) {
+        //                     $check = false;
+        //                     break;
+        //                 }
+        //             }
+        //             if ($check == true) {
+        //                 add_size_sanpham($id_sanpham, $size, $soluong);
+        //                 setcookie("success", "Thêm size thành công", time() + 1);
+        //                 header("location:?act=edit_sp&id_sp=" . $id_sanpham);
+        //             } else {
+        //                 setcookie("message", "Size này đã tồn tại", time() + 1);
+        //                 header("location:?act=add_size&id_sp=" . $id_sanpham);
+        //             }
+        //         }
+        //     }
+        //     include "add_size.php";
+        //     break;
+        // case "edit_size":
+        //     if (isset($_GET['id_sp']) && $_GET['sz']) {
+        //         $id_sanpham = $_GET['id_sp'];
+        //         $size = $_GET['sz'];
+        //         $one_size = select_one_size_sanpham($id_sanpham, $size);
 
-                if (isset($_POST['submit'])) {
-                    $id_sp = $_POST['id_sanpham'];
-                    $new_soluong = $_POST['soluong'];
-                    edit_size($id_sanpham, $size, $new_soluong);
-                    setcookie("success", "Cập nhật size thành công", time() + 1);
-                    header("location:?act=edit_sp&id_sp=" . $id_sanpham);
-                }
-            }
-            include "edit_size.php";
-            break;
-        case "delete_size":
-            if (isset($_GET['id_sp']) && isset($_GET['sz'])) {
-                $id_sanpham = $_GET['id_sp'];
-                $size = $_GET['sz'];
-                delete_size($id_sanpham, $size);
-                setcookie("success", "Xóa size thành công", time() + 1);
-                header("location:?act=edit_sp&id_sp=" . $id_sanpham);
-            }
+        //         if (isset($_POST['submit'])) {
+        //             $id_sp = $_POST['id_sanpham'];
+        //             $new_soluong = $_POST['soluong'];
+        //             edit_size($id_sanpham, $size,$new_soluong);
+        //             setcookie("success", "Cập nhật size thành công", time() + 1);
+        //             header("location:?act=edit_sp&id_sp=" . $id_sanpham);
+        //         }
+        //     }
+        //     include "edit_size.php";
+        //     break;
+        // case "delete_size":
+        //     if (isset($_GET['id_sp']) && isset($_GET['sz'])) {
+        //         $id_sanpham = $_GET['id_sp'];
+        //         $size = $_GET['sz'];
+        //         delete_size($id_sanpham, $size);
+        //         setcookie("success", "Xóa size thành công", time() + 1);
+        //         header("location:?act=edit_sp&id_sp=" . $id_sanpham);
+        //     }
             // Danh mục 
         case 'danhmuc':
             $all_danhmuc = load_all_danhmuc_byAdmin();
@@ -324,9 +325,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $addresss = $_POST['address'];
-                $tel = $_POST['tel'];
-                update_khachhang($id_user, $ho, $ten, $email, $password, $addresss, $tel);
+                update_khachhang($id_user, $ho, $ten, $email, $password);
                 setcookie("success", "Sửa thông tin thành công !", time() + 1);
                 header('location:index.php?act=khachhang');
             }
@@ -351,26 +350,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             $listbinhluan = loadbl();
             include "binhluan/list.php";
-            break;
-        case 'quanlydonhang':
-            $listdonhang = quanlydonhang();
-            include "donhang.php";
-            break;
-        case 'editdonhang':
-            if (isset($_GET['id_chitietbill']) && $_GET['id_chitietbill'] > 0) {
-                $id_chitietbill = $_GET['id_chitietbill'];
-
-                $one_chitietbill = load_one_chitietbill($id_chitietbill);
-                $trangthai = $one_chitietbill['order_status'];
-                if (isset($_POST['capnhat'])) {
-
-                    $order_status = $_POST['order_status'];
-                    $id_chitietbill = $_POST['id_chitietbill'];
-                    edit_trangthai($order_status, $id_chitietbill);
-                    header("location:index.php?act=quanlydonhang");
-                }
-            }
-            include "donhang/update.php";
             break;
         case "thongtinwebsite":
 

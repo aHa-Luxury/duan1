@@ -12,7 +12,8 @@
                                     <input type="text" name="ten_sanpham" placeholder="Tên sản phẩm" required id=""><br><br>
                                     <input type="text" name="price" placeholder="Giá" required id=""><br><br>
                                     
-                                    <input type="file" name="hinh" id="" required>
+                                    <input type="file" name="hinh" id="" required><br><br>
+                                    <input type="number" placeholder="Số lượng" name="soluong" id="" required><br><br>
                                     <select name="id_danhmuc" id="" required>
                                         <option value="">--Danh mục--</option>
                                         <?php foreach($all_danhmuc as $all_dm): ?>

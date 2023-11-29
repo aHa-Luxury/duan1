@@ -30,7 +30,7 @@
                 <th>Tên sản phẩm</th>
                 <th>Hình</th>
                 <th>Giá</th>
-                <th>Tổng Size</th>
+                <!-- <th>Tổng Size</th> -->
                 <th>Số lượng</th>       
                 <th>Chức năng</th>
             </thead>
@@ -48,8 +48,8 @@
                     </td>
                     <td style="line-height:50px"><img width="40px" src="../images/<?= $all_sp['img_sanpham'] ?>" alt=""></td>
                     <td style="line-height:50px"><?= number_format($all_sp['price']) ?> đ</td>
-                    <td style="line-height:50px"><?= $all_sp['size'] ?></td>
-                    <td style="line-height:50px"><?= $all_sp['so_luong'] ?></td>
+                    <!-- <td style="line-height:50px"><?= $all_sp['size'] ?></td> -->
+                    <td style="line-height:50px"><?= $all_sp['soluong'] ?></td>
                     <td style="line-height:50px">
                         <a href="?act=edit_sp&id_sp=<?= $all_sp['id_sanpham'] ?>" class="btn btn-outline-secondary">Sửa</a>
                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="?act=delete_sp&id_sp=<?= $all_sp['id_sanpham'] ?>" class="btn btn-outline-danger">Xóa</a>

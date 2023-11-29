@@ -22,11 +22,12 @@ function loadbl(){
 
 }
 function load_bl_id_user($id_user){
-   $sql= " SELECT khachhang.id_user,khachhang.ho,khachhang.ten,khachhang.email,binhluan.noidung,sanpham.ten_sanpham from khachhang inner join binhluan  on khachhang.id_user = binhluan.id_user inner join sanpham on binhluan.id_sanpham = sanpham.id_sanpham where khachhang.id_user=" .$id_user;
-   $listbl_user = pdo_query($sql);
-   return $listbl_user;
-}
-
+    $sql= " SELECT khachhang.id_user, khachhang.ho, khachhang.ten,khachhang.email,binhluan.noidung,sanpham.ten_sanpham,binhluan.id_binhluan from khachhang inner join binhluan  on khachhang.id_user = binhluan.id_user inner join sanpham on binhluan.id_sanpham = sanpham.id_sanpham where khachhang.id_user=" .$id_user;
+    $listbl_user = pdo_query($sql);
+    return $listbl_user;
+ }
+ 
+ 
 
 
 ?>

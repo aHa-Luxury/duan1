@@ -13,7 +13,7 @@
             <div class="left">
                 <h2>Thông tin cơ bản</h2>
                 <p style="color:purple"><span style="color:red">* </span>ID sản phẩm</p>
-                <input type="text" disabled placeholder="Tên sản phẩm" value="<?= $one_sanpham['id_sanpham'] ?>" required id=""><br>
+                <input type="text" disabled  value="<?= $one_sanpham['id_sanpham'] ?>" required id=""><br>
                 <input type="hidden" name="id_sanpham" value="<?= $one_sanpham['id_sanpham'] ?>" id="">
                 <p style="color:purple"><span style="color:red">* </span>Tên sản phẩm</p>
                 <input type="text" name="ten_sanpham" placeholder="Tên sản phẩm" value="<?= $one_sanpham['ten_sanpham'] ?>" required id=""><br>
@@ -21,7 +21,8 @@
                 <!-- Giá  -->
                 <p style="color:purple"><span style="color:red">* </span>Giá</p>
                 <input type="text" name="price" placeholder="Giá" value="<?= $one_sanpham['price'] ?>" required id=""><br>
-
+                <p style="color:purple"><span style="color:red">* </span>Số lượng</p>
+                <input type="number" name="soluong" placeholder="Số lượng" value="<?= $one_sanpham['soluong'] ?>"  id="">
                 <!-- Hình ảnh  -->
                 <p style="color:purple"><span style="color:red">* </span>Hình ảnh</p>
                 <?php if (isset($one_sanpham['img_sanpham']) && $one_sanpham['img_sanpham'] != "") :  ?>
@@ -33,7 +34,7 @@
                 <br><br>
 
                 <!-- Bảng size  -->
-                <a href="?act=add_size&id_sp=<?= $_GET['id_sp'] ?>" class="btn btn-success" >Thêm size</a><br>
+                <!-- <a href="?act=add_size&id_sp=<?= $_GET['id_sp'] ?>" class="btn btn-success" >Thêm size</a><br>
                 <?php if(isset($_COOKIE['success'])):  ?>
                     <span style="color:green"><?= $_COOKIE['success'] ?></span>
                     <?php endif ?>
@@ -54,7 +55,7 @@
                             <tr>
                                 <td><?= $count ?></td>
                                 <td><?= $all_sizesp['size'] ?></td>
-                                <td><?= $all_sizesp['so_luong'] ?></td>
+                                <td><?= $all_sizesp['soluong'] ?></td>
                                 <td><a href="?act=edit_size&id_sp=<?=$all_sizesp['id_sanpham']?>&sz=<?=$all_sizesp['size']?>" class="btn btn-outline-secondary" style="margin-right:10px">Sửa</a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không') "href="?act=delete_size&id_sp=<?=$all_sizesp['id_sanpham']?>&sz=<?=$all_sizesp['size']?>" class="btn btn-outline-danger">Xóa</a></td>
                                 
@@ -62,7 +63,7 @@
                         <?php $count++; endforeach ?>
                         <?php endif ?>
                     </tbody>
-                </table><br>
+                </table><br> -->
 
 
 

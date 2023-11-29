@@ -1,3 +1,4 @@
+
 <style>
 /* Style for the content container */
 .contentbl {
@@ -53,17 +54,17 @@
                 </tr>
 
             </thead>
-            <?php
+            <?php $listbinhluan_user = load_bl_id_user($_SESSION['user']['id_user']);
             foreach ($listbinhluan_user as $binhluan) : ?>
             
-            <?php $deletebl = "index.php?act=deletebl&id_binhluan=" . $binhluan['ho']?>
+            <?php $deletebl = "index.php?act=deletebl&id_binhluan=" . $binhluan['id_binhluan']?>
                 <tr>
                     <td><?=$binhluan['ten']?></td>
                     <td> <?= $binhluan['email']?></td>
                     <td><?=$binhluan['noidung']?></td>
                     <td><?=$binhluan['ten_sanpham']?></td>
                     <td> <a onclick="return confirm('Bạn chắc chắc muốn xóa không?')"  href="<?=$deletebl?>" . $id_binhluan>
-                            <input class="btn btn-outline-danger" type="button" value="Xóa"></a></td>
+                           Xóa</a></td>
                 </tr>
             <?php
             endforeach ?>

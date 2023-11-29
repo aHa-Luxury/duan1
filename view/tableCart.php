@@ -1,5 +1,20 @@
-<main style="background-color: white;">
-    <div  id="order" class="cart-content">
+<?php
+session_start();
+include "../pdo/connection.php";
+include "../pdo/sanpham.php";
+
+// Kiểm tra xem giỏ hàng có dữ liệu hay không
+if (!empty($_SESSION['cart'])) :
+    $cart = $_SESSION['cart'];
+
+    // Tạo mảng chứa ID các sản phẩm trong giỏ hàng
+    $productId = array_column($cart, 'id');
+
+    // Chuyển đôi mảng id thành một cuỗi để thực hiện truy vấn
+    $idList = implode(',', $productId);
+
+    // Lấy sản phẩm trong bảng sản phẩm theo id
+    $dataDb = load_one_sanpham_cart($idList) ?>
         <div  class="modal-body">
             <div  class="cart-left">
                 <div class="cart-row">
@@ -39,7 +54,8 @@
                             <div class="cart-quantity cart-column">
                             <b style="color:black"><?= number_format((int)$product['price'] * (int)$quantityInCart, 0, ",", ".") ?> <u>đ</u></b></div>
                             <div class="cart-quantity cart-column">
-                            <button style="height:30px;text-align:center;line-height:30px" onclick="removeFormCart(<?= $product['id_sanpham'] ?>)" class="btn btn-danger">Xóa</button></div>
+                            <button style="height:30px;text-align:center;line-height:30px" onclick="removeFormCart(<?= $product['id_sanpham'] ?>)" class="btn btn-danger">Xóa</button>
+                        </div>
                         </div>
                         <hr>
 
@@ -93,59 +109,4 @@
 
             </div>
         </div>
-    </div>
-</main>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-    // hàm cập nhật số lượng
-    function updateQuantity(id, index) {
-        // lấy giá trị của ô input
-        let newQuantity = $('#quantity_' + id).val();
-        if (newQuantity <= 0) {
-            newQuantity = 1
-        }
-
-        // Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
-        $.ajax({
-            type: 'POST',
-            url: './view/updateQuantity.php',
-            data: {
-                id: id,
-                quantity: newQuantity
-            },
-            success: function(response) {
-                // Sau khi cập nhật thành công
-                $.post('view/tableCart.php', function(data) {
-                    $('#order').html(data);
-                })
-            },
-            error: function(error) {
-                console.log(error);
-            },
-        })
-    }
-
-    function removeFormCart(id) {
-        if (confirm("Bạn có đồng ý xóa sản phẩm hay không?")) {
-            // Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
-            $.ajax({
-                type: 'POST',
-                url: './view/deleteCart.php',
-                data: {
-                    id: id
-                },
-                success: function(response) {
-                    // Sau khi cập nhật thành công
-                    $.post('view/tableCart.php', function(data) {
-                        $('#order').html(data);
-                    })
-                },
-                error: function(error) {
-                    console.log(error);
-                },
-            })
-        }
-    }
-
-    
-</script>
+<?php endif ?>

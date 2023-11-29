@@ -49,14 +49,14 @@
                     </div>
                     <div class="">
                         Địa chỉ: <br>
-                        <input class="inputchange" type="text" name="address" value="<?= $address ?>">
+                        <input class="inputchange" type="text" name="address" value="<?= $address ?? "" ?>">
                     </div>
                     <div class="">
                         Số điện thoại: <br>
-                        <input class="inputchange" type="text" name="tel" value="<?= $tel ?>">
+                        <input class="inputchange" type="text" name="tel" value="<?= $_SESSION['user']['tel']  ?>">
                     </div>
                     <div class="">
-                        <input type="hidden" name="id_user" value="<?= $id_user ?>">
+                        <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id_user'] ?>">
                         <input class="buttonchange" type="submit" value="Cập nhật" name="capnhat">
                         <input class="buttonchange" type="reset" value="Nhập lại">
                     </div>

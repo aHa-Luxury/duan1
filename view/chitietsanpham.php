@@ -21,15 +21,14 @@
         <p><?= $one_sanpham['description'] ?></p><br>
         <p>Mã SP : <?= $one_sanpham['id_sanpham'] ?></p><br>
         <h2>Giá : <span><?= number_format($one_sanpham['price']) ?>đ</span></h2>
-        <br>
+        <!-- <br>
         <select name="size" id="" style="width:100px;margin-right:20px">
           <option value="">--Chọn size--</option>
           <?php foreach($all_sizesanpham as $all_size_sp):?>
             <option value="<?=$all_size_sp['size']?>"><?=$all_size_sp['size']?></option>
             <?php endforeach ?>
-        </select>
-        Số lượng
-        <input type="number" style="width:100px;" name="soluong" min="1" value="1" id=""><br><br>
+        </select> -->
+  <br>
         <p><?= $one_sanpham['tinhtrang'] ?></p><br>
         <h2>Thông tin thêm:</h2>
         <hr>
@@ -42,7 +41,8 @@
           <input type="hidden" name="price" value="<?= $one_sanpham['price'] ?>">
 
           <button class="buy" type="submit">Mua ngay </button>
-          <button class="add" type="submit" name="addtocard">Thêm vào giỏ hàng</button>
+          <!-- NÚt thêm vào giỏ hàng  -->
+          <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="add" type="submit" name="addtocard" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Thêm vào giỏ hàng</button>
          
         </div>
         </form>
@@ -76,9 +76,9 @@
         <?php if ($one_sanpham['noidung1'] != "") : ?>
           <p><?= $one_sanpham['noidung1'] ?></p>
         <?php endif ?>
-        <!-- <?php if ($one_sanpham[1]['hinhanh1'] != "") : ?>
+        <?php if ($one_sanpham[1]['hinhanh1'] != "") : ?>
           <img src="<?= $one_sanpham['hinhanh1]'] ?>" alt="">
-        <?php endif ?> -->
+        <?php endif ?>
 
         <br><br>
         <!-- Tiêu đề 2 -->
@@ -189,3 +189,28 @@
     <?php endforeach; ?>
   </div>
 </main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+  let totalProduct = document.getElementById('totalProduct');
+  function addTo_cart(productId,productName,productPrice){
+    console.log(productId, productName,productPrice);
+    // SỬ dụng jquery
+    $.ajax({
+      type:'POST',
+      // Đường để tới tệp php xử lý dữ liệu
+      url:"./view/addTocart.php",
+      data:{
+        id: productId,
+        name: productName,
+        price: productPrice
+      },
+      success:function(response){
+        totalProduct.innerText = response;
+        alert("bạn đã thêm sản phẩm thành công");
+      },
+      error: function(error){
+        console.log(error);
+      }
+    });
+  }
+</script>
