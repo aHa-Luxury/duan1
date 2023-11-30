@@ -21,7 +21,7 @@
                         <li><a href="?act=khachhang"><i class="fa-solid fa-user"></i>Khách hàng</a></li>
                         <li><a href="?act=binhluan"><i class="fa-solid fa-comment"></i>Bình luận</a></li>
                         <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li>
-                        <li></i><a href=""><i style="font-size: 20px;width: 40px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
+                        <li></i><a href="?act=donhang"><i style="font-size: 20px;width: 40px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
                     </ul>
                 </div>
                 <div class="main_right" style="padding:0px">

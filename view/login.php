@@ -11,7 +11,7 @@
             <hr>
             Mật khẩu<br>
             <input type="text" name="password" placeholder="Mật khẩu" required>
-            <span style="color:red"><?= $message ?? "" ?></span>
+            <span style="color:red"><?= $_COOKIE['message'] ?? "" ?></span>
             <hr>
             <button type="submit" name="dangnhap">Đăng nhập</button>
           </form>

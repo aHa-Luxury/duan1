@@ -227,7 +227,7 @@ if (isset($_GET['act'])) {
                     $address = $_POST['address'];
                     $tel = $_POST['tel'];
                     $id_user = $_POST['id_user'];
-                    update_khachhang($id_user,$ho, $ten, $email,$address);
+                    update_khachhang($ho, $ten, $email,$address,$id_user);
                     header("Location:index.php?act=user");
                 }
                 include "view/taikhoan/update.php";
@@ -248,7 +248,7 @@ if (isset($_GET['act'])) {
                             $thongbao = "Mật khẩu mới không trùng khớp !";
                         }else{
                             changepassword($newpassword,$id_user);
-                            $thongbao = "Đổi mật khẩu thành công !";
+                            $success = "Đổi mật khẩu thành công !";
                         }
                     }
                     include "view/taikhoan/changepass.php";

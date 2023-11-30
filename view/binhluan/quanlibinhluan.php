@@ -1,38 +1,67 @@
 
 <style>
-/* Style for the content container */
+    main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:black
+}
+
 .contentbl {
-        margin: 5px;
-    }
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
-    /* Style for the heading */
-    h1 {
-        color: rgb(90, 92, 105);
-    }
+h1 {
+    color: #5a5c69;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    /* Style for the table */
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        color: black;
-    }
+.listbl-user {
+    margin-top: 20px;
+}
 
-    /* Style for table headers */
-    th {
-        border: 1px solid #dddddd;
-        padding: 8px;
-        text-align: left;
-    }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-    /* Style for table cells */
-    td {
-        border: 1px solid #dddddd;
-        padding: 8px;
-        text-align: left;
-    }
-    th, td {
-    width: 25%; /* Chia đều chiều rộng cho tất cả các cột */
+.table th,
+.table td {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    color:black;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.table a {
+    color: #dc3545;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}
+
+.table td a {
+    margin-right: 10px;
 }
 </style>
 <main>
@@ -47,27 +76,35 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Ten nguoi dung</th>
-                    <th>Email</th>
-                    <th style="width:300px">Nội dung bình luận</th>
+
+                    <th style="width:50%">Nội dung bình luận</th>
                     <th>Tên sản phẩm</th>
+                    <th>Chức năng</th>
                 </tr>
 
             </thead>
+           
             <?php $listbinhluan_user = load_bl_id_user($_SESSION['user']['id_user']);
+             if(empty($listbinhluan_user)):  ?>
+                <tr>
+                    <td colspan="3" style="color:red">Chưa có bình luận nào </td>
+                </tr>
+                <?php else :?>
+                    <?php 
             foreach ($listbinhluan_user as $binhluan) : ?>
             
             <?php $deletebl = "index.php?act=deletebl&id_binhluan=" . $binhluan['id_binhluan']?>
                 <tr>
-                    <td><?=$binhluan['ten']?></td>
-                    <td> <?= $binhluan['email']?></td>
-                    <td><?=$binhluan['noidung']?></td>
+
+                    <td style="width:50%"><?=$binhluan['noidung']?></td>
                     <td><?=$binhluan['ten_sanpham']?></td>
                     <td> <a onclick="return confirm('Bạn chắc chắc muốn xóa không?')"  href="<?=$deletebl?>" . $id_binhluan>
                            Xóa</a></td>
                 </tr>
             <?php
             endforeach ?>
+                <?php endif ?>
+            
         </table>
     </div>
 

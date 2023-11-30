@@ -52,9 +52,9 @@ if(isset($_POST['dathang'])){
     // insert vào bảng giỏ hàng
 
     // show confirm đơn hàng
-
     //unset giỏ hàng session
     unset($_SESSION['cart']);
+
   }
 }
 ?>
@@ -171,6 +171,7 @@ if(isset($_POST['dathang'])){
                     </div>
                     
                 </div>
+                <a href="../?act=trangchu" class="button">Trở về trang chủ</a>
             </div>
         </main>
 <div class="hr"></div>
@@ -291,3 +292,33 @@ if(isset($_POST['dathang'])){
 
     
 </script>
+
+<style>
+    a {
+       
+        height: 40px;
+        width:50%;
+        margin:0 auto;
+        text-align: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Style the link as a button */
+a.button {
+    margin-top: 10px;
+    line-height: 40px;
+    display: inline-block;
+    background-color: orangered;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+a.button:hover {
+    background-color: orange;
+}
+</style>

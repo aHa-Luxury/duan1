@@ -29,9 +29,9 @@ function delete_tk($id_user)
     $sql = "DELETE from khachhang where id_user=" . $id_user;
     pdo_execute($sql);
 }
-function update_khachhang($id_user, $ho, $ten, $email, $password)
+function update_khachhang($ho, $ten, $email, $address,$id_user)
 {
-    $sql = "UPDATE khachhang set  ho='" . $ho . "',ten='" . $ten . "',email='" . $email . "', password='" . $password . "', where id_user=" . $id_user;
+    $sql = "UPDATE khachhang set  ho='$ho',ten='$ten',email='$email', address='$address' where id_user='$id_user'";
     pdo_execute($sql);
 }
 

@@ -983,6 +983,8 @@ footer {
 .cart-content {
   padding-top: 30px;
   min-height: 250px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-body {
@@ -1146,10 +1148,10 @@ footer {
   font-size: 15px;
 }
 .total-pay .head .head_lf{
-  width:70%;
+  width:60%;
 }
 .total-pay .head .head_rt{
-  width:30%;
+  width:40%;
 }
 .total-pay .content{
   padding: 5px 0;
@@ -1159,11 +1161,11 @@ footer {
   color: #666666;
 }
 .content .head_lf{
-  width:70%;
+  width:60%;
 
 }
 .content .head_rt{
-  width:30%;
+  width:40%;
 }
 .giaohang{
   padding: 5px 0;
@@ -1175,11 +1177,11 @@ footer {
   color: black;
 }
 .giaohang .head_lf{
-  width:70%;
+  width:60%;
 
 }
 .giaohang .head_rt{
-  width:30%;
+  width:40%;
 }
 .sum_all{
   padding: 5px 0;
@@ -1190,11 +1192,11 @@ footer {
   
 }
 .sum_all .head_lf{
-  width:70%;
+  width:60%;
 
 }
 .sum_all .head_rt{
-  width:30%;
+  width:40%;
 }
 .pay-left{
   background-color: red;

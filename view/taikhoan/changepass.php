@@ -1,27 +1,55 @@
-<div>
-    <style>
-        .input_pass {
-            width: 15%;
-            height: 30px;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+<style>
+    main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-        .buttonchangepass {
-            margin-bottom: 20px;
-            height: 40px;
-            width: 100px;
-            background-color: #0d6efd;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-    </style>
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #5a5c69;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+.input_pass {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.buttonchangepass {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.buttonchangepass:hover {
+    background-color: #218838;
+}
+</style>
+<main>
+<div>
+
     <div>
         <div>
             <h1 style="color: rgb(90, 92, 105);text-align:center;">Đổi mật khẩu</h1>
@@ -30,19 +58,21 @@
 
                 extract($_SESSION['user']);
                 ?>
-                <h4 style="color: red;"><?= $thongbao ?? "" ?></h4>
-                <form method="post" style="margin-left: 10px;">
+               <div style="text-align:center">
+               <h4 style="color: red;"><?= $thongbao ?? "" ?></h4>
+               <h4 style="color: green;"><?= $success?? "" ?></h4>
+                <form method="post" >
                     <div class="">
-                        Mật khẩu cũ: <br>
-                        <input class="input_pass" type="password" name="password">
+                        <h2 style="color:black"> Mật khẩu cũ: </h2>
+                        <input class="input_pass" type="password"  name="password">
                     </div>
                     <div>
-                        Mật khẩu mới: <br>
+                    <h2 style="color:black"> Mật khẩu mới: </h2>
                         <input class="input_pass" type="password" name="newpassword">
                     </div>
                     <div class="">
-                        Nhập lại mật khẩu mới:
-                        <br>
+                    <h2 style="color:black">  Nhập lại mật khẩu mới: </h2>
+
                         <input class="input_pass" type="password" name="renewpassword">
                     </div>
                     <div class="">
@@ -50,8 +80,10 @@
                         <input class="buttonchangepass" type="submit" value="Đổi mật khẩu" name="capnhat">
                     </div>
                 </form>
+               </div>
             </div>
 
         </div>
     </div>
 </div>
+</main>

@@ -30,8 +30,9 @@ CREATE TABLE `bill` (
   `email` varchar(50) DEFAULT NULL,
   `total` int DEFAULT NULL,
   `pttt` varchar(50) DEFAULT NULL,
+  `trangthai` int DEFAULT '0',
   PRIMARY KEY (`id_bill`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,6 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (71,'Đào xuân hải','Hà Nội',369037600,'hdao4959@gmail.com',265000000,'0'),(72,'Đào xuân hải','Hà Nội',369037600,'hdao4959@gmail.com',459000000,'1'),(73,'Đào xuân hải','Hà Nội',369037600,'hdao4959@gmail.com',285000000,'0'),(74,'Đào xuân hải','Hà Nội',369037600,'hdao4959@gmail.com',459000000,'0'),(75,'Đào xuân hải','Hà Nội',369037600,'hdao4959@gmail.com',165000000,'1');
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `binhluan` (
   `id_sanpham` int NOT NULL,
   `id_user` int NOT NULL,
   PRIMARY KEY (`id_binhluan`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `chitietbill` (
   PRIMARY KEY (`id_chitietbill`),
   KEY `fk_chitietbill_bill_idx` (`id_bill`),
   CONSTRAINT `fk_chitietbill_bill` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id_bill`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,6 @@ CREATE TABLE `chitietbill` (
 
 LOCK TABLES `chitietbill` WRITE;
 /*!40000 ALTER TABLE `chitietbill` DISABLE KEYS */;
-INSERT INTO `chitietbill` VALUES (139,10,'Đồng Hồ Rolex Datejust 126234 Mặt Xanh Navy','Rolex4.png',265000000,1,265000000,71),(140,8,'Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm 128235-0029 dây đeo President','Rolex2.png',459000000,1,459000000,72),(141,9,'Đồng Hồ Rolex Datejust 126234 Mặt Vi tính Xanh Navy','Rolex3.png',285000000,1,285000000,73),(142,8,'Đồng Hồ Rolex Oyster Perpetual Day-Date 36mm 128235-0029 dây đeo President','Rolex2.png',459000000,1,459000000,74),(143,12,'Đồng hồ Franck Muller V41 mới 100% Full Diamond','FranckMuller3.png',165000000,1,165000000,75);
 /*!40000 ALTER TABLE `chitietbill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +152,7 @@ CREATE TABLE `khachhang` (
 
 LOCK TABLES `khachhang` WRITE;
 /*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` VALUES (1,'Đào','Hải','hdao4959@gmail.com',NULL,NULL,1,'123'),(2,'Trần ','Lộc','tranloc1234@gmail.com',NULL,NULL,0,'123'),(4,'Đào ','Hải','dhai9757@gmail.com',NULL,31232112,0,'123');
+INSERT INTO `khachhang` VALUES (1,'Đào','Hải','hdao4959@gmail.com',NULL,NULL,1,'123'),(2,'Trần ','Lộc','tranloc1234@gmail.com',NULL,NULL,0,'123'),(4,'Đào ','Hải','dhai9757@gmail.com','Hà Nội',31232112,0,'123');
 /*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-29 23:49:51
+-- Dump completed on 2023-11-30 13:47:25

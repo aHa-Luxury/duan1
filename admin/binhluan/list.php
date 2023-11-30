@@ -12,6 +12,11 @@
                 </tr>
 
             </thead>
+            <?php if(empty($load_all_donhang)) : ?>
+                <tr>
+                    <td colspan="5">Chưa có bình luận nào</td>
+                </tr>
+                <?php else: ?>
             <?php
             foreach ($listbinhluan as $binhluan) : ?>
             
@@ -26,6 +31,7 @@
                 </tr>
             <?php
             endforeach; ?>
+            <?php endif ?>
         </table>
     </div>
 

@@ -10,6 +10,7 @@ include("../pdo/sanpham.php");
 include("../pdo/danhmuc.php");
 include("../pdo/thongtinwebsite.php");
 include("../pdo/binhluan.php");
+include("../pdo/donhang.php");
 $thongtinwebsite = load_all_thongtinwebsite(1);
 $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();
@@ -355,8 +356,34 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
             include "thongtinwebsite.php";
             break;
+        case "donhang":
+            $load_all_donhang = load_all_donhang();
+            include "donhang.php";
+            break;
+        case "chitietdonhang":
+            if(isset($_GET['id_bill']) && ($_GET['id_bill']) >0){
+                $id_bill = $_GET['id_bill'];
+                $load_one_donhang = load_one_donhang($id_bill);
+                $load_chitietbill = load_chitietbill($id_bill);
 
-
+                if(isset($_POST['update_bill']) ){
+                    $id_bill = $_POST['id_bill'];
+                    $trangthai = $_POST['trangthai'];
+                    update_donhang($id_bill,$trangthai);
+                    setcookie("success","Cập nhật trạng thái đơn hàng thành công", time() + 1);
+                    header("location:?act=donhang");
+                }
+            }
+            include "chitietdonhang.php";
+            break;
+        case "delete_bill":
+            if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
+                $id_bill = $_GET['id_bill'];
+                delete_donhang($id_bill);
+                setcookie("success","Bạn đã xóa đơn hàng thành công", time() + 1);
+                header("location:?act=donhang");
+            }
+            break;
         case "dangxuat":
             session_destroy();
             header("location:../index.php?act=trangchu");
