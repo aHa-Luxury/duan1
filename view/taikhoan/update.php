@@ -1,6 +1,6 @@
 <style>
     /* Reset some default styles */
-h1,
+/* h1,
 h2,
 h3,
 p,
@@ -27,6 +27,7 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     text-align: center;
+    font-size: 15px;
 }
 
 h1 {
@@ -55,6 +56,66 @@ h1 {
 
 .buttonchange:hover {
     background-color: #0056b3;
+} */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form {
+    width:40%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color:black;
+}
+
+h1 {
+    color: #5a5c69;
+}
+h4{
+    color:black;
+}
+.inputchange {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttonchange {
+    width:80%;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.buttonchange:hover {
+    background-color: #45a049;
+}
+
+.reset {
+    width:80%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reset:hover {
+    background-color: #d32f2f;
 }
 </style>
 <main>
@@ -62,7 +123,7 @@ h1 {
 
     <div>
         <div>
-            <h1 style="color: rgb(90, 92, 105);text-align:center;">Cập nhật thông tin tài khoản</h1>
+          
 
             <div style="text-align:center">
                 <?php
@@ -71,30 +132,27 @@ h1 {
 
                 ?>
                 <form method="post">
-                    <div class="">
-                        Họ: <br>
-                        <input class="inputchange" type="text" name="ho" placeholder="Họ" value="<?= $ho ?>">
-                    </div>
+                <h1 style="color: rgb(90, 92, 105);text-align:center;">Cập nhật thông tin tài khoản</h1>
                     <div>
-                        Tên: <br>
-                        <input class="inputchange" type="text" name="ten" placeholder="Tên" value="<?= $ten ?>">
+                        <h4>Họ và tên</h4>
+                        <input class="inputchange" type="text" name="ten" placeholder="Tên" value="<?= $khachhang['ten'] ?>">
                     </div>
                     <div class="">
-                        Email: <br>
-                        <input class="inputchange" type="email" name="email" placeholder="Email" value="<?= $email ?>">
+                    <h4>Email</h4>
+                        <input class="inputchange" type="email" name="email" placeholder="Email" value="<?=$khachhang['email']  ?>">
                     </div>
                     <div class="">
-                        Địa chỉ: <br>
-                        <input class="inputchange" type="text" name="address" placeholder="Địa chỉ" value="<?= $address ?? "" ?>">
+                    <h4>Địa chỉ</h4>
+                        <input class="inputchange" type="text" name="address" placeholder="Địa chỉ" value="<?= $khachhang['address']  ?? "" ?>">
                     </div>
                     <div class="">
-                        Số điện thoại: <br>
-                        <input class="inputchange" type="text" name="tel" placeholder="Số điện thoại" value="<?= $_SESSION['user']['tel']  ?>">
+                    <h4>Số điện thoại</h4>
+                        <input class="inputchange" type="text" name="tel" placeholder="Số điện thoại" value="<?= $khachhang['tel'] ?? ""  ?>">
                     </div>
                     <div class="">
                         <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id_user'] ?>">
                         <input class="buttonchange" type="submit" value="Cập nhật" name="capnhat">
-                        <input class="buttonchange" type="reset" value="Nhập lại">
+                        <input class="reset" type="reset" value="Nhập lại">
                     </div>
                 </form>
             </div>

@@ -40,9 +40,10 @@
           <input type="hidden" name="hinh" value="<?= $one_sanpham['img_sanpham'] ?>">
           <input type="hidden" name="price" value="<?= $one_sanpham['price'] ?>">
 
-          <button class="buy" type="submit">Mua ngay </button>
+       
+          <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="buy" type="submit" name="buy" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Mua ngay</button>
           <!-- NÚt thêm vào giỏ hàng  -->
-          <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="add" type="submit" name="addtocard" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Thêm vào giỏ hàng</button>
+          <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="add" type="submit" name="addtocart" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Thêm vào giỏ hàng</button>
          
         </div>
         </form>
@@ -76,7 +77,7 @@
         <?php if ($one_sanpham['noidung1'] != "") : ?>
           <p><?= $one_sanpham['noidung1'] ?></p>
         <?php endif ?>
-        <?php if ($one_sanpham[1]['hinhanh1'] != "") : ?>
+        <?php if (!empty($one_sanpham[1]['hinhanh1'])) : ?>
           <img src="<?= $one_sanpham['hinhanh1]'] ?>" alt="">
         <?php endif ?>
 
@@ -91,7 +92,7 @@
           <p><?= $one_sanpham['noidung2'] ?></p>
         <?php endif ?>
 
-        <?php if ($one_sanpham['hinhanh2'] != "") : ?>
+        <?php if (!empty($one_sanpham['hinhanh2'])) : ?>
           <img src="<?= $one_sanpham['hinhanh2]'] ?>" alt="">
         <?php endif ?>
         <br><br>
@@ -104,7 +105,7 @@
         <?php if ($one_sanpham['noidung3'] != "") : ?>
           <p><?= $one_sanpham['noidung3'] ?></p>
         <?php endif ?>
-        <?php if ($one_sanpham['hinhanh3'] != "") : ?>
+        <?php if (!empty($one_sanpham['hinhanh3'])) : ?>
           <img src="<?= $one_sanpham['hinhanh3]'] ?>" alt="">
         <?php endif ?>
 
@@ -206,7 +207,6 @@
       },
       success:function(response){
         totalProduct.innerText = response;
-        alert("bạn đã thêm sản phẩm thành công");
       },
       error: function(error){
         console.log(error);

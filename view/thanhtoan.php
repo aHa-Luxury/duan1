@@ -5,13 +5,15 @@
                     <div class="cart-left">
                         <hr>
                         <form action="view/bill.php" method="post">
+                        <?php  $khachhang = select_one_khachhang($_SESSION['user']['id_user']) ?>
+                    <?php if(empty($khachhang)):?>
                         <h2 style="color: black;">THÔNG TIN THANH TOÁN</h2>
                         <span class="paycart"  style="color: black;">Họ và Tên*</span>
                         <input class="input-pay" type="text" name="hovaten" id="" required>
                         <span class="paycart"  style="color: black;">Địa chỉ*</span>
                         <input class="input-pay" type="text" name="address" id="" required>
                         <span class="paycart"   style="color: black;">Số điện thoại*</span>
-                        <input class="input-pay" type="text" name="phone" id="" required>
+                        <input class="input-pay" type="text" name="tel" id="" required>
                         <span class="paycart"  style="color: black;">Địa chỉ email*</span>
                         <input class="input-pay" type="email" name="email" id="" required>
                         <span class="paycart" style="color: black;">Hình thức thanh toán*</span>
@@ -24,6 +26,28 @@
                        
 
                     </div>
+                    <?php else :?>
+                        <h2 style="color: black;">THÔNG TIN THANH TOÁN</h2>
+                        <span class="paycart"  style="color: black;">Họ và Tên*</span>
+                        <input type="hidden" name="id_user" value="<?= $khachhang['id_user']?>">
+                        <input class="input-pay"  type="text" name="hovaten" id="" value="<?= $khachhang['ten']?>" required>
+                        <span class="paycart"  style="color: black;">Địa chỉ*</span>
+                        <input class="input-pay" type="text" name="address" id="" value="<?= $khachhang['address']?>" required>
+                        <span class="paycart" style="color: black;">Số điện thoại*</span>
+                        <input class="input-pay"  type="text" name="tel" id="" value="<?= $khachhang['tel']?>" required>
+                        <span class="paycart"  style="color: black;">Địa chỉ email*</span>
+                        <input class="input-pay" type="email" name="email" id=""  value="<?= $khachhang['email']?>" required>
+                        <span class="paycart" style="color: black;">Hình thức thanh toán*</span>
+                        <select class="input-pay" name="pttt" id="" required>
+                            <option value="" disabled selected>--Chọn hình thức thanh toán--</option>
+                            <option value="0">Thanh toán khi nhận hàng</option>
+                            <option value="1">Chuyển khoản</option>
+                        </select>
+                       
+                       
+
+                    </div>
+                        <?php endif ?>
                     <div class="cart-right" style="border: 2px solid black;">
                         <strong class="cart-item cart-header cart-column">ĐƠN HÀNG CỦA BẠN</strong>
                         <div class="total-pay">

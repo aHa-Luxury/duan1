@@ -1,25 +1,41 @@
 <?php 
 session_start();
-
+// if (!isset($_SESSION['page_refreshed'])) {
+//     // Nếu chưa, đặt biến session và chuyển hướng người dùng đến trang chủ
+//     $_SESSION['page_refreshed'] = true;
+//     header("Location:../index.php?act=trangchu");
+//     exit(); // Đảm bảo dừng việc thực thi sau khi chuyển hướng
+// }
+include "../pdo/connection.php";
+include "../pdo/danhmuc.php";
+include "../pdo/sanpham.php";
+$all_danhmuc = load_all_danhmuc();
 include 'thuvien.php';
-include '../pdo/danhmuc.php';
 if(isset($_POST['dathang'])){
+    $id_user = "";
+    if(isset($_POST['id_user'])){
+        $id_user = $_POST['id_user'];
+    }
     $name = $_POST['hovaten'];
     $address = $_POST['address'];
-    $tel = $_POST['phone'];
+    $tel = $_POST['tel'];
     $email = $_POST['email'];
+    $ngayhientai = date("d/m/Y");
+    $date = date('Y-m-d', strtotime($ngayhientai));
     $pttt = $_POST['pttt'];
     $tong = 0 ;
+    
   
   if(isset($_SESSION['cart'])){
     for( $i=0;$i < sizeof($_SESSION['cart']); $i++){
         $tt = $_SESSION['cart'][$i]['quantity'] *  $_SESSION['cart'][$i]['price'];
         $tong += $tt;
     }
+    
     // insert đơn hàng 
-    $id_bill =taodonhang($name,$address,$tel,$email,$tong,$pttt);
+    $id_bill =taodonhang($id_user,$name,$address,$tel,$email,$tong,$date,$pttt);
     // Lấy thoogn tin khách hàng từ form để tạo đơn hàng
-    $sum_total = 0;
+  
 
     $cart = $_SESSION['cart'];
 
@@ -32,6 +48,7 @@ if(isset($_POST['dathang'])){
     $dataDb = load_one_sanpham_cart($idList);
     // Lấy thông tin giỏ hàng từ session + id đơn hàng vừa tạo 
     foreach ($dataDb as $key => $product){
+        $sum_total = 0;
         // kiểm tra số lượng sản phẩm trong giỏ hàng
         $quantityInCart = 0;
         foreach ($_SESSION['cart'] as $item) {
@@ -40,6 +57,7 @@ if(isset($_POST['dathang'])){
                 break;
             }
         }
+ 
         $sum_total += ((int)$product['price'] * (int)$quantityInCart);
         $id_sanpham = $product['id_sanpham'];
         $ten_sanpham = $product['ten_sanpham'];
@@ -60,9 +78,11 @@ if(isset($_POST['dathang'])){
 ?>
 <?php 
 ?>
-
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,35 +92,36 @@ if(isset($_POST['dathang'])){
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="tong">
         <div class="menu">
-        <ul>
-                <li><a href="../act=trangchu">TRANG CHỦ</a></li>
+            <ul>
+                <li><a href="../?act=trangchu">TRANG CHỦ</a></li>
                 <li><a href="">SẢN PHẨM</a>
-                <ul class="sub-menu">
-                <?php foreach ($all_danhmuc as $danhmuc) : ?>
-                    <li><a href="../?act=category_products&id_dm=<?= $danhmuc['id_danhmuc'] ?>"><?= $danhmuc['ten_danhmuc'] ?></a></li>
-                <?php endforeach ?>
-                </ul>
+                    <ul class="sub-menu">
+                        <?php foreach ($all_danhmuc as $danhmuc) : ?>
+                            <li><a href="../?act=category_products&id_dm=<?= $danhmuc['id_danhmuc'] ?>"><?= $danhmuc['ten_danhmuc'] ?></a></li>
+                        <?php endforeach ?>
+                    </ul>
                 </li>
-                <li><a href="../?act=tintuc">TIN TỨC</a></li>
+                <li><a href="?act=tintuc">TIN TỨC</a></li>
 
             </ul>
             <div class="logo">
-                <a href="../?act=trangchu" ><img style="width: 160px;" src="../images/xin500k.png" alt=""></a>
+                <a href="../?act=trangchu"><img style="width: 160px;" src="../images/xin500k.png" alt=""></a>
             </div>
-            <ul>
-                <li ><a href=""><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
-                <li ><a href="../?act=cart"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i><span style="color:red" id='totalProduct'><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?></span></a></li>
-                <li ><a href="../?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
+            <ul >
+                <li><a href=""><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
+                <li><a href="../?act=cart"><i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i>
+                <!-- <span style="color:red;font-size:20px;" id='totalProduct'><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : "" ?></span> -->
+            </a></li>
+            <li><a href="../?act=list_donhang"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+                <li><a href="../?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
             </ul>
         </div>
-
         <main style="background-color: white;">
             <div class="cart-content" style="padding-bottom:10px;">
                 <div class="modal-body">
@@ -322,3 +343,5 @@ a.button:hover {
     background-color: orange;
 }
 </style>
+
+<!-- <?php unset($_SESSION['page_refreshed']); ?> -->

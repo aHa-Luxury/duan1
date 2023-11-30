@@ -76,7 +76,6 @@ p {
   }
   
   .menu ul li {
-  padding-bottom: 20px;
   margin-right: 10px;
   margin-top: 50px;
   list-style-type: none;
@@ -597,7 +596,7 @@ footer {
 /* Trang thông tin người dùng */
 .thongtin_user {
 
-  padding: 50px 150px 20px 150px;
+  padding: 50px 100px 20px 100px;
   background-color: rgb(239, 237, 237);
   }
   .thongtin_user .head {
@@ -609,15 +608,11 @@ footer {
   .thongtin_user .head .hinh {
   overflow: hidden;
   width: 10%;
-  border-radius: 50%;
   }
   .thongtin_user .head .hinh img {
   width: 100%;
   }
-  .thongtin_user .head .text_thongtin {
-  margin-left: 10px;
-  width: 80%;
-  }
+
   .thongtin_user .head .text_thongtin h1 {
   color: orange;
   }
@@ -635,6 +630,9 @@ footer {
   border: 1px solid orange;
   height: 50px;
   margin: 0 20px 10px 0;
+  }
+  .thongtin_user .end .box a {
+    color:black;
   }
   .thongtin_user .end .box p {
   text-align: center;
@@ -1019,21 +1017,43 @@ footer {
 }
 
 .cart-row {
+  color:black;
   display: flex;
 }
 
-.cart-item {
-  width: 40%;
+.cart-img {
+  text-align: center;
+  width: 20%;
+}
+.cart-tensp {
+  text-align: center;
+  width: 20%;
 }
 
 .cart-price {
+  text-align: center;
   width: 20%;
   font-size: 1.2em;
   color: #333;
 }
 
 .cart-quantity {
+  text-align: center;
   width: 20%;
+}
+.cart-quantity input{
+  width:50px;
+  text-align: center;
+}
+.cart-count {
+  text-align: center;
+  width: 20%;
+
+}
+.cart-option {
+  text-align: center;
+  width: 20%;
+
 }
 
 .cart-item-title {

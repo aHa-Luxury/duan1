@@ -292,7 +292,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "add_tk":
 
             if (isset($_POST['submit'])) {
-                $ho = $_POST['ho'];
+               
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -306,7 +306,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 }
 
                 if ($check == true) {
-                    add_taikhoan($ho, $ten, $email, $password);
+                    add_taikhoan($ten, $email, $password);
                     setcookie("success", "Thêm khách hàng thành công", time() + 1);
                     header("location:index.php?act=khachhang");
                 } else {
@@ -322,11 +322,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $id_user = $_POST['id_user'];
-                $ho = $_POST['ho'];
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                update_khachhang($id_user, $ho, $ten, $email, $password);
+                update_khachhang_admin($ten, $email, $password,$id_user,);
                 setcookie("success", "Sửa thông tin thành công !", time() + 1);
                 header('location:index.php?act=khachhang');
             }

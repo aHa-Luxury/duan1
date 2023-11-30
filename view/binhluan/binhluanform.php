@@ -26,13 +26,13 @@ $dsbl = loadall_bl($id_sanpham);
     <div class="boxcontent2 binhluan">
         <table>
             <?php
-            echo '<tr><td><strong>Email</strong></td>';
-            echo '<td><strong>Nội dung</strong></td>';
+            echo '<tr><td style="width:50%"><strong>Email</strong></td>';
+            echo '<td style="width:50%"><strong>Nội dung</strong></td>';
             echo '</tr>';
             foreach ($dsbl as $bl) {
                 extract($bl);
-                echo '<tr><td>' . $email . '</td>';
-                echo '<td>' . $noidung . '</td>';
+                echo '<tr><td style="width:50%">' . $email . '</td>';
+                echo '<td style="width:50%">' . $noidung . '</td>';
             }
             ?>
         </table>

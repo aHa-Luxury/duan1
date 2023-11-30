@@ -18,6 +18,7 @@ include "view/menu.php";
 include "pdo/khachhang.php";
 include("pdo/thongtinwebsite.php");
 include("pdo/binhluan.php");
+include "pdo/donhang.php";
 $thongtinwebsite = load_all_thongtinwebsite(1);
 
 if (isset($_GET['act'])) {
@@ -64,6 +65,12 @@ if (isset($_GET['act'])) {
                 //         header("location:?act=cart");
                 //     }
                 // }
+                if(isset($_POST['addtocart'])){
+                    header('location:index.php?act=cart');
+                }
+                if(isset($_POST['buy'])){
+                    header('location:index.php?act=thanhtoan');
+                }
                 include "view/chitietsanpham.php";
             } else {
                 echo "Không có thông tin sản phẩm";
@@ -101,6 +108,39 @@ if (isset($_GET['act'])) {
             }
             include "view/cart.php";
             break;
+
+        case "list_donhang":
+            if(isset($_SESSION['user'])){
+                $id_user = $_SESSION['user']['id_user'];
+                $load_all_donhang =  load_all_donhang_user($id_user);
+            }
+            include "view/list_donhang_user.php";
+            break;
+
+        case "dlt_bill":
+            if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
+                $id_bill = $_GET['id_bill'];
+                delete_donhang($id_bill);
+                setcookie("xoa","Xóa đơn hàng thành công",time() + 1);
+                header("location:index.php?act=list_donhang");
+            }
+            break;
+        case "huy_bill":
+            if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
+                $id_bill = $_GET['id_bill'];
+                delete_donhang($id_bill);
+                setcookie("huy","Hủy đơn hàng thành công",time() + 1);
+                header("location:index.php?act=list_donhang");
+            }
+            break;
+            case "chitietdonhang":
+                if(isset($_GET['id_bill']) && ($_GET['id_bill']) >0){
+                    $id_bill = $_GET['id_bill'];
+                    $load_one_donhang = load_one_donhang($id_bill);
+                    $load_chitietbill = load_chitietbill($id_bill);
+                }
+                include "view/chitietdonhang.php";
+                break;
         case "delete_cart":
             if (isset($_GET['idsp']) && isset($_GET['sz'])) {
                 $id_sanpham = $_GET['idsp'];
@@ -138,6 +178,7 @@ if (isset($_GET['act'])) {
                     $address = $_POST['address'];
                     $sdt = $_POST['sdt'];
                     $email = $_POST['email'];
+                  
                 }
             }
             include "view/thanhtoan.php";
@@ -150,7 +191,6 @@ if (isset($_GET['act'])) {
             // Trang đăng ký
         case "register":
             if (isset($_POST['submit'])) {
-                $ho = $_POST['ho'];
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $password = $_POST['password'];
@@ -162,12 +202,12 @@ if (isset($_GET['act'])) {
                         break;
                     }
                 }
-                if ($ho == "" || $ten == "" || $email == "" || $password == "") {
+                if ($ten == "" || $email == "" || $password == "") {
                     setcookie("message", "Bạn cần nhập đủ dữ liệu", time() + 1);
                     header("location:index.php?act=register");
                 } else {
                     if ($check == true) {
-                        add_taikhoan($ho, $ten, $email, $password);
+                        add_taikhoan($ten, $email, $password);
                         $_SESSION['user'] = dangnhap($email, $password);
                         header("location:index.php?act=trangchu");
                     } else {
@@ -220,16 +260,19 @@ if (isset($_GET['act'])) {
             }
             break;
             case 'updateinfor':
+                if(isset($_SESSION['user'])){
+                    $id_khachhang = $_SESSION['user']['id_user'];
+                    $khachhang = select_one_khachhang($id_khachhang);
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $ho = $_POST['ho'];
                     $ten = $_POST['ten'];
                     $email = $_POST['email'];
                     $address = $_POST['address'];
                     $tel = $_POST['tel'];
                     $id_user = $_POST['id_user'];
-                    update_khachhang($ho, $ten, $email,$address,$id_user);
+                    update_khachhang($ten, $email,$address,$tel,$id_user);
                     header("Location:index.php?act=user");
                 }
+            }
                 include "view/taikhoan/update.php";
                 break;
                 case 'changepassword':
@@ -252,6 +295,20 @@ if (isset($_GET['act'])) {
                         }
                     }
                     include "view/taikhoan/changepass.php";
+                    break;
+                case 'forget_mk':
+                    if(isset($_POST['capnhat'])){
+                        $email = $_POST['email'];
+                        if($email == $_SESSION['user']['email']){
+                            $khachhang = select_one_kh_forgettk($email);
+                            setcookie("success","Mật khẩu của bạn là : $khachhang[password]", time() + 1);
+                            header("location:index.php?act=forget_mk");
+                        }else{
+                            setcookie("message","Email không chính xác", time() + 1);
+                            header("location:index.php?act=forget_mk");
+                        }
+                    }
+                    include "view/taikhoan/forget_mk.php";
                     break;
             case 'quanlybinhluan':
              

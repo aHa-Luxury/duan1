@@ -1,7 +1,7 @@
 <div class="hr"></div>
         <footer>
             <div class="footer_1">
-              <img src="images/LOGOSUTU500K.png" alt="" />
+              <img src="images/xin500k.png" alt="" />
             </div>
             <div class="footer_2">
               <h1><?= $thongtinwebsite['ten_website'] ?></h1>

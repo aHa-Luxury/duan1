@@ -13,7 +13,7 @@
                 <div class="h2"><a href="?act=trangchu">Trang chủ</a></div><span
                     style="float: left;margin-top: 2px;margin-right: 10px;width: 10px;">—</span>
                 
-                <div class="h3"><a title="" itemprop="url" href="##"><?= $one_danhmuc['ten_danhmuc'] ?></a></div>
+                <div class="h3" style="text-transform:uppercase;width:200px"><?= $one_danhmuc['ten_danhmuc'] ?></div>
             </div>
         </div>
         <div class="name_category">

@@ -1,11 +1,6 @@
 <style>
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-}
 
-.content {
+.main {
     padding: 20px;
 }
 
@@ -60,7 +55,7 @@ select {
     margin-left: auto;
 }
 </style>
-<div class="content" >
+<main>
     <h1 style="color: rgb(90, 92, 105);">Chi tiết đơn hàng</h1>
 <form action="" method="post">
   <div style="display:flex;flex-direction:row">
@@ -71,14 +66,9 @@ select {
         <h2>Địa chỉ:<?= $load_one_donhang['address'] ?></h2>
         <h2>Số điện thoại: <?= $load_one_donhang['tel'] ?></h2>
         <h2>Email:<?= $load_one_donhang['email'] ?></h2>
-        <select name="trangthai" value="<?=$load_one_donhang['trangthai'] ?>" id="">
-            <option value="0" <?= $load_one_donhang['trangthai'] == 0 ? "selected": '' ?> >Đang xác thực</option>
-            <option value="1" <?= $load_one_donhang['trangthai'] == 1 ? "selected": '' ?>>Đang vận chuyển </option>
-            <option value="2" <?= $load_one_donhang['trangthai'] == 2 ? "selected": '' ?>>Đã giao</option>
-        </select>
     </div>
     <div class="right" style="width:50%;">
-    <h1  style="color:orangered;margin-top:10px" >Danh sách đơn hàng</h1>
+    <h1>Danh sách đơn hàng</h1>
     <?php foreach($load_chitietbill as $ctbill): ?>
     <div class="product" style="display:flex;flex-direction:row">
     <div class="img"> 
@@ -88,13 +78,12 @@ select {
     <div class="price" style="color:orangered"><?= number_format($ctbill['thanhtien'])?><u>đ</u></div>
     </div>
     <?php endforeach ?>
-<h1 style="color:orange">Tổng tiền: <span style><?= number_format($load_one_donhang['total'])?><u>đ</u></span></h1>
+<h1 style="color:orangered">Tổng tiền: <span><?= number_format($load_one_donhang['total'])?><u>đ</u></span></h1>
 </div>
 </div>
-<button class="btn btn-success" name="update_bill" type="submit">Cập nhật</button>
-<a href="?act=donhang" class="btn btn-primary">Danh sách</a>
+<a href="?act=donhang" style="border:1px solid white">Danh sách</a>
   </form>
                             
                             
-                          </div>
+                          </main>
                        

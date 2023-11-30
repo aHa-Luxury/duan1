@@ -6,10 +6,8 @@
         <div class="login">
           <h2>ĐĂNG KÝ</h2>
           <form action="" method="post">
-            Họ<br>
-            <input type="text" placeholder="Họ" name="ho">
-            <hr>
-            Tên<br>
+           
+            Họ và tên<br>
             <input type="text" placeholder="Tên" name="ten" >
             <hr>
             Email<br>

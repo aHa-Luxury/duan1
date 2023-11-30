@@ -12,7 +12,7 @@
         <div class="admin">
             <main>
                 <div class="main_left">
-                 <div class="logo"> <a href="../index.php?act=trangchu"><img  style="width: 150px;" src="../images/LOGOSUTU500K.png" alt=""></a></div>
+                 <div class="logo"> <a href="../index.php?act=trangchu"><img  style="width: 150px;" src="../images/xin500k.png" alt=""></a></div>
                     <ul>
                         
                         <li><a href="index.php"><i class="fa-solid fa-house"></i>Thống kê</a></li>
@@ -20,8 +20,8 @@
                         <li><a href="?act=danhmuc"><i class="fa-solid fa-list"></i>Danh mục</a></li>
                         <li><a href="?act=khachhang"><i class="fa-solid fa-user"></i>Khách hàng</a></li>
                         <li><a href="?act=binhluan"><i class="fa-solid fa-comment"></i>Bình luận</a></li>
-                        <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li>
                         <li></i><a href="?act=donhang"><i style="font-size: 20px;width: 40px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
+                        <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li>
                     </ul>
                 </div>
                 <div class="main_right" style="padding:0px">

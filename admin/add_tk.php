@@ -13,7 +13,6 @@
         background-color: #f4f4f4;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
-                                    <input type="text" name="ho" placeholder="Họ" required id=""><br><br>
                                     <input type="text" name="ten" placeholder="Tên" required id=""><br><br>
                                     <input type="email" name="email" id="" placeholder="Email" required><br><br>
                                     <input type="text" name="password" placeholder="Password" id="" required>

@@ -24,19 +24,29 @@ function select_one_khachhang($id_khachhang){
     $result = pdo_query_one($sql);
     return $result;
 }
+function select_one_kh_forgettk($email){
+    $sql = "Select * from khachhang where email = '$email'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 function delete_tk($id_user)
 {
     $sql = "DELETE from khachhang where id_user=" . $id_user;
     pdo_execute($sql);
 }
-function update_khachhang($ho, $ten, $email, $address,$id_user)
+function update_khachhang($ten, $email, $address,$tel,$id_user)
 {
-    $sql = "UPDATE khachhang set  ho='$ho',ten='$ten',email='$email', address='$address' where id_user='$id_user'";
+    $sql = "UPDATE khachhang set ten='$ten',email='$email', address='$address' , tel = '$tel' where id_user='$id_user'";
+    pdo_execute($sql);
+}
+function update_khachhang_admin($ten, $email,$tel,$id_user)
+{
+    $sql = "UPDATE khachhang set ten='$ten',email='$email', tel = '$tel' where id_user='$id_user'";
     pdo_execute($sql);
 }
 
-function add_taikhoan($ho,$ten,$email,$password){
-    $sql = "INSERT into khachhang(ho,ten,email,password) VALUES ('$ho','$ten','$email','$password')";
+function add_taikhoan($ten,$email,$password){
+    $sql = "INSERT into khachhang(ten,email,password) VALUES ('$ten','$email','$password')";
     pdo_execute($sql);
 }
 function count_khachhang(){

@@ -3,11 +3,12 @@
         <div  class="modal-body">
             <div  class="cart-left">
                 <div class="cart-row">
-                    <span class="cart-item cart-header cart-column">Sản Phẩm</span>
-                    <span class="cart-item cart-header cart-column">Tên</span>
-                    <span class="cart-price cart-header cart-column">Giá</span>
-                    <span class="cart-quantity cart-header cart-column">Số Lượng</span>
-                    <span class="cart-quantity cart-header cart-column">Tổng</span>
+                    <span class="cart-img" style="font-weight:700">Sản Phẩm</span>
+                    <span class="cart-tensp"style="font-weight:700">Tên</span>
+                    <span class="cart-price"style="font-weight:700">Giá</span>
+                    <span class="cart-quantity"style="font-weight:700">Số Lượng</span>
+                    <span class="cart-count"style="font-weight:700">Tổng</span>
+                    <span class="cart-option"style="font-weight:700">Chức năng</span>
                 </div>
                 <hr>
                 <div class="cart-items">
@@ -26,20 +27,23 @@
                         }
                     ?>
                         <div class="cart-row">
-                            <div class="cart-item cart-column">
-                                <img class="cart-item-image" src="images/<?= $product['img_sanpham'] ?>" width="100" height="100">
-                                <span class="cart-item-title"><?= $product['ten_sanpham'] ?></span>
+                            <div class="cart-img">
+                                <img style="width:80px" class="" src="images/<?= $product['img_sanpham'] ?>" >
                             </div>
-                            <span class="cart-price cart-column"><?= number_format((int)$product['price'], 0, ",", ".")  ?> <u>đ</u></span>
-                            <!-- <span class="cart-price cart-column"><?= $product['size']  ?></span> -->
-                            <div class="cart-quantity cart-column" style="width:300px;">
-                                < <input type="number" value="<?= $quantityInCart ?>" min="1" id="quantity_<?= $product['id_sanpham'] ?>" oninput="updateQuantity(<?= $product['id_sanpham'] ?>, <?= $key ?>)">
-                                <?= number_format((int)$product['price'] * (int)$quantityInCart, 0, ",", ".") ?> <u>đ</u>
+                            <div class="cart-tensp" style="margin-top:10px">
+                                <span  class=""><?= $product['ten_sanpham'] ?></span>
                             </div>
-                            <div class="cart-quantity cart-column">
+                            <div class="cart-price"  style="margin-top:25px">
+                                <span class=""><?= number_format((int)$product['price'], 0, ",", ".")  ?> <u>đ</u></span>
+                            </div>
+                            <div class="cart-quantity" style="margin-top:25px">
+                                 <input type="number" value="<?= $quantityInCart ?>" min="1" id="quantity_<?= $product['id_sanpham'] ?>" oninput="updateQuantity(<?= $product['id_sanpham'] ?>, <?= $key ?>)">
+                              
+                            </div>
+                            <div class="cart-count" style="margin-top:25px">
                             <b style="color:black"><?= number_format((int)$product['price'] * (int)$quantityInCart, 0, ",", ".") ?> <u>đ</u></b></div>
-                            <div class="cart-quantity cart-column">
-                            <button style="height:30px;text-align:center;line-height:30px" onclick="removeFormCart(<?= $product['id_sanpham'] ?>)" class="btn btn-danger">Xóa</button></div>
+                            <div class="cart-option">
+                            <button style="height:30px;text-align:center;line-height:30px;margin-top:25px" onclick="removeFormCart(<?= $product['id_sanpham'] ?>)" class="btn btn-danger">Xóa</button></div>
                         </div>
                         <hr>
 

@@ -9,9 +9,10 @@
         <table class="table table-striped">
             <thead>
                 <th>#</th>
+                <th>Mã đơn</th>
                 <th>Tên</th>
                 <th>Địa chỉ</th>
-                <th>Số điện thoại</th>
+                <th>Sđt</th>
                 <th>Email</th>       
                 <th>Tổng tiền</th>
                 <th>PTTT</th>
@@ -26,7 +27,8 @@
             <?php $count = 1;
             foreach  ($load_all_donhang as $all_dh) : ?>
                 <tr>
-                    <td style="line-height:50px;width:40px"><?= $all_dh['id_bill'] ?></td>
+                    <td style=";width:40px"><?= $count ?></td>
+                    <td style="width:80px"><?= $all_dh['id_bill'] ?></td>
                     <td style="text-align:left">
                         <?php
                         $ten_sanpham = $all_dh['name'];

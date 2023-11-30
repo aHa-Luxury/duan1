@@ -10,7 +10,6 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <th>#</th>
-                                            <th>Họ</th>
                                             <th>Tên</th>
                                             <th>Email</th>
                                             <th>Password</th>
@@ -22,7 +21,6 @@
 
                                         <tr>
                                             <td><?= $count  ?></td>
-                                            <td><?= $all_kh['ho'] ?></td>
                                             <td><?= $all_kh['ten'] ?></td>
                                             <td > <?= $all_kh['email'] ?></td>
                                             <td><?= $all_kh['password'] ?></td>

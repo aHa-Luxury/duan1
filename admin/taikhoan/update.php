@@ -12,10 +12,9 @@
         background-color: #f4f4f4;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?>"><br><br>
-            Email <input type="email" name="email" value="<?= $khachhang['email'] ?>"><br><br>
-            Ho <input type="text" name="ho" value="<?= $khachhang['ho'] ?>"><br><br>
-            Ten <input type="text" name="ten" value="<?=$khachhang['ten'] ?>">
+            <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?>">
+            Tên <input type="text" name="ten" value="<?=$khachhang['ten'] ?>">
+            Email <input type="email" name="email" value="<?= $khachhang['email'] ?>"><br>
             Password <input type="text" name="password" value="<?= $khachhang['password'] ?>">
             <input type="submit" name="capnhat" value="Cập nhật">
             <input type="reset" style="background-color: #a97a3b;

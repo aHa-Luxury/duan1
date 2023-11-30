@@ -79,6 +79,7 @@ h4 {
                         <input type="hidden" name="id_user" value="<?= $id_user ?>">
                         <input class="buttonchangepass" type="submit" value="Đổi mật khẩu" name="capnhat">
                     </div>
+                    <a href="?act=forget_mk" style="color:red">Quên mật khẩu?</a>
                 </form>
                </div>
             </div>

@@ -13,9 +13,9 @@ function taochitietbill($id_sanpham,$ten_sanpham,$hinhsp,$price,$soluong,$thanht
    $conn->exec($sql);
 
 }
-function taodonhang($name,$address,$tel,$email,$total,$pttt){
+function taodonhang($id_user,$name,$address,$tel,$email,$total,$date,$pttt){
     $conn= ketnoidb();
-    $sql ="INSERT into bill(name,address,tel,email,total,pttt) VALUES('$name','$address','$tel','$email','$total','$pttt')";
+    $sql ="INSERT into bill(id_user,name,address,tel,email,total,date,pttt) VALUES('$id_user','$name','$address','$tel','$email','$total','$date','$pttt')";
    $conn->exec($sql);
    $lastId = $conn->lastInsertId();
    $conn = null;
@@ -35,15 +35,15 @@ function ketnoidb(){
     }
 }
 
-function load_one_sanpham_cart($idList){
-    $conn = ketnoidb();
-    $sql = 'SELECT * from sanpham where id_sanpham IN ('. $idList .')';
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
+// function load_one_sanpham_cart($idList){
+//     $conn = ketnoidb();
+//     $sql = 'SELECT * from sanpham where id_sanpham IN ('. $idList .')';
+//     $stmt = $conn->prepare($sql);
+//     $stmt->execute();
+//     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $result;
 
-}
+// }
 
 function load_all_thongtinwebsite($id){
     $conn = ketnoidb();

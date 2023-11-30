@@ -1,26 +1,17 @@
 <main>
     <div class="thongtin_user">
-      <div class="head">
-          <div class="hinh">
-              <img src="" alt="">
-          </div>
+      <div class="head" >
+         
           <!-- <div class="text_thongtin">
-              <h1><?= $one_khachhang['ho'].''.$one_khachhang['ten'] ?></h1>
+              <h1><?= $one_khachhang['ten'] ?></h1>
               <p>Tuổi: 19</p>
               <p>Email: <?= $one_khachhang['email'] ?></p>
               <p>Sđt: 0369.037.600</p>
               <p>Địa chỉ: 213 Phương Canh, Xuân Phương, Nam Từ Liêm, Hà Nội</p>
           </div> -->
-          <div id="avatar-container">
-    <img id="avatar-image" src="default-avatar.jpg" >
-    <div id="upload-btn-wrapper">
-        <input type="file" name="avatar" id="avatar-input" accept="image/*">
-        <label for="avatar-input">Chọn ảnh</label>
-    </div>
-    
-</div>
+      
 <div class="text_thongtin">
-              <h1><?= $one_khachhang['ho'].''.$one_khachhang['ten'] ?></h1>
+              <h1><?=$one_khachhang['ten'] ?></h1>
               <p>Email: <?= $one_khachhang['email'] ?></p>
               <p>Địa chỉ: <?= $one_khachhang['address'] ?></p>
               <p>Số điện thoại: <?= $one_khachhang['tel'] ?></p>
@@ -53,7 +44,7 @@
             <button class="box" type="submit" name=""><a href="index.php?act=updateinfor">Cập nhật thông tin</a></button>
             <button class="box" type="submit" name=""><a href="index.php?act=changepassword">Đổi mật khẩu</a></button>
             <button class="box" type="submit" name=""><a href="index.php?act=quanlybinhluan">Quản lý bình luận</a></button>
-            <button class="box" type="submit" name="">Đơn hàng của tôi</button>
+            <button class="box" type="submit" name=""><a href="index.php?act=list_donhang">Đơn hàng của tôi</a></button>
             <button class="box" type="submit" name="dangxuat">Đăng xuất</button>
          </form>
          
@@ -62,7 +53,7 @@
   </div>
   </main>
 
-  <style>
+  <!-- <style>
      #avatar-container {
             width: 120px;
             height: 120px;
@@ -104,21 +95,5 @@
             font-size: 1.2em;
             text-align: center;
         }
-  </style>
+  </style> -->
 
-  <script>
-    document.getElementById('avatar-input').addEventListener('change', function () {
-    const fileInput = this;
-    const file = fileInput.files[0];
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.getElementById('avatar-image').src = e.target.result;
-        };
-
-        reader.readAsDataURL(file);
-    }
-});
-  </script>
