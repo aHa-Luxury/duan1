@@ -64,7 +64,7 @@ if (!empty($_SESSION['cart'])) :
 
                     <?php
                         // Tính tổng giá đơn hàng
-                        $sum_total += ((int)$product['price'] * (int)$quantityInCart);
+$sum_total += ((int)$product['price'] * (int)$quantityInCart);
 
                         // Lưu tổng giá trị vào sesion
                         $_SESSION['resultTotal'] = $sum_total;

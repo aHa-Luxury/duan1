@@ -38,7 +38,8 @@
                 <li><a href="?act=cart"><i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i>
                 <!-- <span style="color:red;font-size:20px;" id='totalProduct'><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : "" ?></span> -->
             </a></li>
-            <li><a href="?act=list_donhang"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+            <li ><a href="?act=tracuu"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+            <!-- <li><a href="?act=list_donhang"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li> -->
                 <li><a href="?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
             </ul>
         </div>

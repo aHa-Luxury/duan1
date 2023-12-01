@@ -9,6 +9,18 @@ function load_all_donhang_user($id_user){
     $result = pdo_query($sql);
     return $result;
 }
+function tra_cuu_don_hang($id_bill)
+{
+    $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = '$id_bill'";
+    $result = pdo_query($sql);
+    return $result;
+}
+function checkbill($id_bill,$tel)
+{
+    $sql = "Select * from bill where id_bill = '$id_bill' and tel = '$tel'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 function load_one_donhang($id_bill){
     $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = '$id_bill'";
     $result = pdo_query_one($sql);

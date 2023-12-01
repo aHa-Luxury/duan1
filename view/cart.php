@@ -46,8 +46,7 @@
                             <button style="height:30px;text-align:center;line-height:30px;margin-top:25px" onclick="removeFormCart(<?= $product['id_sanpham'] ?>)" class="btn btn-danger">Xóa</button></div>
                         </div>
                         <hr>
-
-                    <?php
+<?php
                         // Tính tổng giá đơn hàng
                         $sum_total += ((int)$product['price'] * (int)$quantityInCart);
 
@@ -131,7 +130,7 @@
 
     function removeFormCart(id) {
         if (confirm("Bạn có đồng ý xóa sản phẩm hay không?")) {
-            // Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
+// Gửi yêu cầu bằng ajax để cập nhật giỏ hàng
             $.ajax({
                 type: 'POST',
                 url: './view/deleteCart.php',

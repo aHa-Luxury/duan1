@@ -337,6 +337,26 @@ if (isset($_GET['act'])) {
                 }
                 include "view/listcart.php";
                 break;
+                case 'tracuu':
+                    if (isset($_POST['tracuu']) && ($_POST['tracuu'])) {
+                        $id_bill = $_POST['id_bill'];
+                        $tel = $_POST['tel'];
+                        $testbill = checkbill($id_bill, $tel);
+                        if ($id_bill == "" ||$tel== "") {
+                            setcookie("message", "Vui lòng nhập thêm thông tin.", time() + 1);
+                            header("Location:index.php?act=tracuu");
+                        }else  {
+                            if ($testbill !== false) {
+                                $mybill = tra_cuu_don_hang($id_bill);
+                                include "view/inforbill.php";
+                                break;
+                            }
+                            setcookie("message", "Thông tin không trùng khớp.", time() + 1);
+                            header("Location:index.php?act=tracuu");
+                        } ;
+                    }
+                    include "view/tracuudonhang.php";
+                    break;
     }
 } else {
     include "view/trangchu.php";
