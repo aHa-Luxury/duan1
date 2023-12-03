@@ -10,7 +10,10 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
                                     <input type="text" name="name_danhmuc" placeholder="Tên danh mục" required id=""><br><br>
-                                    <input type="file" name="hinh" id="" ><br><br>
+                                    Logo thương hiệu
+                                    <input type="file" name="hinh" id="" required><br><br>
+                                    Video banner
+                                    <input type="file" name="video" id="video" required accept="video/*"><br><br>
                                     <input type="submit" value="Thêm" name="submit">
                                     <a href="?act=danhmuc" style="background-color: #0d6efd;
     color: #fff;

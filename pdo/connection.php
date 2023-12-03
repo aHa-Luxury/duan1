@@ -3,7 +3,7 @@ function pdo_get_connection(){
     $servername = "localhost";
     $dbname= "duan1";
     $username = "root";
-    $password = "1234";
+    $password = "";
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -58,6 +58,23 @@ function pdo_query_one($sql){
         throw $e;
     }
     finally{
+        unset($conn);
+    }
+}
+function pdo_execute_last_id($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try {
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+
+        // Lấy ID vừa được insert
+        $lastInsertedId = $conn->lastInsertId();
+
+        return $lastInsertedId;
+    } catch (PDOException $e) {
+        throw $e;
+    } finally {
         unset($conn);
     }
 }

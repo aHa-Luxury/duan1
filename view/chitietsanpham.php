@@ -28,6 +28,7 @@
             <option value="<?=$all_size_sp['size']?>"><?=$all_size_sp['size']?></option>
             <?php endforeach ?>
         </select> -->
+        
   <br>
         <p><?= $one_sanpham['tinhtrang'] ?></p><br>
         <h2>Thông tin thêm:</h2>

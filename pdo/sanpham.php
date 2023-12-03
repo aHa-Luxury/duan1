@@ -1,4 +1,5 @@
 <?php
+
 function select_all_sanpham()
 {
     // $sql = "SELECT * from sanpham sp inner join danhmuc dm on sp.id_danhmuc = dm.id_danhmuc left join sizesanpham szsp on sp.id_sanpham = szsp.id_sanpham";
@@ -225,3 +226,42 @@ function locsp_theogia($price)
     $result = pdo_query($sql);
     return $result;
 }
+
+
+function locsp_theogia_danhmuc($price, $id_danhmuc)
+{
+    $where = "";
+    $order_by = " ORDER BY price ASC";
+
+    switch ($price) {
+        case 'low_to_high':
+            $order_by = " ORDER BY price ASC";
+            break;
+        case 'high_to_low':
+            $order_by = " ORDER BY price DESC";
+            break;
+        case '100_to_500':
+            $where = " AND price BETWEEN 100000000 AND 500000000 ";
+            break;
+        case '500_to_700':
+            $where = " AND price BETWEEN 500000000 AND 700000000 ";
+            break;
+        case 'above_700':
+            $where = " AND price > 700000000 ";
+            break;
+
+    }
+
+    $sql = "SELECT * FROM sanpham WHERE id_danhmuc = '$id_danhmuc' $where $order_by";
+    
+    $result = pdo_query($sql);
+    return $result;
+
+}
+
+function load_all_sp_theo_ten($kyw){
+    $sql = "SELECT * FROM sanpham WHERE ten_sanpham LIKE '%" . $kyw . "%'";
+    $result = pdo_query($sql);
+    return $result;
+}
+?>

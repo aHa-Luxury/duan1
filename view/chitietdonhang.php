@@ -8,20 +8,39 @@ h1 {
     color: #5a5c69;
     text-align: center;
 }
-
-.left, .right {
-    padding: 20px;
-    box-sizing: border-box;
+.bill{
+ margin-bottom: 20px;
+}
+.left{
+    padding: 40px;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+.right {
+    text-align: center;
+    background-color: black;
+   color:black;
+}
+.prd{
+    width:70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 0 40px;
 }
 
-.left h1, .right h1 {
-    color: #333;
+.prd .ten{
+    font-size: 20px;
+    color: orange;
 }
 
-.left h2, .right h2 {
-    margin: 10px 0;
-}
+.prd .price{
+    width:20%;
+    color:orangered;
+    font-size: 20px;
 
+}
 select {
     padding: 8px;
     margin-top: 10px;
@@ -29,37 +48,13 @@ select {
     box-sizing: border-box;
 }
 
-.product {
-    margin-top: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-}
 
-.img img {
-    width: 100px;
-    height: auto;
-}
-
-.right {
-    background-color: black;
-    color: #fff;
-}
-
-.ten {
-    margin-left: 10px;
-    flex: 1;
-}
-
-.price {
-    flex-shrink: 0;
-    margin-left: auto;
-}
 </style>
 <main>
     <h1 style="color: rgb(90, 92, 105);">Chi tiết đơn hàng</h1>
 <form action="" method="post">
-  <div style="display:flex;flex-direction:row">
-  <div class="left" style="width:50%">
+  <div class="bill">
+  <div class="left" >
         <h1>Thông tin nhận hàng</h1>
         <input type="hidden" value="<?= $load_one_donhang['id_bill'] ?>" name="id_bill">
         <h2>Tên khách hàng:<?= $load_one_donhang['name'] ?></h2>
@@ -67,23 +62,22 @@ select {
         <h2>Số điện thoại: <?= $load_one_donhang['tel'] ?></h2>
         <h2>Email:<?= $load_one_donhang['email'] ?></h2>
     </div>
-    <div class="right" style="width:50%;">
-    <h1>Danh sách đơn hàng</h1>
+    <div class="right">
+    <h1>Đơn hàng</h1>
     <?php foreach($load_chitietbill as $ctbill): ?>
-    <div class="product" style="display:flex;flex-direction:row">
-    <div class="img"> 
-        <img style="width:60px" src="../images/<?= $ctbill['hinh_sanpham']?>" alt="">
-    </div>
-    <div class="ten"><?= $ctbill['ten_sanpham']?> <b style="color:orange">x<?= $ctbill['soluong']?></b></div>
-    <div class="price" style="color:orangered"><?= number_format($ctbill['thanhtien'])?><u>đ</u></div>
+    <div class="prd" >
+
+        <img style="width:60px" src="images/<?= $ctbill['hinh_sanpham']?>" alt="">
+    <div class="ten"><?= $ctbill['ten_sanpham']?> <b style="color:orangered">x<?= $ctbill['soluong']?></b></div>
+
+    <div class="price"><?= number_format($ctbill['thanhtien'])?><u>đ</u></div>
     </div>
     <?php endforeach ?>
-<h1 style="color:orangered">Tổng tiền: <span><?= number_format($load_one_donhang['total'])?><u>đ</u></span></h1>
+<h1 >Tổng tiền: <span style="color:orangered"><?= number_format($load_one_donhang['total'])?><u>đ</u></span></h1>
 </div>
 </div>
-<a href="?act=donhang" style="border:1px solid white">Danh sách</a>
   </form>
-                            
+                            <a href=""></a>
                             
                           </main>
                        

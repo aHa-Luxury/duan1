@@ -16,6 +16,7 @@
                 <th>Email</th>       
                 <th>Tổng tiền</th>
                 <th>PTTT</th>
+                <th>Ngày</th>
                 <th>Trạng thái</th>
                 <th>Chức năng</th>
             </thead>
@@ -43,6 +44,7 @@
                     <td><?= $all_dh['email'] ?></td>
                     <td><?= number_format($all_dh['total']) ?><u>đ</u></td>
                     <td><?= $all_dh['pttt'] == 0 ? "Thanh toán khi nhận hàng" : "Chuyển khoản"   ?></td>
+                    <td><?= date('d-m-Y',strtotime($all_dh['date'])) ?></td>
                     <td><?php if($all_dh['trangthai'] == 1):?>
                         <?= '<b style="color:orangered">Đang vận chuyển</b>' ?>
                         <?php elseif(($all_dh['trangthai']) == 2 ):?>

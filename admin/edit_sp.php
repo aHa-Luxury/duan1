@@ -115,12 +115,7 @@
                     <input type="text" name="title1" placeholder="Tiêu đề 1" value="<?= $one_sanpham['tieude1'] ?? "" ?>" id=""><br>
                     <p style="color:purple"><span style="color:red">* </span>Nội dung 1: <b>(Không bắt buộc)</b></p>
                     <textarea style="width: 100%;" name="noidung1" id="" cols="60" rows="5" placeholder="Nội dung 1"><?= $one_sanpham['noidung1'] ?? "" ?></textarea><br>
-                    <?php if ($one_sanpham['hinhanh1'] != "") : ?>
-                        <img width="5px" src="../images/<?= $one_sanpham['hinhanh1'] ?>" alt="">
-                    <?php else : ?>
-                        <span style="color:red">Chưa có hình ảnh 1</span><br>
-                    <?php endif ?>
-                    <input type="file" name="hinhanh1" id="">
+                   
                     
 
                 </div>
@@ -130,12 +125,7 @@
                     <input type="text" name="title2" placeholder="Tiêu đề 2" value="<?= $one_sanpham['tieude2'] ?? "" ?>" id=""><br>
                     <p style="color:purple"><span style="color:red">* </span>Nội dung 2: <b>(Không bắt buộc)</b></p>
                     <textarea style="width: 100%;" name="noidung2" id="" cols="60" rows="5" placeholder="Nội dung 2"><?= $one_sanpham['noidung2'] ?? "" ?></textarea><br>
-                    <?php if ($one_sanpham['hinhanh2'] != "") : ?>
-                        <img src="../images/<?= $one_sanpham['hinhanh2'] ?>" alt="">
-                    <?php else : ?>
-                        <span style="color:red">Chưa có hình ảnh 2</span><br>
-                    <?php endif ?>
-                    <input type="file" name="hinhanh2" id="">
+                 
 
                 </div>
                 <br>
@@ -145,12 +135,7 @@
                     <input type="text" name="title3" placeholder="Tiêu đề 3" value="<?= $one_sanpham['tieude3'] ?? "" ?>" id=""><br>
                     <p style="color:purple"><span style="color:red">* </span>Nội dung 3: <b>(Không bắt buộc)</b></p>
                     <textarea style="width: 100%;" name="noidung3" id="" cols="60" rows="5" placeholder="Nội dung 3"><?= $one_sanpham['noidung3'] ?? "" ?></textarea><br>
-                    <?php if ($one_sanpham['hinhanh3'] != "") : ?>
-                        <img src="../images/<?= $one_sanpham['hinhanh3'] ?>" alt="">
-                    <?php else : ?>
-                        <span style="color:red">Chưa có hình ảnh 3</span><br>
-                    <?php endif ?>
-                    <input type="file" name="hinhanh3" id="">
+                  
 
                 </div>
                 <br>

@@ -37,6 +37,7 @@
     }
 
     table {
+
         margin: 0 auto;
         width: 90%;
         border-collapse: collapse;
@@ -44,11 +45,17 @@
     }
 
     table thead tr th {
+        text-align: center ;
         color: #000;
         font-weight: bold;
+        max-width: 10%;
+    }
+    table thead tr td {
+        text-align: center ;
+
     }
 
-    th, td {
+    th, td  {
         border: 1px solid #ddd;
         padding: 12px;
         text-align: left;
@@ -70,6 +77,14 @@
         color: #fff;
         margin-right: 5px;
     }
+    /* th:nth-child(1) {
+        max-width:200px ;
+
+    }
+    td:nth-child(1) {
+        max-width:200px ;
+    } */
+
 
 </style>
 <main>
@@ -84,15 +99,15 @@
     <table border="1">
         <thead>
             <tr>
-                <th style="width:40px">#</th>
-                <th style="width:80px">ID_bill</th>
+                <th>#</th>
+                <th>ID_bill</th>
                 <th >Tên</th>
-                <th style="width:100px">Địa chỉ</th>
-                <th style="width:50px">Tổng tiền</th>
-                <th style="width:50px">Ngày đặt</th>
-                <th style="width:300px">Phương thức thanh toán</th>
+                <th >Địa chỉ</th>
+                <th>Tổng tiền</th>
+                <th>Ngày đặt</th>
+                <th>Phương thức thanh toán</th>
                 <th>Trạng thái</th>
-                <th style="width:200px">Chức năng</th>
+                <th >Chức năng</th>
             </tr>
         </thead>
         <?php  if(isset($_SESSION['user'])) : ?>
@@ -104,13 +119,12 @@
                 <?php else :?>
             <?php $count = 1; foreach ($load_all_donhang as $all_donhang) : ?>
                 <tr>
-                    <td style="width:40px"><?= $count ?></td>
-                    <td style="width:80px"><?= $all_donhang['id_bill']  ?></td>
+                    <td ><?= $count ?></td>
+                    <td ><?= $all_donhang['id_bill']  ?></td>
                     <td ><?= $all_donhang['name']  ?></td>
-                    <td style="width:100px"><?= $all_donhang['address']  ?></td>
-                    <td style="width:50px"><?= number_format($all_donhang['total'])?><u>đ</u></td>
-                    <td style="width:50px"><?= $all_donhang['date']  ?></td>
-                    <td style="width:300px">
+                    <td ><?= $all_donhang['address']  ?></td><td><?= number_format($all_donhang['total'])?><u>đ</u></td>
+                    <td><?= date('d-m-Y',strtotime($all_donhang['date']))  ?></td>
+                    <td >
                     <?php if($all_donhang['pttt'] == 1):?>
                         <p> <?= "Chuyển khoản" ?></p>
                         <?php else :?>

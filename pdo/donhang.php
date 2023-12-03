@@ -1,17 +1,17 @@
 <?php
 function load_all_donhang(){
-    $sql = "SELECT * FROM bill bl ";
+    $sql = "SELECT * FROM bill bl order by id_bill desc";
     $result = pdo_query($sql);
     return $result;
 }
 function load_all_donhang_user($id_user){
-    $sql = "SELECT * FROM bill where id_user = '$id_user'" ;
+    $sql = "SELECT * FROM bill where id_user = $id_user" ;
     $result = pdo_query($sql);
     return $result;
 }
 function tra_cuu_don_hang($id_bill)
 {
-    $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = '$id_bill'";
+    $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = $id_bill";
     $result = pdo_query($sql);
     return $result;
 }

@@ -11,6 +11,7 @@ include("../pdo/danhmuc.php");
 include("../pdo/thongtinwebsite.php");
 include("../pdo/binhluan.php");
 include("../pdo/donhang.php");
+include("../pdo/thongke.php");
 $thongtinwebsite = load_all_thongtinwebsite(1);
 $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();

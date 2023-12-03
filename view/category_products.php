@@ -16,7 +16,7 @@
                 <div class="h3" style="text-transform:uppercase;width:200px"><?= $one_danhmuc['ten_danhmuc'] ?></div>
             </div>
         </div>
-        <div class="name_category">
+        <!-- <div class="name_category">
             <h2><?=$one_danhmuc['ten_danhmuc'] ?></h2>
             <div class="child_cat">
                 <ul>
@@ -31,7 +31,26 @@
                     <li style="border-radius: 0px 20px 20px 0px;"><a title="Gmt Master" href="##">Gmt Master</a></li>
                 </ul>
             </div>
+        </div> -->
+
+        <div class="name_category">
+            <h2><?=$one_danhmuc['ten_danhmuc'] ?></h2>
+            <form action="" method="post">
+        <select name="price" style="width: 300px; border:none; background-color:#fdb866; height:29px; outline:none">
+        <option value="">Tất cả giá</option>
+            <option value="low_to_high">Thấp đến cao</option>
+            <option value="high_to_low">Cao đến thấp</option>
+            <option value="100_to_500">100tr đến 500tr</option>
+            <option value="500_to_700">500tr đến 700tr</option>
+            <option value="above_700">Trên 700tr</option>
+         </select>
+         <input type="submit" value="Tìm kiếm" name="listok" style="width:200px;background-color:#fdb866; height:29px;border:none;margin-left: 12px;
+          border-top-right-radius:15px;border-bottom-right-radius:15px;
+         "> 
+        </form>
         </div>
+
+
            <!-- <div class="regtangle">
                <div class="box1">
                 <a href=""><?= $one_danhmuc['ten_danhmuc'] ?></a>
@@ -41,6 +60,9 @@
            
           
             <div class="list">
+                <?php if(empty($all_sanpham)) :  ?>
+                    <h1>Không có sản phẩm nào</h1>
+                    <?php else : ?>
                 <?php foreach($all_sanpham as $all_sp): ?>
                     <div class="product">
                         <a href="?act=chitietsanpham&id_sp=<?= $all_sp['id_sanpham'] ?>">
@@ -51,7 +73,7 @@
     
                     </div>
                     <?php endforeach; ?>
-               
+               <?php endif ?>
             </div>
          
         

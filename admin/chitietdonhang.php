@@ -71,6 +71,7 @@ select {
         <h2>Địa chỉ:<?= $load_one_donhang['address'] ?></h2>
         <h2>Số điện thoại: <?= $load_one_donhang['tel'] ?></h2>
         <h2>Email:<?= $load_one_donhang['email'] ?></h2>
+        <h2>Ngày mua:<?= date('d-m-Y', strtotime($load_one_donhang['date'])) ?></h2>
         <select name="trangthai" value="<?=$load_one_donhang['trangthai'] ?>" id="">
             <option value="0" <?= $load_one_donhang['trangthai'] == 0 ? "selected": '' ?> >Đang xác thực</option>
             <option value="1" <?= $load_one_donhang['trangthai'] == 1 ? "selected": '' ?>>Đang vận chuyển </option>

@@ -11,6 +11,9 @@ include "../pdo/danhmuc.php";
 include "../pdo/sanpham.php";
 $all_danhmuc = load_all_danhmuc();
 include 'thuvien.php';
+if(!isset($_SESSION['cart'])){
+    header('location:../index.php?act=trangchu');
+}
 if(isset($_POST['dathang'])){
     $id_user = "";
     if(isset($_POST['id_user'])){
@@ -113,12 +116,14 @@ if(isset($_POST['dathang'])){
             <div class="logo">
                 <a href="../?act=trangchu"><img style="width: 160px;" src="../images/xin500k.png" alt=""></a>
             </div>
+           
             <ul >
-                <li><a href=""><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li>
+                <!-- <li><a href=""><i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i></a></li> -->
                 <li><a href="../?act=cart"><i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i>
                 <!-- <span style="color:red;font-size:20px;" id='totalProduct'><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : "" ?></span> -->
             </a></li>
-            <li><a href="../?act=list_donhang"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+            <li ><a href="../?act=tracuu"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li>
+            <!-- <li><a href="?act=list_donhang"><i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i></a></li> -->
                 <li><a href="../?act=user"><i class="fa-solid fa-user" style="font-size: 20px;"></i></a></li>
             </ul>
         </div>

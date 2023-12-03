@@ -15,7 +15,7 @@ function load_one_danhmuc($id_danhmuc){
     return $one_danhmuc ;
 }
 function add_danhmuc($ten_danhmuc,$image){
-    $sql = "INSERT into danhmuc(ten_danhmuc,img_danhmuc) Values ('$ten_danhmuc','$image') ";
+    $sql = "INSERT into danhmuc(ten_danhmuc,img_danhmuc,video_danhmuc) Values ('$ten_danhmuc','$image') ";
     pdo_execute($sql);
 }
 function delete_danhmuc($id_danhmuc){

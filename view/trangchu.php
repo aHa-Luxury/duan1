@@ -1,9 +1,53 @@
+<style>
+    .form_search {
+        display: flex;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+  .form_search input[type='text']{
+    width: 15%;
+  }
+    .form_search input {
+        width: 10%;
+        padding: 8px; /* Thêm padding để tăng kích thước ô input */
+        border: 1px solid #ccc; /* Thêm đường viền để ô input rõ ràng hơn */
+        border-radius: 5px; /* Bo tròn góc ô input */
+        transition: all 0.3s; /* Thêm hiệu ứng transition */
+    }
+
+    .form_search input:hover {
+        border-color: #555; /* Đổi màu đường viền khi hover */
+        background-color: #f5f5f5; /* Đổi màu nền khi hover */
+    }
+
+    .form_search input[type="submit"] {
+        cursor: pointer; /* Biến đổi con trỏ thành pointer khi hover vào nút submit */
+        background-color: #4caf50; /* Màu nền cho nút submit */
+        color: #fff; /* Màu chữ cho nút submit */
+        border: none; /* Xóa đường viền cho nút submit */
+        border-radius: 5px; /* Bo tròn góc cho nút submit */
+        margin-left: 5px; /* Khoảng cách giữa input và nút submit */
+        transition: background-color 0.3s; /* Thêm hiệu ứng transition */
+    }
+
+    .form_search input[type="submit"]:hover {
+        background-color: #45a049; /* Đổi màu nền khi hover vào nút submit */
+    }
+</style>
+
 <div class="hr"></div>
         <div class="banner">
             <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
         </div>
         <div class="hr"></div>
 <main>
+    <!-- Trong form trang chủ -->
+<div class="form_search">
+    <form action="?act=list_sp" method="post">
+        <input type="text" name="kyw" id="" placeholder="Tìm kiếm...">
+        <input type="submit" name="clickok" value="Tìm kiếm">
+    </form>
+</div>
     <h3>XEM SẢN PHẨM THEO THƯƠNG HIỆU</h3>
     <div class="listbrand">
         <?php $count = 1; foreach ($all_danhmuc as $all_dm) : ?>
