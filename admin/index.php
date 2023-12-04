@@ -379,8 +379,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "delete_bill":
             if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
                 $id_bill = $_GET['id_bill'];
-                delete_donhang($id_bill);
-                setcookie("success","Bạn đã xóa đơn hàng thành công", time() + 1);
+                huy_donhang($id_bill);
+                setcookie("success","Hủy đơn hàng thành công", time() + 1);
                 header("location:?act=donhang");
             }
             break;

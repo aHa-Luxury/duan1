@@ -26,6 +26,8 @@
                         <option value="0">Thanh toán khi nhận hàng</option>
                         <option value="1">Chuyển khoản</option>
                     </select>
+                    <!-- <button type="submit" style="max-width:100px" class="btn btn-default">Thanh toán khi nhận hàng</button>
+                    <button type="submit" style="max-width:100px" class="btn btn-danger">Thanh toán Momo</button> -->
               
 
 

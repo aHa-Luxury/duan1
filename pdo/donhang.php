@@ -35,6 +35,10 @@ function update_donhang($id_bill,$trangthai){
     $sql = "UPDATE bill set trangthai = '$trangthai' where id_bill = '$id_bill' ";
     pdo_execute($sql);
 }
+function huy_donhang($id_bill){
+    $sql = "UPDATE bill set trangthai = '3' where id_bill = '$id_bill' ";
+    pdo_execute($sql);
+}
 
 function delete_donhang($id_bill){
     $sql = "DELETE from chitietbill where id_bill = '$id_bill'";
