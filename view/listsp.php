@@ -47,9 +47,10 @@
     </form>
 </div>
 <div class="brand" >
+    <h1>Kết quả tìm kiếm "<?= $_POST['kyw'] ?>"</h1>
     <div class="list">
         <?php if(empty($all_sanpham)): ?>
-            <h1>Không có sản phẩm nào </h1>
+            <h1 style="color:red">Không có sản phẩm nào </h1>
             <?php else: ?>
         <?php foreach ($all_sanpham as $sp) : ?>
             <!-- box của từng sản phẩm  -->

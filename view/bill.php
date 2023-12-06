@@ -19,11 +19,11 @@ if(isset($_POST['dathang'])){
     if(isset($_POST['id_user'])){
         $id_user = $_POST['id_user'];
     }
-    $name = $_POST['hovaten'];
-    $address = $_POST['address'];
-    $tel = $_POST['tel'];
-    $email = $_POST['email'];
-    $ngayhientai = date("d/m/Y");
+    $name = trim($_POST['hovaten']);
+    $address = trim($_POST['address']);
+    $tel = trim($_POST['tel']);
+    $email = trim($_POST['email']);
+    $ngayhientai = date("m/d/Y");
     $date = date('Y-m-d', strtotime($ngayhientai));
     $pttt = $_POST['pttt'];
     $tong = 0 ;
@@ -34,7 +34,8 @@ if(isset($_POST['dathang'])){
         $tt = $_SESSION['cart'][$i]['quantity'] *  $_SESSION['cart'][$i]['price'];
         $tong += $tt;
     }
-    
+
+
     // insert đơn hàng 
     $id_bill =taodonhang($id_user,$name,$address,$tel,$email,$tong,$date,$pttt);
     // Lấy thoogn tin khách hàng từ form để tạo đơn hàng

@@ -323,9 +323,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 $id_user = $_POST['id_user'];
-                $ten = $_POST['ten'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                $ten = trim($_POST['ten']);
+                $email = trim($_POST['email']);
+                $password = trim($_POST['password']);
                 update_khachhang_admin($ten, $email, $password,$id_user,);
                 setcookie("success", "Sửa thông tin thành công !", time() + 1);
                 header('location:index.php?act=khachhang');
@@ -379,8 +379,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         case "delete_bill":
             if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
                 $id_bill = $_GET['id_bill'];
-                huy_donhang($id_bill);
-                setcookie("success","Hủy đơn hàng thành công", time() + 1);
+                delete_donhang($id_bill);
+                setcookie("success","Bạn đã xóa đơn hàng thành công", time() + 1);
                 header("location:?act=donhang");
             }
             break;

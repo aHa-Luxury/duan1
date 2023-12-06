@@ -10,7 +10,7 @@
                     <?php if (isset($_SESSION['user'])) : ?>
                         <?php $khachhang = select_one_khachhang($_SESSION['user']['id_user']) ?>
                     <?php endif ?>
-                    <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?? "" ?>   "  >
+                    <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?? "" ?>"  >
                     <span class="paycart" style="color: black;">Họ và Tên*</span>
                     <input class="input-pay" type="text" name="hovaten" id="hovaten" value="<?= $khachhang['ten'] ?? '' ?>">
 
@@ -26,8 +26,6 @@
                         <option value="0">Thanh toán khi nhận hàng</option>
                         <option value="1">Chuyển khoản</option>
                     </select>
-                    <!-- <button type="submit" style="max-width:100px" class="btn btn-default">Thanh toán khi nhận hàng</button>
-                    <button type="submit" style="max-width:100px" class="btn btn-danger">Thanh toán Momo</button> -->
               
 
 
@@ -103,6 +101,16 @@
             showErrorMessage('Vui lòng nhập Họ và Tên.');
             return false;
         }
+        function validateName(name){
+            var nameRegex = /^[\p{L}\s']+$/u;
+            var words = name.split(/\s+/);
+            return nameRegex.test(name) && words.length >= 3;
+        }
+        if(!validateName(hovaten)){
+            showErrorMessage('Họ và tên không hợp lệ');
+            return false;
+        }
+        
       
 
         // Kiểm tra Địa chỉ
@@ -118,8 +126,11 @@
         }
 
         // Kiểm tra Địa chỉ email
-        if (email.trim() === '' || !validateEmail(email)) {
-            showErrorMessage('Địa chỉ email hợp lệ.');
+        if (email.trim() === '') {
+            showErrorMessage('Địa chỉ email không được để trống.');
+            return false;
+        }if (!validateEmail(email) ){
+            showErrorMessage('Địa chỉ email không hợp lệ.');
             return false;
         }
 
@@ -136,6 +147,10 @@
 
     // Hàm kiểm tra địa chỉ email hợp lệ
     function validateEmail(email) {
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+    function validateTel(tel) {
         var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }

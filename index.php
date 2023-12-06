@@ -34,6 +34,7 @@ if (isset($_GET['act'])) {
                 // Nếu người dùng đã click nút tìm kiếm
                 $searchKeyword = isset($_POST['kyw']) ? $_POST['kyw'] : '';
                 $all_sanpham = load_all_sp_theo_ten($searchKeyword);
+
             } else {
                 // Nếu không có tìm kiếm, hiển thị tất cả sản phẩm
                 $all_sanpham = select_all_sanpham();
@@ -143,7 +144,7 @@ if (isset($_GET['act'])) {
         case "huy_bill":
             if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
                 $id_bill = $_GET['id_bill'];
-                huy_donhang($id_bill);
+                delete_donhang($id_bill);
                 setcookie("huy", "Hủy đơn hàng thành công", time() + 1);
                 header("location:index.php?act=list_donhang");
             }
@@ -396,12 +397,13 @@ if (isset($_GET['act'])) {
             break;
         case 'tracuu':
             if (isset($_POST['tracuu']) && ($_POST['tracuu'])) {
-                $id_bill = $_POST['id_bill'];
-                $tel = $_POST['tel'];
+                $id_bill = trim($_POST['id_bill']);
+                $tel = trim($_POST['tel']);
                 $testbill = checkbill($id_bill, $tel);
-                if ($id_bill == "" || $tel == "") {
+                if (empty($id_bill) || empty($tel)) {
                     setcookie("message", "Vui lòng nhập thêm thông tin.", time() + 1);
                     header("Location:index.php?act=tracuu");
+                    exit;
                 } else {
                     if ($testbill !== false) {
                         $mybill = tra_cuu_don_hang($id_bill);
@@ -410,6 +412,7 @@ if (isset($_GET['act'])) {
                     }
                     setcookie("message", "Thông tin không trùng khớp.", time() + 1);
                     header("Location:index.php?act=tracuu");
+                    exit;
                 };
             }
             include "view/tracuudonhang.php";

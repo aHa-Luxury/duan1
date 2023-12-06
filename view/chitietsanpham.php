@@ -176,7 +176,7 @@
     </div>
 
   </div>
-  <h2 class="title_sanphamlienquan"> <img style="width:300px; text-align:center;" src="images/chan_logo.png" alt=""></h2>
+  <!-- <h2 class="title_sanphamlienquan"> <img style="width:300px; text-align:center;" src="images/chan_logo.png" alt=""></h2> -->
   <h2 class="title_sanphamlienquan">XEM THÊM CÁC SẢN PHẨM KHÁC</h2>
   <div class="sanphamlienquan">
     <?php foreach ($four_sanphamlienquan as $four_splq) : ?>

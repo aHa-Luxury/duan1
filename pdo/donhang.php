@@ -11,7 +11,7 @@ function load_all_donhang_user($id_user){
 }
 function tra_cuu_don_hang($id_bill)
 {
-    $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = $id_bill";
+    $sql = "SELECT * FROM bill bl inner join chitietbill btbl on bl.id_bill = btbl.id_bill where bl.id_bill = '$id_bill'";
     $result = pdo_query($sql);
     return $result;
 }
@@ -33,10 +33,6 @@ function load_chitietbill($id_bill){
 }
 function update_donhang($id_bill,$trangthai){
     $sql = "UPDATE bill set trangthai = '$trangthai' where id_bill = '$id_bill' ";
-    pdo_execute($sql);
-}
-function huy_donhang($id_bill){
-    $sql = "UPDATE bill set trangthai = '3' where id_bill = '$id_bill' ";
     pdo_execute($sql);
 }
 
