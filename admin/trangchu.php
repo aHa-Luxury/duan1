@@ -10,8 +10,8 @@
             <p style="color:rgb(90, 92, 105)"><?= $count_danhmuc['tong_danhmuc'] ?></p>
         </div>
         <div class="box">
-            <h6 style="color: rgb(90, 92, 105);">Tổng giá trị sản phẩm</h6>
-            <p style="color:rgb(90, 92, 105)"><?= number_format($count_price_sanpham['tong_price_sanpham'])  ?>đ</p>
+            <h6 style="color: rgb(90, 92, 105);">Đơn hàng đã giao</h6>
+            <p style="color:rgb(90, 92, 105)"><?=$count_donhang['don_thanh_cong'] ?></p>
         </div>
         <div class="box">
             <h6 style="color: rgb(90, 92, 105);">Tổng số khách hàng</h6>

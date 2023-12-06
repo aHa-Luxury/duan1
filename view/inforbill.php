@@ -75,8 +75,10 @@ h1 {
                         echo 'Đang xác thực';
                     }else if($mybill[0]['trangthai']==1){
                         echo 'Đang vận chuyển';
-                    }else{
+                    }else if($mybill[0]['trangthai']==2){
                         echo 'Đã giao';
+                    }else{
+                        echo 'Đã hủy';
                     } 
     ?> </h1>
     <div class="listbl-user">

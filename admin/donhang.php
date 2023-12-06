@@ -1,6 +1,6 @@
 <div class="content">
     <h1 style="color: rgb(90, 92, 105);">Danh sách đơn hàng</h1>
-   
+
 
     <?php if (isset($_COOKIE['success'])) :  ?>
         <span style="color:green"><?= $_COOKIE['success'] ?></span>
@@ -13,57 +13,65 @@
                 <th>Tên</th>
                 <th>Địa chỉ</th>
                 <th>Sđt</th>
-                <th>Email</th>       
+                <th>Email</th>
                 <th>Tổng tiền</th>
                 <th>PTTT</th>
                 <th>Ngày</th>
                 <th>Trạng thái</th>
                 <th>Chức năng</th>
             </thead>
-            <?php if(empty($load_all_donhang)) : ?>
+            <?php if (empty($load_all_donhang)) : ?>
                 <tr>
                     <td colspan="9">Chưa có đơn hàng nào</td>
                 </tr>
-                <?php else: ?>
-            <?php $count = 1;
-            foreach  ($load_all_donhang as $all_dh) : ?>
-                <tr>
-                    <td style=";width:40px"><?= $count ?></td>
-                    <td style="width:80px"><?= $all_dh['id_bill'] ?></td>
-                    <td style="text-align:left">
-                        <?php
-                        $ten_sanpham = $all_dh['name'];
-                        // Giới hạn chiều dài của chuỗi và thêm dấu "..." nếu cần
-                        $ten_sanpham_display = strlen($ten_sanpham) > 100 ? substr($ten_sanpham, 0, 100) . "..." : $ten_sanpham;
-                        echo $ten_sanpham_display;
-                        ?>
-                    </td>
-                    <td><?= $all_dh['address'] ?></td>
-                    <td><?= $all_dh['tel'] ?></td>
-                    <!-- <td style="line-height:50px"><?= $all_sp['size'] ?></td> -->
-                    <td><?= $all_dh['email'] ?></td>
-                    <td><?= number_format($all_dh['total']) ?><u>đ</u></td>
-                    <td><?= $all_dh['pttt'] == 0 ? "Thanh toán khi nhận hàng" : "Chuyển khoản"   ?></td>
-                    <td><?= date('d-m-Y',strtotime($all_dh['date'])) ?></td>
-                    <td><?php if($all_dh['trangthai'] == 1):?>
-                        <?= '<b style="color:orangered">Đang vận chuyển</b>' ?>
-                        <?php elseif(($all_dh['trangthai']) == 2 ):?>
-                            <?= '<b style="color:green">Đã giao</b>' ?>
-                            <?php else :?>
-                                <?= ' <b style="color:orange">Đang xác thực</b>' ?>
-                              
-                       
-<?php endif ?>
-                </td>
-                    <td style="line-height:50px">
-                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')" href="?act=delete_bill&id_bill=<?= $all_dh['id_bill'] ?>" class="btn btn-outline-danger">Xóa</a>
-                        <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
-                    </td>
-                </tr>
+            <?php else : ?>
+                <?php $count = 1;
+                foreach ($load_all_donhang as $all_dh) : ?>
+                    <tr>
+                        <td style=";width:40px"><?= $count ?></td>
+                        <td style="width:80px"><?= $all_dh['id_bill'] ?></td>
+                        <td style="text-align:left">
+                            <?php
+                            $ten_sanpham = $all_dh['name'];
+                            // Giới hạn chiều dài của chuỗi và thêm dấu "..." nếu cần
+                            $ten_sanpham_display = strlen($ten_sanpham) > 100 ? substr($ten_sanpham, 0, 100) . "..." : $ten_sanpham;
+                            echo $ten_sanpham_display;
+                            ?>
+                        </td>
+                        <td><?= $all_dh['address'] ?></td>
+                        <td><?= $all_dh['tel'] ?></td>
+                        <!-- <td style="line-height:50px"><?= $all_sp['size'] ?></td> -->
+                        <td><?= $all_dh['email'] ?></td>
+                        <td><?= number_format($all_dh['total']) ?><u>đ</u></td>
+                        <td><?= $all_dh['pttt'] == 0 ? "Thanh toán khi nhận hàng" : "Chuyển khoản"   ?></td>
+                        <td><?= date('d-m-Y', strtotime($all_dh['date'])) ?></td>
+                        <td><?php if ($all_dh['trangthai'] == 1) : ?>
+                                <?= '<b style="color:orangered">Đang vận chuyển</b>' ?>
+                            <?php elseif (($all_dh['trangthai']) == 2) : ?>
+                                <?= '<b style="color:green">Đã giao</b>' ?>
+                            <?php elseif (($all_dh['trangthai']) == 3) : ?>
+                                <?= '<b style="color:Red">Đã hủy</b>' ?>
+                            <?php else : ?>
+                                <?= ' <b style="color:orange">Đơn hàng mới</b>' ?>
 
-            <?php $count++;
-            endforeach ?>
-<?php endif ?>
+
+                            <?php endif ?>
+                        </td>
+                        <td style="line-height:50px">
+                        <?php if ($all_dh['trangthai'] == 3) : ?>
+                        <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
+                        <?php elseif ($all_dh['trangthai'] == 2) : ?>
+                        <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
+                    <?php else : ?>
+                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')" href="?act=delete_bill&id_bill=<?= $all_dh['id_bill'] ?>" class="btn btn-outline-danger">Hủy đơn</a>
+                            <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
+                    <?php endif ?>
+                        </td>
+                    </tr>
+                    
+                <?php $count++;
+                endforeach ?>
+            <?php endif ?>
 
 
         </table>
@@ -80,8 +88,9 @@
     thead th {
         text-align: center;
     }
+
     tbody tr td {
-        
+
         text-align: center;
 
     }

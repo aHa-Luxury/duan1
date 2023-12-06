@@ -17,6 +17,7 @@ $count_danhmuc = count_danhmuc();
 $count_sanpham = count_sanpham();
 $count_khachhang = count_khachhang();
 $count_price_sanpham = count_price_sanpham();
+$count_donhang = count_donhang();
 include "head_admin.php";
 if (isset($_GET['act']) && $_GET['act'] != "") {
     $act = $_GET['act'];
@@ -376,14 +377,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             }
             include "chitietdonhang.php";
             break;
-        case "delete_bill":
-            if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
-                $id_bill = $_GET['id_bill'];
-                delete_donhang($id_bill);
-                setcookie("success","Bạn đã xóa đơn hàng thành công", time() + 1);
-                header("location:?act=donhang");
-            }
-            break;
+            case "delete_bill":
+                if(isset($_GET['id_bill']) && ($_GET['id_bill']) > 0){
+                    $id_bill = $_GET['id_bill'];
+                    huy_donhang($id_bill);
+                    setcookie("success","Hủy đơn hàng thành công", time() + 1);
+                    header("location:?act=donhang");
+                }
+                break;
         case "dangxuat":
             session_destroy();
             header("location:../index.php?act=trangchu");

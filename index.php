@@ -141,14 +141,14 @@ if (isset($_GET['act'])) {
                 header("location:index.php?act=list_donhang");
             }
             break;
-        case "huy_bill":
-            if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
-                $id_bill = $_GET['id_bill'];
-                delete_donhang($id_bill);
-                setcookie("huy", "Hủy đơn hàng thành công", time() + 1);
-                header("location:index.php?act=list_donhang");
-            }
-            break;
+            case "huy_bill":
+                if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
+                    $id_bill = $_GET['id_bill'];
+                    huy_donhang($id_bill);
+                    setcookie("huy", "Hủy đơn hàng thành công", time() + 1);
+                    header("location:index.php?act=list_donhang");
+                }
+                break;
         case "chitietdonhang":
             if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
                 $id_bill = $_GET['id_bill'];

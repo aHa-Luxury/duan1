@@ -137,20 +137,22 @@
                         <?php if($all_donhang['trangthai'] == 1): ?>
                               <p style="color:blue">  <?= "Đang vận chuyển" ?></p>
                             <?php elseif($all_donhang['trangthai'] == 2): ?>
-                              <p style="color:green">  <?= "Đã thanh toán" ?></p>
+                              <p style="color:green">  <?= "Đã giao" ?></p>
+                              <?php elseif($all_donhang['trangthai'] == 3): ?>
+                              <p style="color:red">  <?= "Đã hủy" ?></p>
                                 <?php else : ?>
-                              <p style="color:orangered">  <?= "Đang chuẩn bị" ?></p>
+                              <p style="color:orangered">  <?= "Chờ xác nhận" ?></p>
                             <?php endif?>
                         </td>
                     <td >
     <ul class="function-list" style="width:130px;display:flex;flex-direction:row">
-    <?php if($all_donhang['trangthai'] ==2) :?>
-
-        <li><a style="background-color:red" href="?act=dlt_bill&id_bill=<?= $all_donhang['id_bill'] ?>">Xóa</a></li>
-        <?php else: ?>
-            <li><a style="background-color:gray" href="?act=huy_bill&id_bill=<?= $all_donhang['id_bill'] ?>">Hủy</a></li>
-<?php endif ?>
+    <?php if($all_donhang['trangthai'] ==0) :?>
+        <li><a onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không ?')" style="background-color:red" href="?act=huy_bill&id_bill=<?= $all_donhang['id_bill'] ?>">Hủy</a></li>
+        <!-- <li><a style="background-color:red" href="?act=dlt_bill&id_bill=<?= $all_donhang['id_bill'] ?>">Xóa</a></li> -->
         <li><a style="background-color:green" href="?act=chitietdonhang&id_bill=<?=$all_donhang['id_bill']?>">Chi tiết</a></li>
+        <?php else: ?>
+            <li><a style="background-color:green" href="?act=chitietdonhang&id_bill=<?=$all_donhang['id_bill']?>">Chi tiết</a></li>
+<?php endif ?>
     </ul>
 </td>
                 </tr>

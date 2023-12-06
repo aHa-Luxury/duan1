@@ -133,7 +133,7 @@ if(isset($_POST['dathang'])){
                 <div class="modal-body">
                     
                     <div class="cart-left">
-                        <h1 style="color:red">Thông tin đơn hàng</h1>
+                        <h1 style="color:red">ĐẶT HÀNG THÀNH CÔNG</h1>
                         <hr>
                         <h2 style="color:red">Thông tin nhận hàng</h2>
                         <span class="paycart"  style="color: black;">Mã đơn hàng* <?= $id_bill ?></span>
