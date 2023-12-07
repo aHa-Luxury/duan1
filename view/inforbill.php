@@ -71,6 +71,7 @@ h1 {
     <h1 style="color: rgb(90, 92, 105);text-align:center;">Đơn hàng số <?=$mybill[0]['id_bill']?> </h1>
     <h1>Tên khách hàng: <?=$mybill[0]['name']?></h1>
     <h1>Số điện thoại: <?=$mybill[0]['tel']?></h1>
+    <h1>Số điện thoại: <?=$mybill[0]['email']?></h1>
     <h1>Trạng thái đơn: <?php if ($mybill[0]['trangthai']==0) {
                         echo 'Đang xác thực';
                     }else if($mybill[0]['trangthai']==1){
@@ -86,6 +87,7 @@ h1 {
             <thead>
                 <tr>
                     <th>Sản phẩm</th>
+                    <th>Hình ảnh</th>
                     <th>Số lượng</th>
                     <th>Đơn giá</th>
                 </tr>
@@ -96,13 +98,14 @@ h1 {
             
                 <tr>
                     <td><?=$bill['ten_sanpham']?></td>
+                    <td><img style="width:50px" src="images/<?=$bill['hinh_sanpham']?>" alt=""></td>
                     <td><?=$bill['soluong']?></td>
                     <td><?=number_format($bill['price']*$bill['soluong'])?> VNĐ</td>
                 </tr>
             <? ?>
             <?php endforeach?>
             <tr>
-                <td colspan="2"><Strong>Tổng tiền: </Strong></td>
+                <td colspan="3"><Strong>Tổng tiền: </Strong></td>
                 <td><Strong><?=number_format($mybill[0]['total'])?> VNĐ</Strong></td>
             </tr>
         </table>

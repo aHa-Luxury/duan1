@@ -54,9 +54,11 @@ $dsbl = loadall_bl($id_sanpham);
     border-radius: 4px;
     cursor: pointer;
     text-decoration:none;
-    font-size:20px" type="submit" name="guibinhluan" value="Gửi">
+    font-size:20px;" type="submit" name="guibinhluan" value="Gửi">
             </form>
         </div>
+        <?php else: ?>
+            <a style="font-size:20px;color:purple" href="?act=login">Bạn phải đăng nhập mới có thể bình luận</a>
     <?php endif ?>
     <?php
     if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {

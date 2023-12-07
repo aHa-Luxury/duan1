@@ -9,17 +9,44 @@
         background-color: #f4f4f4;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
-                                    <input type="text" name="ten_sanpham" placeholder="Tên sản phẩm" required id=""><br><br>
-                                    <input type="text" name="price" placeholder="Giá" required id=""><br><br>
+                                    <input type="text" name="ten_sanpham" placeholder="Tên sản phẩm" value="<?= isset($_POST['ten_sanpham']) ? $_POST['ten_sanpham']  : ""?>" id="">
+                                    <?php if(isset($errors['ten'])) :?>
+                                        <span style="color:red"><?=  $errors['ten'] ?></span>
+                                        <?php endif ?>
+                                        <br><br>
+
+                                    <input type="text" name="price" placeholder="Giá" value="<?= isset($_POST['price']) ? $_POST['price']  : ""?>"  id="">
+                                    <?php if(isset($errors['price'])) :?>
+                                        <span style="color:red"><?= $errors['price'] ?></span>
+                                        <?php endif ?>
+                                        <br><br>
                                     
-                                    <input type="file" name="hinh" id="" required><br><br>
-                                    <input type="number" placeholder="Số lượng" name="soluong" id="" required><br><br>
-                                    <select name="id_danhmuc" id="" required>
+                                    <input type="file" name="hinh" value="<?= isset($_POST['hinh']) ? $_POST['hinh']  : ""?>" id="" >
+                                    <?php if(isset($errors['hinh'])) :?>
+                                        <span style="color:red"><?= $errors['hinh'] ?></span>
+                                        <?php endif ?>
+                                        <br><br>
+
+
+                                    <input type="number" placeholder="Số lượng" value="<?= isset($_POST['soluong']) ? $_POST['soluong']  : ""?>" name="soluong" id="">
+                                    <?php if(isset($errors['soluong'])) :?><br>
+                                        <span style="color:red"><?= $errors['soluong'] ?></span>
+                                        <?php endif ?>
+                                        <br><br>
+
+
+                                    <select name="id_danhmuc" id="">
                                         <option value="">--Danh mục--</option>
                                         <?php foreach($all_danhmuc as $all_dm): ?>
                                         <option value="<?=$all_dm['id_danhmuc']?>"><?= $all_dm['ten_danhmuc'] ?></option>
                                         <?php endforeach ?>
-                                    </select><br><br>
+                                    </select><br>
+                                    <?php if(isset($errors['danhmuc'])) :?>
+                                        <span style="color:red"><?= $errors['danhmuc'] ?></span>
+                                        <?php endif ?>
+                                        <br><br>
+
+
                                     <input type="submit" value="Thêm" name="submit">
                                     <a href="?act=khachhang" style="background-color: #0d6efd;
     color: #fff;

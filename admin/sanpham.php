@@ -53,7 +53,7 @@
                     <td style="line-height:50px">
                         <a href="?act=edit_sp&id_sp=<?= $all_sp['id_sanpham'] ?>" class="btn btn-outline-secondary">Sửa</a>
                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="?act=delete_sp&id_sp=<?= $all_sp['id_sanpham'] ?>" class="btn btn-outline-danger">Xóa</a>
-                        <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                        <a type="button" href="?act=view_sp&id_sp=<?= $all_sp['id_sanpham']?>" class="btn btn-outline-success">Chi tiết</a>
                     </td>
                 </tr>
 

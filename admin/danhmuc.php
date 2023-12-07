@@ -1,6 +1,6 @@
 <div class="content" >
 <h1 style="color: rgb(90, 92, 105);">Danh mục sản phẩm</h1>
-                            <a href="?act=add_dm" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
+<a href="?act=add_dm" class="btn btn-success" style="margin-bottom:10px">Thêm mới</a>
                             <div class="row">
                                
                             <?php if (isset($_COOKIE['success'])):?>
@@ -12,7 +12,7 @@
                                         <th>#</th>
                                         <th>Tên danh mục</th>
                                         <th>Logo</th>
-                                        <th>Banner</th>
+                                        <!-- <th>Banner</th> -->
                                         <th>Chức năng</th>
                                     </thead>
                                     <tbody>
@@ -27,14 +27,14 @@
                                                 <p style="line-height: 150px;">Chưa có banner</p>
                                                                                             <?php endif ?>
                                            
-                                            <td  ><?php if(isset($all_dm['video_danhmuc']) && $all_dm['video_danhmuc'] != ""): ?>
+                                            <!-- <td  ><?php if(isset($all_dm['video_danhmuc']) && $all_dm['video_danhmuc'] != ""): ?>
                                                 <video style="margin-top:15px" width="400px" height="" src="../images/<?= $all_dm['video_danhmuc'] ?>" controls>
                                                 
                                             </video>
                                             <?php else : ?>
                                                 <p style="line-height: 150px;">Chưa có video</p>
                                                                                             <?php endif ?>
-                                            </td>
+                                            </td> -->
                                             <td  style="padding-top:60px">
                                                 <a href="?act=edit_dm&id_dm=<?=$all_dm['id_danhmuc']?>"  class="btn btn-outline-secondary">Sửa</a>
                                                 <a onclick="return confirm('Bạn có chắc chắn muốn xóa không')" href="?act=delete_dm&id_dm=<?=$all_dm['id_danhmuc']?>" class="btn btn-outline-danger">Xóa</a>

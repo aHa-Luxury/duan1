@@ -128,6 +128,18 @@
                 <h2>Địa chỉ: <?= $load_one_donhang['address'] ?></h2>
                 <h2>Số điện thoại: <?= $load_one_donhang['tel'] ?></h2>
                 <h2>Email: <?= $load_one_donhang['email'] ?></h2>
+                <h2>Trạng thái đơn: <?php if ($load_one_donhang['trangthai']==0) {
+                        echo 'Chờ xác nhận';
+                    }else if($load_one_donhang['trangthai']==1){
+                        echo 'Đang vận chuyển';
+                    }else if($load_one_donhang['trangthai']==2){
+                        echo 'Đã giao';
+                    }else if($load_one_donhang['trangthai']==3){
+                        echo 'Đã hủy';
+                    }else{
+                        echo 'Đã bị hủy';
+                    } 
+    ?> </h2>
             </div>
             <!-- <div class="right">
                 <h1 style="color:white">Sản phẩm</h1>

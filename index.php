@@ -144,7 +144,7 @@ if (isset($_GET['act'])) {
             case "huy_bill":
                 if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
                     $id_bill = $_GET['id_bill'];
-                    huy_donhang($id_bill);
+                    huy_donhang_user($id_bill);
                     setcookie("huy", "Hủy đơn hàng thành công", time() + 1);
                     header("location:index.php?act=list_donhang");
                 }
@@ -288,7 +288,11 @@ if (isset($_GET['act'])) {
                         if ($info['role'] == '1') {
                             $_SESSION['admin'] = $info;
                             header('location:admin');
-                        } else {
+                        } elseif($info['role'] == '2') {
+                            $_SESSION['admin'] = $info;
+                            header('location:admin');
+                        }
+                         else{
                             $_SESSION['user'] = $info;
                             header('location:?act=user');
                         }
@@ -300,7 +304,36 @@ if (isset($_GET['act'])) {
             }
             include "view/login.php";
             break;
-
+            case "forgotpass":
+                if (isset($_POST['getpass']) && ($_POST['getpass'])) {
+                    $email = trim($_POST['email']);
+                    $checkmail = checkmail($email);
+                    if (empty($email)) {
+                        setcookie("message", "Vui lòng nhập email.", time() + 1);
+                        header("Location:index.php?act=forgotpass");
+                        exit;
+                    } else {
+    
+                        if (empty($checkmail)) {
+                            setcookie("message", "Tài khoản không tồn tại.", time() + 1);
+                            header("Location:index.php?act=forgotpass");
+                            exit;
+                        } else {
+                            if ($checkmail !== false) {
+                                $mypass = get_pass($email);
+                                setcookie("ok", "Mật khẩu của bạn là: " . $mypass['password'], time() + 1);
+                                header("Location:index.php?act=forgotpass");
+                                exit;
+                            } else {
+                                setcookie("message", "Không có tài khoản trong hệ thống.", time() + 1);
+                                header("Location:index.php?act=forgotpass");
+                                exit;
+                            }
+                        };
+                    }
+                }
+                include "view/forgotpass.php";
+                break;
             // trang user 
         case 'user':
             if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
@@ -324,13 +357,60 @@ if (isset($_GET['act'])) {
                 $id_khachhang = $_SESSION['user']['id_user'];
                 $khachhang = select_one_khachhang($id_khachhang);
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $ten = $_POST['ten'];
-                    $email = $_POST['email'];
-                    $address = $_POST['address'];
-                    $tel = $_POST['tel'];
+                    $ten = trim($_POST['ten']);
+                    $email = trim($_POST['email']);
+                    $address = trim($_POST['address']);
+                    $tel = trim($_POST['tel']);
                     $id_user = $_POST['id_user'];
-                    update_khachhang($ten, $email, $address, $tel, $id_user);
-                    header("Location:index.php?act=user");
+                    $errors = [];
+                    $check = true;
+                    if(empty($ten)){
+                        $errors['ten'] = "Họ tên không được để trống";
+                    }else{
+                        if(!preg_match('/^[\p{L}\s]+$/u', $ten)){
+                            $errors['ten'] = "Họ tên không được là số";
+                        }
+                    }
+
+                    if(empty($email)){
+                        $errors['email'] = "Email không được để trống";
+                    }else{
+                        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                            $errors['email'] = "Email không hợp lệ";
+                        }else{
+                            $all_khachhang = ignore_khachhang($id_user);
+                            
+                            foreach($all_khachhang as $all_kh){
+                                if($all_kh['email'] == $email){
+                                    $check = false;
+                                }
+                            }
+                        }
+                    }
+
+                    if(empty($address)){
+                        $errors['address'] = "Địa chỉ không được để trống";
+                    }else{
+                        if(!preg_match('/^[\p{L}\s]+$/u', $address)){
+                            $errors['address'] = "Địa chỉ không hợp lệ";
+                        }
+                    }
+                    if(empty($tel)){
+                        $errors['tel'] = "SĐT không được để trống";
+                    }else{
+                        if(!preg_match('/^0[0-9]{9}$/',$tel)){
+                            $errors['tel'] = "SĐT không hợp lệ";
+                        }
+                    }
+
+
+                    if(empty($errors) && $check == true){
+                        update_khachhang($ten, $email, $address, $tel, $id_user);
+                        header("Location:index.php?act=user");
+                    }
+
+                    
+                    
                 }
             }
             include "view/taikhoan/update.php";
@@ -343,14 +423,18 @@ if (isset($_GET['act'])) {
                 $id_user = $_POST['id_user'];
                 $testpass = checkpass($password, $id_user);
                 if ($password == "" || $newpassword == "" || $renewpassword == "") {
-                    $thongbao = "Vui lòng nhập đủ thông tin !";
+                    $thongbao = "Vui lòng nhập đủ thông tin!";
                 } else if (!$testpass) {
-                    $thongbao = "Thông tin không chính xác !";
+                    $thongbao = "Mật khẩu cũ không chính xác!";
                 } else if ($newpassword != $renewpassword) {
-                    $thongbao = "Mật khẩu mới không trùng khớp !";
+                    $thongbao = "Mật khẩu mới không trùng khớp!";
                 } else {
-                    changepassword($newpassword, $id_user);
-                    $success = "Đổi mật khẩu thành công !";
+                    if($password == $newpassword && $password == $renewpassword){
+                        $thongbao = "Mật khẩu mới không được trùng với mật khẩu cũ!";
+                    }else{
+                        changepassword($newpassword, $id_user);
+                        $success = "Đổi mật khẩu thành công!";
+                    }
                 }
             }
             include "view/taikhoan/changepass.php";

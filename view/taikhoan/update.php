@@ -135,20 +135,32 @@ h4{
                 <h1 style="color: rgb(90, 92, 105);text-align:center;">Cập nhật thông tin tài khoản</h1>
                     <div>
                         <h4>Họ và tên</h4>
-                        <input class="inputchange" type="text" name="ten" placeholder="Tên" value="<?= $khachhang['ten'] ?>">
+                        <input class="inputchange" type="text" name="ten" placeholder="Tên" value="<?=  isset($_POST['ten']) ? $_POST['ten'] : $khachhang['ten']  ?>">
                     </div>
+                    <?php if(isset($errors['ten'])) :?>
+                        <span style="color:red"><?= $errors['ten'] ?></span>
+                        <?php endif ?>
                     <div class="">
                     <h4>Email</h4>
-                        <input class="inputchange" type="email" name="email" placeholder="Email" value="<?=$khachhang['email']  ?>">
+                        <input class="inputchange" type="text" name="email" placeholder="Email" value="<?=  isset($_POST['email']) ? $_POST['email'] : $khachhang['email']  ?>">
                     </div>
+                    <?php if(isset($errors['email'])) :?>
+                        <span style="color:red"><?= $errors['email'] ?></span>
+                        <?php endif ?>
                     <div class="">
                     <h4>Địa chỉ</h4>
-                        <input class="inputchange" type="text" name="address" placeholder="Địa chỉ" value="<?= $khachhang['address']  ?? "" ?>">
+                        <input class="inputchange" type="text" name="address" placeholder="Địa chỉ" value="<?=  isset($_POST['address']) ? $_POST['address'] : $khachhang['address']  ?>">
                     </div>
+                    <?php if(isset($errors['address'])) :?>
+                        <span style="color:red"><?= $errors['address'] ?></span>
+                        <?php endif ?>
                     <div class="">
                     <h4>Số điện thoại</h4>
-                        <input class="inputchange" type="text" name="tel" placeholder="Số điện thoại" value="<?= $khachhang['tel'] ?? ""  ?>">
+                        <input class="inputchange" type="text" name="tel" placeholder="Số điện thoại" value="<?=  isset($_POST['tel']) ? $_POST['tel'] : $khachhang['tel']  ?>">
                     </div>
+                    <?php if(isset($errors['tel'])) :?>
+                        <span style="color:red"><?= $errors['tel'] ?></span>
+                        <?php endif ?>
                     <div class="">
                         <input type="hidden" name="id_user" value="<?= $_SESSION['user']['id_user'] ?>">
                         <input class="buttonchange" type="submit" value="Cập nhật" name="capnhat">

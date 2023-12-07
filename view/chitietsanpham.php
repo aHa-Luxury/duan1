@@ -4,7 +4,7 @@
   <?php if ($one_danhmuc['video_danhmuc'] != "") : ?>
     <video src="images/<?= $one_danhmuc['video_danhmuc'] ?>" autoplay="autoplay" muted loop></video>
   <?php else : ?>
-    <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+    <img src="images/BANNER_DONG_HO_CHUAN_PC.png" alt="">
   <?php endif ?>
 </div>
 <div class="hr"></div>
@@ -63,56 +63,39 @@
     
 
       </div>
-      .
     </div>
     <div class="end_desc">
       <div class="end_left">
         <h2>Thông tin sản phẩm</h2>
         <h3><?= $one_sanpham['ten_sanpham'] ?></h3>
         <!-- Tiêu đề 1 -->
-        <?php if ($one_sanpham['tieude1'] != "") : ?>
-          <h2><?= $one_sanpham['tieude1'] ?></h2>
-          <hr>
+        <?php if (!empty($one_sanpham['description'])) : ?>
+          <p><?= $one_sanpham['description'] ?></p>
+          <?php else :?>
+            <p>Chưa có thông tin sản phẩm</p>
         <?php endif ?>
+       
+        <div class="box">
+        <h2 style="text-transform:uppercase">ĐÁNH GIÁ CỦA KHÁCH HÀNG</h2>
+        <hr>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#binhluan").load("view/binhluan/binhluanform.php", {
+                    id_sanpham: <?= $id_sanpham ?>
+                });
+            });
+        </script>
+        
+       
+       <div class="row" id="binhluan">
 
-        <?php if ($one_sanpham['noidung1'] != "") : ?>
-          <p><?= $one_sanpham['noidung1'] ?></p>
-        <?php endif ?>
-        <?php if (!empty($one_sanpham[1]['hinhanh1'])) : ?>
-          <img src="<?= $one_sanpham['hinhanh1]'] ?>" alt="">
-        <?php endif ?>
+</div>
 
-        <br><br>
-        <!-- Tiêu đề 2 -->
-        <?php if ($one_sanpham['tieude2'] != "") : ?>
-          <h2><?= $one_sanpham['tieude2'] ?></h2>
-          <hr>
-        <?php endif ?>
-
-        <?php if ($one_sanpham['noidung2'] != "") : ?>
-          <p><?= $one_sanpham['noidung2'] ?></p>
-        <?php endif ?>
-
-        <?php if (!empty($one_sanpham['hinhanh2'])) : ?>
-          <img src="<?= $one_sanpham['hinhanh2]'] ?>" alt="">
-        <?php endif ?>
-        <br><br>
-        <!-- Tiêu đề 3 -->
-        <?php if ($one_sanpham['tieude3'] != "") : ?>
-          <h2><?= $one_sanpham['tieude3'] ?></h2>
-          <hr>
-        <?php endif ?>
-
-        <?php if ($one_sanpham['noidung3'] != "") : ?>
-          <p><?= $one_sanpham['noidung3'] ?></p>
-        <?php endif ?>
-        <?php if (!empty($one_sanpham['hinhanh3'])) : ?>
-          <img src="<?= $one_sanpham['hinhanh3]'] ?>" alt="">
-        <?php endif ?>
-
-        <div class="binhluan">
-
+     
+       
         </div>
+        
       </div>
       <div class="end_right">
         <ul class="thongsokithuat">
@@ -156,21 +139,7 @@
           </li>
         </ul>
         <br><br>
-        <div class="box">
-        <h1 style="text-transform:uppercase">ĐÁNH GIÁ CỦA KHÁCH HÀNG</h1>
-        <hr>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#binhluan").load("view/binhluan/binhluanform.php", {
-                    id_sanpham: <?= $id_sanpham ?>
-                });
-            });
-        </script>
-        <div class="row" id="binhluan">
-
-        </div>
-        </div>
+       
         <p></p>
       </div>
     </div>

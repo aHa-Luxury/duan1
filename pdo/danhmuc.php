@@ -14,15 +14,30 @@ function load_one_danhmuc($id_danhmuc){
     $one_danhmuc = pdo_query_one($sql);
     return $one_danhmuc ;
 }
+function load_all_danhmuc_exist($id_danhmuc){
+    $sql = "SELECT * from danhmuc where id_danhmuc != '$id_danhmuc'";
+    $result = pdo_query($sql);
+    return $result;
+}
 function add_danhmuc($ten_danhmuc,$image){
-    $sql = "INSERT into danhmuc(ten_danhmuc,img_danhmuc,video_danhmuc) Values ('$ten_danhmuc','$image') ";
+    $sql = "INSERT into danhmuc(ten_danhmuc,img_danhmuc) Values ('$ten_danhmuc','$image') ";
     pdo_execute($sql);
 }
 function delete_danhmuc($id_danhmuc){
+    $one_danhmuc = load_one_danhmuc($id_danhmuc);
+    $img = "../images/".$one_danhmuc['img_danhmuc'];
+    unlink($img);
+    $load_all_sanpham =  load_all_sanpham($id_danhmuc);
+    foreach($load_all_sanpham as $load_all_sp){
+        $imgsp = "../images/".$load_all_sp['img_sanpham'];
+        unlink($imgsp);
+    }
+
     $sql = "DELETE from sanpham where id_danhmuc = '$id_danhmuc'";
     pdo_execute($sql);
     $sql = "DELETE from danhmuc where id_danhmuc = '$id_danhmuc' ";
     pdo_execute($sql);
+
 }
 
 function update_danhmuc ($ten_danhmuc,$img_danhmuc,$id_danhmuc,){

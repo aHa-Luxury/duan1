@@ -27,13 +27,6 @@ function select_all_size_sanpham($id_sanpham)
     $result = pdo_query($sql);
     return $result;
 }
-function select_one_size_sanpham($id_sanpham, $size)
-{
-    $sql = "SELECT * from sizesanpham where id_sanpham = '$id_sanpham' and size = '$size'";
-    $result = pdo_query_one($sql);
-    return $result;
-}
-
 
 function load_all_sanpham($id_danhmuc)
 {
@@ -102,23 +95,16 @@ function edit_sanpham(
     $khoa,
     $matkinh,
     $noisanxuat,
-    $title1,
-    $title2,
-    $title3,
-    $noidung1,
-    $noidung2,
-    $noidung3,
     $id_sanpham
 ) {
     if ($hinh != '') {
-
         $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong', img_sanpham = '$hinh',id_danhmuc = '$id_danhmuc',description = '$description', tinhtrang = '$tinhtrang', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
-          nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat', tieude1 = '$title1', tieude2 = '$title2', tieude3 = '$title3', noidung1 = '$noidung1', noidung2 = '$noidung2', noidung3 = '$noidung3' where id_sanpham = '$id_sanpham' ";
+          nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat' where id_sanpham = '$id_sanpham' ";
         pdo_execute($sql);
     } else {
 
         $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong',id_danhmuc = '$id_danhmuc',description = '$description', tinhtrang = '$tinhtrang', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
-          nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat', tieude1 = '$title1', tieude2 = '$title2', tieude3 = '$title3', noidung1 = '$noidung1', noidung2 = '$noidung2', noidung3 = '$noidung3' where id_sanpham = '$id_sanpham' ";
+          nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat' where id_sanpham = '$id_sanpham' ";
         pdo_execute($sql);
     }
 }
@@ -130,28 +116,19 @@ function edit_sanpham(
 // }
 function delete_sanpham($id_sanpham)
 {
-    // $sql = "DELETE from sizesanpham  where id_sanpham = '$id_sanpham' and size = '$size_sanpham'";
-    // pdo_execute($sql);
+    $load_one_sanpham = load_one_sanpham($id_sanpham);
+    $img = "../images/".$load_one_sanpham['img_sanpham'];
+    unlink($img);
     $sql = "DELETE from sanpham  where id_sanpham = '$id_sanpham'";
     pdo_execute($sql);
 }
-// function delete_sanpham($id_sanpham, $size_sanpham)
-// {
-//     // $sql = "DELETE from sizesanpham  where id_sanpham = '$id_sanpham' and size = '$size_sanpham'";
-//     // pdo_execute($sql);
-//     $sql = "DELETE from sanpham  where id_sanpham = '$id_sanpham'";
-//     pdo_execute($sql);
-// }
+
 function delete_size($id_sanpham)
 {
     $sql = "DELETE from sizesanpham where id_sanpham = '$id_sanpham'";
     pdo_execute($sql);
 }
-// function delete_size($id_sanpham, $size)
-// {
-//     $sql = "DELETE from sizesanpham where id_sanpham = '$id_sanpham' and size = '$size'";
-//     pdo_execute($sql);
-// }
+
 function count_sanpham()
 {
     $sql = "SELECT count(*) as tong_sanpham from sanpham";
@@ -170,10 +147,7 @@ function loc_sp_theodm($id_danhmuc)
     FROM sanpham sp
      where id_danhmuc = '$id_danhmuc'
     ";
-    // $sql = "SELECT sp.*, COUNT(szsp.size) as size, SUM(szsp.so_luong) as so_luong
-    // FROM sanpham sp
-    // LEFT JOIN sizesanpham szsp ON szsp.id_sanpham = sp.id_sanpham where sp.id_danhmuc = '$id_danhmuc'
-    // GROUP BY sp.id_sanpham, sp.ten_sanpham ";
+
     $result = pdo_query($sql);
     return $result;
 }
@@ -185,39 +159,29 @@ function locsp_theogia($price)
     switch ($price) {
         case 'low_to_high':
             $order_by = " ORDER BY price ASC";
-            // $order_by = " ORDER BY sp.price ASC";
             break;
+
         case 'high_to_low':
             $order_by = " ORDER BY price DESC";
-            // $order_by = " ORDER BY sp.price DESC";
             break;
+
         case '100_to_500':
-            // $where = " WHERE sp.price BETWEEN 100000000 AND 500000000 ";
-            // $order_by = " ORDER BY sp.price ASC";
             $where = " WHERE price BETWEEN 100000000 AND 500000000 ";
             $order_by = " ORDER BY price ASC";
             break;
+
         case '500_to_700':
             $where = " WHERE price BETWEEN 500000000 AND 700000000 ";
             $order_by = " ORDER BY price ASC";
-            // $where = " WHERE sp.price BETWEEN 500000000 AND 700000000 ";
-            // $order_by = " ORDER BY sp.price ASC";
             break;
+
         case 'above_700':
             $where = " WHERE price > 700000000 ";
             $order_by = " ORDER BY price ASC";
-            // $where = " WHERE sp.price > 700000000 ";
-            // $order_by = " ORDER BY sp.price ASC";
             break;
         default:
-            // Trong trường hợp không có giá trị nào khớp, hiển thị tất cả sản phẩm
             break;
     }
-    
-    // $sql = "SELECT sp.*, COUNT(szsp.size) as size, SUM(szsp.so_luong) as so_luong
-    //     FROM sanpham sp
-    //     left JOIN sizesanpham szsp ON szsp.id_sanpham = sp.id_sanpham " . $where . "
-    //     GROUP BY sp.id_sanpham, sp.ten_sanpham " . $order_by;
     $sql = "SELECT *
         FROM sanpham 
       " . $where . "
@@ -261,6 +225,19 @@ function locsp_theogia_danhmuc($price, $id_danhmuc)
 
 function load_all_sp_theo_ten($kyw){
     $sql = "SELECT * FROM sanpham WHERE ten_sanpham LIKE '%" . $kyw . "%'";
+    $result = pdo_query($sql);
+    return $result;
+}
+function ten_sanpham_exist($id_sanpham){
+    $sql = "Select * from sanpham where id_sanpham != '$id_sanpham' ";
+    $result = pdo_query($sql);
+    return $result;
+}
+function chart_danhmuc(){
+    $sql = "SELECT dm.id_danhmuc, dm.ten_danhmuc, COUNT(sp.id_sanpham) AS total_sanpham
+    FROM danhmuc dm
+    LEFT JOIN sanpham sp ON dm.id_danhmuc = sp.id_danhmuc
+    GROUP BY dm.id_danhmuc, dm.ten_danhmuc;";
     $result = pdo_query($sql);
     return $result;
 }

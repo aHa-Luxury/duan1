@@ -11,7 +11,10 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="id_danhmuc" value="<?= $one_danhmuc['id_danhmuc'] ?>">
                                     <p style="color:purple"><span style="color:red">* </span>Tên danh mục</p>
-                                    <input type="text" name="name_danhmuc" placeholder="Tên danh mục" value="<?= $one_danhmuc['ten_danhmuc'] ?>" required id=""><br><br>
+                                    <input type="text" name="name_danhmuc" placeholder="Tên danh mục" value="<?= isset($_POST['name_danhmuc']) ? $_POST['name_danhmuc'] : $one_danhmuc['ten_danhmuc'] ?>"  id="">
+                                    <?php if(isset($errors['ten'])):  ?>
+                                        <span style="color:red"><?= $errors['ten'] ?></span>
+                                        <?php endif ?><br><br>
                                     
 
                                     <!-- Logo thương hiệu  -->
@@ -23,13 +26,7 @@
                                         <?php endif ?>
                                         <input type="file" name="hinh" id="" >
 
-                                        <!-- video banner  -->
-                                        <p style="color:purple"><span style="color:red">* </span>Banner</p>
-                                    <?php if(isset($one_danhmuc['video_danhmuc']) && $one_danhmuc['video_danhmuc'] != ""):  ?>
-                                        <video width="700px" src="../images/<?= $one_danhmuc['video_danhmuc'] ?>" controls></video><br>
-                                        <?php else :?>
-                                            <p style="color:red">Chưa có banner</p>
-                                        <?php endif ?>
+                                     
                             
                                     <input type="submit" value="Sửa" name="submit">
                                     <a href="?act=danhmuc" style="background-color: #0d6efd;

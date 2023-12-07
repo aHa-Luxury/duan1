@@ -24,7 +24,14 @@
                                             <td><?= $all_kh['ten'] ?></td>
                                             <td > <?= $all_kh['email'] ?></td>
                                             <td><?= $all_kh['password'] ?></td>
-                                            <td><?= ($all_kh['role'] == 1) ? 'admin' : 'user' ?>
+                                            <td>
+                                                <?php if($all_kh['role'] == 1):  ?>
+                                                   <span style="color:red"> Admin</span>
+                                                <?php elseif($all_kh['role'] == 2): ?>
+                                                    <span style="color:blue">Nhân viên</span>
+                                                    <?php else: ?>
+                                                        <span style="color:green">User</span>
+                                                        <?php endif ?>
                                         </td>
                                           
                                             <td >

@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="datlai_matkhau" style="text-align:center">
-          <a href="">  Quên mật khẩu? </a>
+          <a href="?act=forgotpass">  Quên mật khẩu? </a>
           </div>
     
         </div>

@@ -9,5 +9,5 @@
                     </div>
                 </div> -->
 
-            <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+            <img src="images/BANNER_DONG_HO_CHUAN_PC.png" alt="">
         </div>

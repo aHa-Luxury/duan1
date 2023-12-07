@@ -16,20 +16,20 @@
                 <input type="text" disabled  value="<?= $one_sanpham['id_sanpham'] ?>"  id=""><br>
                 <input type="hidden" name="id_sanpham" value="<?= $one_sanpham['id_sanpham'] ?>" id="">
                 <p style="color:purple"><span style="color:red">* </span>Tên sản phẩm</p>
-                <input type="text" name="ten_sanpham" placeholder="Tên sản phẩm" value="<?= isset($_POST['ten_sanpham']) ? $_POST['ten_sanpham'] : $one_sanpham['ten_sanpham'] ?>" id=""><br>
+                <input type="text" disabled name="ten_sanpham" placeholder="Tên sản phẩm" value="<?= isset($_POST['ten_sanpham']) ? $_POST['ten_sanpham'] : $one_sanpham['ten_sanpham'] ?>" id=""><br>
                 <?php if(isset($errors['ten'])): ?>
                     <span style="color:red"><?= $errors['ten'] ?></span>
                     <?php endif ?>
 
                 <!-- Giá  -->
                 <p style="color:purple"><span style="color:red">* </span>Giá</p>
-                <input type="text" name="price" placeholder="Giá" value="<?= isset($_POST['price']) ? $_POST['price'] : $one_sanpham['price'] ?>" id=""><br>
+                <input type="text" disabled name="price" placeholder="Giá" value="<?= isset($_POST['price']) ? $_POST['price'] : $one_sanpham['price'] ?>" id=""><br>
                 <?php if(isset($errors['price'])): ?>
                     <span style="color:red"><?= $errors['price'] ?></span>
                     <?php endif ?>
 
                 <p style="color:purple"><span style="color:red">* </span>Số lượng</p>
-                <input type="number" name="soluong" placeholder="Số lượng" value="<?= isset($_POST['soluong']) ? $_POST['soluong'] : $one_sanpham['soluong'] ?>"  id=""><br>
+                <input type="number" disabled name="soluong" placeholder="Số lượng" value="<?= isset($_POST['soluong']) ? $_POST['soluong'] : $one_sanpham['soluong'] ?>"  id=""><br>
                 <?php if(isset($errors['soluong'])): ?>
                     <span style="color:red"><?= $errors['soluong'] ?></span>
                     <?php endif ?>
@@ -38,14 +38,14 @@
                 <p style="color:purple"><span style="color:red">* </span>Hình ảnh</p>
                 <?php if (isset($one_sanpham['img_sanpham']) && $one_sanpham['img_sanpham'] != "") :  ?>
                     <input style="border:1px solid gray;width:200px;border-radius:10px " type="image" src="../images/<?= $one_sanpham['img_sanpham'] ?>" alt=""><br><br>
-                <?php else : ?>
-                    <p style="color:red">Chưa có hình ảnh</p>
+              
                 <?php endif ?>
-                <input type="file" name="hinh" id="">
+
                 <br><br>
 
                 <!-- Bảng size  -->
                 <!-- <a href="?act=add_size&id_sp=<?= $_GET['id_sp'] ?>" class="btn btn-success" >Thêm size</a><br>
+
                 <?php if(isset($_COOKIE['success'])):  ?>
                     <span style="color:green"><?= $_COOKIE['success'] ?></span>
                     <?php endif ?>
@@ -80,7 +80,8 @@
 
                     <!-- Thương hiệu  -->
                     <p style="color:purple"><span style="color:red">* </span>Thương hiệu</p>
-                    <select name="id_danhmuc" id="" required>
+
+                    <select disabled name="id_danhmuc" id="" required>
                         <?php foreach ($all_danhmuc as $all_dm) : ?>
                             <option value="<?= $all_dm['id_danhmuc']; ?> " <?= ($all_dm['id_danhmuc'] === $one_sanpham['id_danhmuc']) ? "selected" : "" ?>>
                               <?= $all_dm['ten_danhmuc'] ?>
@@ -90,7 +91,7 @@
 
                     <!-- Thông tin chi tiết  -->
                     <p style="color:purple"><span style="color:red">* </span>Thông tin chi tiết</p>
-                    <textarea name="description" id="" cols="70" rows="5" placeholder="Thông tin sản phẩm"><?php if ($one_sanpham['description'] != "") : ?>
+                    <textarea disabled name="description" id="" cols="70" rows="5" placeholder="Thông tin sản phẩm"><?php if ($one_sanpham['description'] != "") : ?>
                 <?= trim($one_sanpham['description'] )?>
                 <?php endif ?>
         </textarea><br> 
@@ -99,37 +100,35 @@
 
             <div class="right">
             <h2>Thông số kĩ thuật</h2>
-                    <p style="color:purple"><span style="color:red">* </span>Tình trạng <b>(Không bắt buộc)</b> </p>
-                    <input type="text" name="tinhtrang" placeholder="Tình trạng" value="<?= $one_sanpham['tinhtrang'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Khả năng chống nước <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="thamnuoc" placeholder="Khả năng chống nước" value="<?= $one_sanpham['thamnuoc'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Vành đồng hồ <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="vanh" placeholder="Vành đồng hồ" value="<?= $one_sanpham['vanhdongho'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Năng lượng <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="nangluong" placeholder="Năng lượng" value="<?= $one_sanpham['nangluong'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Chất liệu vỏ <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="chatlieuvo" placeholder="Chất liệu vỏ" value="<?= $one_sanpham['chatlieuvo'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Dây đeo <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="daydeo" placeholder="Dây đeo" value="<?= $one_sanpham['daydeo'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Khóa <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="khoa" placeholder="Khóa" value="<?= $one_sanpham['khoa'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Mặt kính <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="matkinh" placeholder="Mặt kính" value="<?= $one_sanpham['matkinh'] ?? "" ?>" id=""><br>
-                    <p style="color:purple"><span style="color:red">* </span>Nơi sản xuất <b>(Không bắt buộc)</b></p>
-                    <input type="text" name="noisanxuat" placeholder="Nơi sản xuất" value="<?= $one_sanpham['sanxuattai'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Tình trạng </p>
+
+                    <input type="text" disabled name="tinhtrang" placeholder="Tình trạng" value="<?= $one_sanpham['tinhtrang'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Khả năng chống nước</p>
+                    <input type="text" disabled name="thamnuoc" placeholder="Khả năng chống nước" value="<?= $one_sanpham['thamnuoc'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Vành đồng hồ </p>
+                    <input type="text" disabled name="vanh" placeholder="Vành đồng hồ" value="<?= $one_sanpham['vanhdongho'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Năng lượng </p>
+                    <input type="text" disabled name="nangluong" placeholder="Năng lượng" value="<?= $one_sanpham['nangluong'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Chất liệu vỏ</p>
+                    <input type="text" disabled name="chatlieuvo" placeholder="Chất liệu vỏ" value="<?= $one_sanpham['chatlieuvo'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Dây đeo </p>
+                    <input type="text" disabled name="daydeo" placeholder="Dây đeo" value="<?= $one_sanpham['daydeo'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Khóa </p>
+                    <input type="text" disabled name="khoa" placeholder="Khóa" value="<?= $one_sanpham['khoa'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Mặt kính </p>
+                    <input type="text" disabled name="matkinh" placeholder="Mặt kính" value="<?= $one_sanpham['matkinh'] ?? "" ?>" id=""><br>
+                    <p style="color:purple"><span style="color:red">* </span>Nơi sản xuất </p>
+                    <input type="text" disabled name="noisanxuat" placeholder="Nơi sản xuất" value="<?= $one_sanpham['sanxuattai'] ?? "" ?>" id=""><br>
 
                 <br>
 
-
-                <input type="submit" value="Cập nhật" name="submit">
-                <input type="reset" style="height:43px;margin-bottom:5px" class="btn btn-secondary" value="Nhập lại">
                 <a href="?act=sanpham" style="background-color: #0d6efd;
     color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration:none;">Danh sách</a>
+    text-decoration:none;">Danh sách sản phẩm</a>
             </div>
         </form>
 

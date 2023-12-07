@@ -98,7 +98,7 @@ h1 {
 
                     <td style="width:50%"><?=$binhluan['noidung']?></td>
                     <td><?=$binhluan['ten_sanpham']?></td>
-                    <td> <a onclick="return confirm('Bạn chắc chắc muốn xóa không?')"  href="<?=$deletebl?>" . $id_binhluan>
+                    <td> <a onclick="return confirm('Bạn chắc chắc muốn xóa bình luận này không?')"  href="<?=$deletebl?>" . $id_binhluan>
                            Xóa</a></td>
                 </tr>
             <?php

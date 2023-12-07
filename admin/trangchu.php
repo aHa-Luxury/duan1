@@ -1,102 +1,109 @@
-<div class="content">
-    <h1 style="color: rgb(90, 92, 105);">Thống kê</h1>
-    <div class="boxes">
-        <div class="box">
-            <h6 style="color: rgb(90, 92, 105);">Tổng sản phẩm</h6>
-            <p style="color:rgb(90, 92, 105)"><?= $count_sanpham['tong_sanpham'] ?></p>
-        </div>
-        <div class="box">
-            <h6 style="color: rgb(90, 92, 105);">Tổng danh mục</h6>
-            <p style="color:rgb(90, 92, 105)"><?= $count_danhmuc['tong_danhmuc'] ?></p>
-        </div>
-        <div class="box">
-            <h6 style="color: rgb(90, 92, 105);">Đơn hàng đã giao</h6>
-            <p style="color:rgb(90, 92, 105)"><?=$count_donhang['don_thanh_cong'] ?></p>
-        </div>
-        <div class="box">
-            <h6 style="color: rgb(90, 92, 105);">Tổng số khách hàng</h6>
-            <p style="color:rgb(90, 92, 105)"><?= $count_khachhang['tong_khachhang'] ?></p>
-        </div>
-
-
-    </div>
-    <div class="chart">
-        <div class="chart_left">
-            <h1 style="color:#4e73df">Doanh thu theo tháng</h1>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <canvas id="myChart" width="800px" height="380px" style="margin-top:30px"></canvas>
-    <?php
-
-    $doanhthu = [];
-    $time = [];
-    $thongke = thongke_doanhthu(); // return month_year , total_amount
-    foreach ($thongke as $tk) {
-        extract($tk);
-        array_push($doanhthu, $total_amount);
-        array_push($time, $month_year);
+<style>
+    .form_search {
+        display: flex;
+        margin-left: 50px;
+        margin-top: 20px;
     }
-    echo '<script>';
-    echo 'const phpData = ' . json_encode($doanhthu) . ';';
-    echo 'const phpLabels = ' . json_encode($time) . ';';
-    echo '</script>';
-    ?>
+  .form_search input[type='text']{
+    width: 15%;
+  }
+    .form_search input {
+        width: 10%;
+        padding: 8px; /* Thêm padding để tăng kích thước ô input */
+        border: 1px solid #ccc; /* Thêm đường viền để ô input rõ ràng hơn */
+        border-radius: 5px; /* Bo tròn góc ô input */
+        transition: all 0.3s; /* Thêm hiệu ứng transition */
+    }
 
-    <div class="container">
+    .form_search input:hover {
+        border-color: #555; /* Đổi màu đường viền khi hover */
+        background-color: #f5f5f5; /* Đổi màu nền khi hover */
+    }
 
-    </div>
+    .form_search input[type="submit"] {
+        cursor: pointer; /* Biến đổi con trỏ thành pointer khi hover vào nút submit */
+        background-color: #4caf50; /* Màu nền cho nút submit */
+        color: #fff; /* Màu chữ cho nút submit */
+        border: none; /* Xóa đường viền cho nút submit */
+        border-radius: 5px; /* Bo tròn góc cho nút submit */
+        margin-left: 5px; /* Khoảng cách giữa input và nút submit */
+        transition: background-color 0.3s; /* Thêm hiệu ứng transition */
+    }
+
+    .form_search input[type="submit"]:hover {
+        background-color: #45a049; /* Đổi màu nền khi hover vào nút submit */
+    }
+</style>
+
+<div class="hr"></div>
+        <div class="banner">
+            <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
         </div>
-        <div class="chart_right">
-            <h1 style="color:#4e73df">Revenue Sources</h1>
-            <canvas id="dongHoChart" width="400" height="200"></canvas>
-        </div>
-
-    </div>
-   
-    <script>
-        // Move data definition above the config object
-        const labels = phpLabels;
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'My First Dataset',
-                data: phpData,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        };
-
-        // Global Options
-        const config = {
-            type: 'line',
-            data: data,
-        };
-
-        let myChart = document.getElementById('myChart').getContext('2d');
-        new Chart(myChart, config);
-    </script>
+        <div class="hr"></div>
+<main>
+    <!-- Trong form trang chủ -->
+<div class="form_search">
+    <form action="?act=list_sp" method="post">
+        <input type="text" name="kyw" id="" placeholder="Tìm kiếm...">
+        <input type="submit" name="clickok" value="Tìm kiếm">
+    </form>
 </div>
+    <h3>XEM SẢN PHẨM THEO THƯƠNG HIỆU</h3>
+    <div class="listbrand">
+        <?php $count = 1; foreach ($all_danhmuc as $all_dm) : ?>
+            <a href="index.php?act=category_products&id_dm=<?= $all_dm['id_danhmuc'] ?>"><img src="images/<?= $all_dm["img_danhmuc"] ?>" alt=""></a>
+            <?php $count++; if($count ==6){
+                break;
+            } ?>
+            
+        <?php  endforeach ?>
 
-<script>
-   var ctx = document.getElementById('dongHoChart').getContext('2d');
+    </div>
+
+
+
+    <div class="brand">
+    <?php foreach ($all_danhmuc as $all_dm) : ?>
+        <!-- Danh sách 4 sản phẩm mới nhất -->
+        <?php $four_sanpham = load_four_sanpham($all_dm['id_danhmuc']);
+                $all_sanpham = select_all_sanpham()?>
+        <div class="list">
+            <?php $check = false; foreach($all_sanpham as $all_sp): ?>
+                <?php if($all_dm['id_danhmuc'] == $all_sp['id_danhmuc']) :?>
+                    <?php $check = true; ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+
+                <?php if($check == true): ?>
+                    <!-- Tên hãng  -->
+                    <h1><?= $all_dm['ten_danhmuc'] ?></h1>
+
+            <?php foreach($four_sanpham as $four_sp) : ?>
+                <!-- box của từng sản phẩm  -->
+                    <div class="product">
+                <a href="?act=chitietsanpham&id_sp=<?= $four_sp['id_sanpham'] ?>">
+                    <img src="images/<?= $four_sp['img_sanpham'] ?>" alt="">
+                    <h3><?= $four_sp['ten_sanpham'] ?></h3>
+                    <p><?= number_format( $four_sp['price'])  ?>đ</p>
+                </a>
+            </div>
+            <?php endforeach ?>
+                <!-- Nút xem tất cả hãng -->
+            <div class="btn-view-all-product">
+            <a href="?act=category_products&id_dm=<?= $all_dm['id_danhmuc'] ?>">XEM TẤT CẢ ĐồNG Hồ <?= $all_dm['ten_danhmuc'] ?></a>
+        </div>
+                    <?php endif ?>
+        </div>
+
+            <!-- Button xem tất cả sản phẩm  -->
+            
+        <?php endforeach ?>
+       
+
+
+    </div>
+
+
+    </div>
    
-   var dongHoChart = new Chart(ctx, {
-      type: 'bar', // Loại biểu đồ là bar (cột)
-      data: {
-         labels: ['Đồng hồ Thụy Sĩ', 'Đồng hồ Nhật Bản', 'Đồng hồ Thời Trang', 'Khác'],
-         datasets: [{
-            label: 'Số lượng',
-            data: [30, 25, 20, 25], // Số liệu phân loại, có thể thay đổi dựa trên dữ liệu thực tế
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50'] // Màu sắc của các cột
-         }]
-      },
-      options: {
-         responsive: true,
-         scales: {
-            y: {
-               beginAtZero: true
-            }
-         }
-      }
-   });
-</script>
+</main>

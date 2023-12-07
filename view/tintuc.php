@@ -86,7 +86,7 @@
             <div class="box_banners_r1">
                 <ul class="box_banners" id="banner_news_R1">
                     <li><a href="" target="_self"><img class=" ls-is-cached lazyloaded"
-                                 alt="Banner 1" src="images/BANNER_DONG_HO_CHUAN_PC.jpg"></a></li>
+                                 alt="Banner 1" src="images/BANNER_DONG_HO_CHUAN_PC.png"></a></li>
                     <li><a href="" target="_self"><img
                                 class="ls-is-cached lazyloaded"
                                 alt="Banner 2" src="images/BANNER2.jpg"></a></li>

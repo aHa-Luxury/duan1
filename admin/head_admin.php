@@ -18,10 +18,12 @@
                         <li><a href="index.php"><i class="fa-solid fa-house"></i>Thống kê</a></li>
                         <li><a href="?act=sanpham"><i class="fa-brands fa-shopify"></i>Sản phẩm</a></li>
                         <li><a href="?act=danhmuc"><i class="fa-solid fa-list"></i>Danh mục</a></li>
+                        <?php if($_SESSION['admin']['role']  ==1 ): ?>
                         <li><a href="?act=khachhang"><i class="fa-solid fa-user"></i>Khách hàng</a></li>
+                        <?php endif ?>
                         <li><a href="?act=binhluan"><i class="fa-solid fa-comment"></i>Bình luận</a></li>
                         <li></i><a href="?act=donhang"><i style="font-size: 20px;width: 40px;" class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
-                        <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li>
+                        <!-- <li><a href="?act=thongtinwebsite"><i class="fa-solid fa-comment"></i>Thông tin website</a></li> -->
                     </ul>
                 </div>
                 <div class="main_right" style="padding:0px">
@@ -37,10 +39,8 @@
                             <i class="fa-solid fa-envelope"></i>
                             <div class="user">
                                 <h6><?= $_SESSION['admin']['email'] ?></h6>
-                               <div class="hinh">
-                                <img  src="../images/ROLEX.png" alt="">
-                               </div>
+                              
                             </div>
-                            <a href="?act=dangxuat"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?')" href="?act=dangxuat"><i class="fa-solid fa-right-from-bracket"></i></a>
                         </div>
                     </div>

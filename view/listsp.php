@@ -36,7 +36,7 @@
 </style>
 <div class="banner">
 <div class="hr"></div>
-      <img src="images/BANNER_DONG_HO_CHUAN_PC.jpg" alt="">
+      <img src="images/BANNER_DONG_HO_CHUAN_PC.png" alt="">
 <div class="hr"></div>
         </div>
 <main >

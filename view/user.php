@@ -45,7 +45,7 @@
             <button class="box" type="submit" name=""><a href="index.php?act=changepassword">Đổi mật khẩu</a></button>
             <button class="box" type="submit" name=""><a href="index.php?act=quanlybinhluan">Quản lý bình luận</a></button>
             <button class="box" type="submit" name=""><a href="index.php?act=list_donhang">Đơn hàng của tôi</a></button>
-            <button class="box" type="submit" name="dangxuat">Đăng xuất</button>
+            <button onclick="return confirm('Bạn có chắc chắn muốn đăng xuất không?')" class="box" type="submit" name="dangxuat">Đăng xuất</button>
          </form>
          
         

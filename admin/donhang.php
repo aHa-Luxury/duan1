@@ -46,11 +46,13 @@
                         <td><?= $all_dh['pttt'] == 0 ? "Thanh toán khi nhận hàng" : "Chuyển khoản"   ?></td>
                         <td><?= date('d-m-Y', strtotime($all_dh['date'])) ?></td>
                         <td><?php if ($all_dh['trangthai'] == 1) : ?>
-                                <?= '<b style="color:orangered">Đang vận chuyển</b>' ?>
+                                <?= '<b style="color:blue">Đang vận chuyển</b>' ?>
                             <?php elseif (($all_dh['trangthai']) == 2) : ?>
                                 <?= '<b style="color:green">Đã giao</b>' ?>
                             <?php elseif (($all_dh['trangthai']) == 3) : ?>
-                                <?= '<b style="color:Red">Đã hủy</b>' ?>
+                                <?= '<b style="color:Red">Đã bị hủy</b>' ?>
+                            <?php elseif (($all_dh['trangthai']) == 4) : ?>
+                                <?= '<b style="color:orangered">Đã hủy</b>' ?>
                             <?php else : ?>
                                 <?= ' <b style="color:orange">Đơn hàng mới</b>' ?>
 
@@ -63,7 +65,7 @@
                         <?php elseif ($all_dh['trangthai'] == 2) : ?>
                         <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
                     <?php else : ?>
-                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?')" href="?act=delete_bill&id_bill=<?= $all_dh['id_bill'] ?>" class="btn btn-outline-danger">Hủy đơn</a>
+                        <a onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')" href="?act=huy_bill&id_bill=<?= $all_dh['id_bill'] ?>" class="btn btn-outline-danger">Hủy đơn</a>
                             <a href="?act=chitietdonhang&id_bill=<?= $all_dh['id_bill'] ?>" type="button" class="btn btn-outline-success">Chi tiết</a>
                     <?php endif ?>
                         </td>

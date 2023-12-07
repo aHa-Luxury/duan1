@@ -13,9 +13,24 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_user" value="<?= $khachhang['id_user'] ?>">
-            Tên <input type="text" name="ten" value="<?=$khachhang['ten'] ?>">
-            Email <input type="email" name="email" value="<?= $khachhang['email'] ?>"><br>
-            Password <input type="text" name="password" value="<?= $khachhang['password'] ?>">
+            Họ và tên <input type="text" name="ten" value="<?= isset($_POST['ten']) ? $_POST['ten'] : $khachhang['ten'] ?>">
+           <?php if(isset($errors['ten'])): ?>
+            <span style="color:red"><?= $errors['ten'] ?></span><br>
+            <?php endif ?>
+
+            Email <input type="text" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : $khachhang['email'] ?>"><br>
+            <?php if(isset($errors['email'])): ?>
+            <span style="color:red"><?= $errors['email'] ?></span><br>
+            <?php endif ?>
+
+            Password <input type="text" name="password" value="<?= isset($_POST['password']) ? $_POST['password'] : $khachhang['password'] ?>">
+            <?php if(isset($errors['password'])): ?>
+            <span style="color:red"><?= $errors['password'] ?></span><br>
+            <?php endif ?>
+
+            <input type="radio" value="0" <?= $khachhang['role'] == 0 ? "checked" : "" ?> name="role" id="">User
+            <input type="radio" value="2" <?= $khachhang['role'] == 2 ? "checked" : "" ?> name="role" id="">Nhân viên 
+            <input type="radio" value="1" <?= $khachhang['role'] == 1 ? "checked" : "" ?> name="role" id="">Admin<br><br>
             <input type="submit" name="capnhat" value="Cập nhật">
             <input type="reset" style="background-color: #a97a3b;
     color: #fff;
