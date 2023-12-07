@@ -164,7 +164,6 @@
 <script>
   let totalProduct = document.getElementById('totalProduct');
   function addTo_cart(productId,productName,productPrice){
-    console.log(productId, productName,productPrice);
     // SỬ dụng jquery
     $.ajax({
       type:'POST',

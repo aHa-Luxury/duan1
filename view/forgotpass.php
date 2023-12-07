@@ -22,7 +22,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-h4 {
+h4{
     margin-bottom: 10px;
 }
 
