@@ -140,7 +140,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     move_uploaded_file($_FILES['hinh']['tmp_name'], "../images/" . $hinh);
                     $id_danhmuc = $_POST['id_danhmuc'];
                     $description = trim($_POST['description']);
-                    $tinhtrang = trim($_POST['tinhtrang']);
                     $thamnuoc = trim($_POST['thamnuoc']);
                     $vanh = trim($_POST['vanh']);
                     $nangluong = trim($_POST['nangluong']);
@@ -204,7 +203,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                             $hinh,
                             $id_danhmuc,
                             $description,
-                            $tinhtrang,
                             $thamnuoc,
                             $vanh,
                             $nangluong,
@@ -493,6 +491,13 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 if (isset($_POST['update_bill'])) {
                     $id_bill = $_POST['id_bill'];
                     $trangthai = $_POST['trangthai'];
+                    if($trangthai == 1){
+                        foreach($load_chitietbill as $load_ct_bill){
+                            $soluong = $load_ct_bill['soluong'];
+                            $id_sanpham = $load_ct_bill['id_sanpham'];
+                            change_quantity($soluong,$id_sanpham);
+                        }
+                    }
                     update_donhang($id_bill, $trangthai);
                     setcookie("success", "Cập nhật trạng thái đơn hàng thành công", time() + 1);
                     header("location:?act=donhang");

@@ -102,7 +102,7 @@
             return false;
         }
         function validateName(name){
-            var nameRegex = /^[\p{L}\s']+$/u;
+            var nameRegex = /^[\p{L}\s]+$/u;
             var words = name.split(/\s+/);
             return nameRegex.test(name) && words.length >= 3;
         }

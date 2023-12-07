@@ -28,7 +28,6 @@ if(isset($_POST['dathang'])){
     $pttt = $_POST['pttt'];
     $tong = 0 ;
     
-  
   if(isset($_SESSION['cart'])){
     for( $i=0;$i < sizeof($_SESSION['cart']); $i++){
         $tt = $_SESSION['cart'][$i]['quantity'] *  $_SESSION['cart'][$i]['price'];
@@ -69,7 +68,8 @@ if(isset($_POST['dathang'])){
         $price = $product['price'];
         $soluong = $quantityInCart;
         
-        taochitietbill( $id_sanpham,$ten_sanpham,$hinhsp,$price,$soluong,$sum_total,$id_bill);
+        taochitietbill($id_sanpham,$ten_sanpham,$hinhsp,$price,$soluong,$sum_total,$id_bill);
+        
     }
     // insert vào bảng giỏ hàng
 

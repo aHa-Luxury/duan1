@@ -200,19 +200,34 @@
                 <h2>Số điện thoại: <?= $load_one_donhang['tel'] ?></h2>
                 <h2>Email:<?= $load_one_donhang['email'] ?></h2>
                 <h2>Ngày mua:<?= date('d-m-Y', strtotime($load_one_donhang['date'])) ?></h2>
-
-                <?php if ($load_one_donhang['trangthai'] == 2) : ?>
+                <?php if ($load_one_donhang['trangthai'] != 2 && $load_one_donhang['trangthai'] != 3 && $load_one_donhang['trangthai'] != 4):?>
+                <select name="trangthai">
+                    <?php
+                    $trangthai = [
+                        "0" => "Đơn hàng mới",
+                        "1" => "Đang vận chuyển",
+                        "2" => "Đã giao",
+                        
+                    ];
+                    $status = $load_one_donhang['trangthai'];
+                    for ($i = 0; $i < 3; $i++) {
+                        if ($status <= $i) {
+                    ?>
+                            <option value="<?= $i ?>" <?= ($status == $i) ? 'selected' : '' ?>><?= $trangthai[$i] ?></option>
+                        <?php
+                        }
+                        ?>
+                    <?php
+                    }
+                    ?>
+                </select>
+                
+                <?php elseif ($load_one_donhang['trangthai'] == 2) : ?>
                     <h2>Trạng thái: Đã giao</h2>
                 <?php elseif ($load_one_donhang['trangthai'] == 3) : ?>
                     <h2>Trạng thái: Người mua đã hủy</h2>
                 <?php elseif ($load_one_donhang['trangthai'] == 4) : ?>
                     <h2> Trạng thái: đã hủy</h2>
-                <?php else : ?>
-                    <select name="trangthai" value="<?= $load_one_donhang['trangthai'] ?>" id="">
-                        <option value="0" <?= $load_one_donhang['trangthai'] == 0 ? "selected" : '' ?>>Đơn hàng mới</option>
-                        <option value="1" <?= $load_one_donhang['trangthai'] == 1 ? "selected" : '' ?>>Đang vận chuyển </option>
-                        <option value="2" <?= $load_one_donhang['trangthai'] == 2 ? "selected" : '' ?>>Đã giao</option>
-                    </select>
                 <?php endif ?>
             </div>
             <div class="right" style="width:50%;">
@@ -229,7 +244,9 @@
                 <h1 style="color:orange;margin-top:10px">Tổng tiền: <span style><?= number_format($load_one_donhang['total']) ?><u>đ</u></span></h1>
             </div>
         </div>
+        <?php if($load_one_donhang['trangthai'] !=2  && $load_one_donhang['trangthai'] !=3 && $load_one_donhang['trangthai'] !=4) :?>
         <button class="btn btn-success" name="update_bill" type="submit">Cập nhật</button>
+        <?php endif ?>
         <a href="?act=donhang" class="btn btn-primary">Danh sách</a>
     </form>
 

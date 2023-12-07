@@ -99,8 +99,6 @@
 
             <div class="right">
             <h2>Thông số kĩ thuật</h2>
-                    <p style="color:purple"><span style="color:red">* </span>Tình trạng <b>(Không bắt buộc)</b> </p>
-                    <input type="text" name="tinhtrang" placeholder="Tình trạng" value="<?= $one_sanpham['tinhtrang'] ?? "" ?>" id=""><br>
                     <p style="color:purple"><span style="color:red">* </span>Khả năng chống nước <b>(Không bắt buộc)</b></p>
                     <input type="text" name="thamnuoc" placeholder="Khả năng chống nước" value="<?= $one_sanpham['thamnuoc'] ?? "" ?>" id=""><br>
                     <p style="color:purple"><span style="color:red">* </span>Vành đồng hồ <b>(Không bắt buộc)</b></p>

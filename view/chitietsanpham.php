@@ -18,8 +18,8 @@
         <form  method="post">
         <h1><?= $one_sanpham['ten_sanpham'] ?></h1>
         <hr>
-        <p><?= $one_sanpham['description'] ?></p><br>
         <p>Mã SP : <?= $one_sanpham['id_sanpham'] ?></p><br>
+        <p>Số lượng : <?= $one_sanpham['soluong'] ?></p><br>
         <h2>Giá : <span><?= number_format($one_sanpham['price']) ?>đ</span></h2>
         <!-- <br>
         <select name="size" id="" style="width:100px;margin-right:20px">
@@ -30,7 +30,6 @@
         </select> -->
         
   <br>
-        <p><?= $one_sanpham['tinhtrang'] ?></p><br>
         <h2>Thông tin thêm:</h2>
         <hr>
         <p><?= $thongtinwebsite['camket']  ?></p>
@@ -42,11 +41,15 @@
           <input type="hidden" name="price" value="<?= $one_sanpham['price'] ?>">
 
        
-          <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="buy" type="submit" name="buy" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Mua ngay</button>
+         <?php if($one_sanpham['soluong'] <= 0): ?>
+          <h2 style="color:red">Sản phẩm đã bán hết!</h2>
+          <?php else : ?>
+            <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="buy" type="submit" name="buy" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Mua ngay</button>
           <!-- NÚt thêm vào giỏ hàng  -->
           <button data-id="<?= $one_sanpham['id_sanpham'] ?>" class="add" type="submit" name="addtocart" onclick="addTo_cart(<?= $one_sanpham['id_sanpham'] ?>,'<?= $one_sanpham['ten_sanpham'] ?>',<?= $one_sanpham['price'] ?>)">Thêm vào giỏ hàng</button>
          
-        </div>
+            <?php endif ?>
+          </div>
         </form>
       </div>
       <div class="head_right">

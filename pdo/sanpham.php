@@ -86,7 +86,6 @@ function edit_sanpham(
     $hinh,
     $id_danhmuc,
     $description,
-    $tinhtrang,
     $thamnuoc,
     $vanh,
     $nangluong,
@@ -98,12 +97,12 @@ function edit_sanpham(
     $id_sanpham
 ) {
     if ($hinh != '') {
-        $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong', img_sanpham = '$hinh',id_danhmuc = '$id_danhmuc',description = '$description', tinhtrang = '$tinhtrang', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
+        $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong', img_sanpham = '$hinh',id_danhmuc = '$id_danhmuc',description = '$description', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
           nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat' where id_sanpham = '$id_sanpham' ";
         pdo_execute($sql);
     } else {
 
-        $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong',id_danhmuc = '$id_danhmuc',description = '$description', tinhtrang = '$tinhtrang', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
+        $sql = "UPDATE sanpham set ten_sanpham = '$ten_sanpham' , price = '$price',soluong = '$soluong',id_danhmuc = '$id_danhmuc',description = '$description', thamnuoc = '$thamnuoc', vanhdongho= '$vanh',
           nangluong = '$nangluong', chatlieuvo = '$chatlieuvo', daydeo = '$daydeo', khoa = '$khoa', matkinh = '$matkinh', sanxuattai = '$noisanxuat' where id_sanpham = '$id_sanpham' ";
         pdo_execute($sql);
     }
@@ -128,7 +127,10 @@ function delete_size($id_sanpham)
     $sql = "DELETE from sizesanpham where id_sanpham = '$id_sanpham'";
     pdo_execute($sql);
 }
-
+function change_quantity($soluong, $id_sanpham){
+    $sql = "UPDATE sanpham set soluong = soluong - '$soluong' where id_sanpham = '$id_sanpham'";
+    pdo_execute($sql);
+}
 function count_sanpham()
 {
     $sql = "SELECT count(*) as tong_sanpham from sanpham";
